@@ -62,7 +62,7 @@ Ensuite, ajoutez vos serveurs Memcached dans le tableau **servers** :
 
 [Redis](http://redis.io) est un système de gestion de base de données clef-valeur scalable, très hautes performances, sur la mouvance NoSQL, pouvant contenir [strings](http://redis.io/topics/data-types#strings), [hashes](http://redis.io/topics/data-types#hashes), [lists](http://redis.io/topics/data-types#lists), [sets](http://redis.io/topics/data-types#sets), et [sorted sets](http://redis.io/topics/data-types#sorted-sets).
 
-Avant d'utiliser le driver de cache pour Redis, vous devez [configurer vos serveurs Redis](/docs/3/database/redis#config). Maintenant vous pouvez modifier l'option **driver** du fichier **application/config/cache.php** :
+Avant d'utiliser le driver de cache pour Redis, vous devez [configurer vos serveurs Redis](/3/database/redis#config). Maintenant vous pouvez modifier l'option **driver** du fichier **application/config/cache.php** :
 
     'driver' => 'redis'
 

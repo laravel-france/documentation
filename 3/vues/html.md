@@ -44,7 +44,7 @@ Par exemple, les symboles < et > doivent être représentés en tant que tel, et
 
 *Voir également:*
 
-- *[Management des assets](/docs/3/vues/assets)*
+- *[Management des assets](/3/vues/assets)*
 
 <a name="links"></a>
 ## Liens
@@ -74,7 +74,7 @@ Par exemple, les symboles < et > doivent être représentés en tant que tel, et
 
 *Voir aussi:*
 
-- *[Routes nommées](/docs/3/routes#named-routes)*
+- *[Routes nommées](/3/routes#named-routes)*
 
 <a name="links-to-controller-actions"></a>
 ## Liens vers des actions de contrôleur

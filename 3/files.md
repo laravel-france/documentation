@@ -44,7 +44,7 @@
 
     Input::upload('picture', 'chemin/vers/img', 'fichier.ext');
 
-> **Note:** Vous pouvez facilement valider l'image mise en ligne grâce à la [classe Validator](/docs/3/validation).
+> **Note:** Vous pouvez facilement valider l'image mise en ligne grâce à la [classe Validator](/3/validation).
 
 <a name="ext"></a>
 ## Extension d'un fichier

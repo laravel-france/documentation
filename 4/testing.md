@@ -179,4 +179,4 @@ Vous pouvez re-peupler votre base de données depuis les tests unitaires en util
 
     $this->seed($connection);
 
-Plus d'informations sur la peuplement de base de données dans la section [migrations et populations](/docs/4/migrations#database-seeding) de la documentation.
+Plus d'informations sur la peuplement de base de données dans la section [migrations et populations](/4/migrations#database-seeding) de la documentation.

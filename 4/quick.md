@@ -25,7 +25,7 @@ Ou, vous pouvez également télécharger une copie [sur le dépôt Github](https
 <a name="permissions"></a>
 ### Permissions
 
-Après installation, vous avez besoin de donner les droits en écriture pour le serveur web sur les dossiers dans `app/storage. Voir la documentation [Installation](/docs/4/installation#configuration) pour plus de détails sur la configuration.
+Après installation, vous avez besoin de donner les droits en écriture pour le serveur web sur les dossiers dans `app/storage. Voir la documentation [Installation](/4/installation#configuration) pour plus de détails sur la configuration.
 
 <a name="directories"></a>
 ### Structure des répertoires
@@ -48,7 +48,7 @@ Les routes peuvent également être attachées à un contrôleur. Par exemple :
 
     Route::get('users', 'UserController@getIndex');
 
-Cette route informe le framework que la requête vers la route `/users` doit appeler la méthode `getIndex` de la classe `UserController`. Pour plus d'informations à propos du routage vers un contrôleur, lisez la [documentation sur les contrôleurs](/docs/4/controllers).
+Cette route informe le framework que la requête vers la route `/users` doit appeler la méthode `getIndex` de la classe `UserController`. Pour plus d'informations à propos du routage vers un contrôleur, lisez la [documentation sur les contrôleurs](/4/controllers).
 
 <a name="creating-a-view"></a>
 ## Création d'une vue
@@ -71,7 +71,7 @@ Ensuite, créons notre vue `users.blade.php` :
         Users!
     @stop
 
-Certaines parties de cette syntaxe doivent vous sembler étranges. C'est parce que nous utilisons le système de templating de Laravel : Blade. Blade est très rapide, car c'est simplement une poignée d'expressions régulières exécutées sur votre template pour le compiler en du PHP pur. Blade fournit des fonctionnalités puissantes comme l'héritage de template, ainsi qu'une syntaxe embellie sur les structures de contrôle de PHP telles que `if` et `for`. Lisez la [documentation de Blade](/docs/4/templates) pour plus de détails.
+Certaines parties de cette syntaxe doivent vous sembler étranges. C'est parce que nous utilisons le système de templating de Laravel : Blade. Blade est très rapide, car c'est simplement une poignée d'expressions régulières exécutées sur votre template pour le compiler en du PHP pur. Blade fournit des fonctionnalités puissantes comme l'héritage de template, ainsi qu'une syntaxe embellie sur les structures de contrôle de PHP telles que `if` et `for`. Lisez la [documentation de Blade](/4/templates) pour plus de détails.
 
 Maintenant que nous avons nos vues, retournons les depuis notre route `/users`. Plutôt que de retourner `Users!` depuis la route, retournez la vue :
 
@@ -89,7 +89,7 @@ Pour créer une table qui garde nos données, nous allons utiliser le système d
 
 Premièrement, configurons une connexion à la base de données. Vous pouvez configurer vos connexions à la base de données depuis le fichier `app/config/database.php`. Par défault, Laravel est configuré pour utiliser MySQL et vous aurez besoin de fournir les informations de connexion au fichier de configuration de bases de données. Si vous le souhaitez, vous pouvez changer l'option `driver` pour `sqlite` et vous utiliserez la base de données SQLite incluse dans le répertoire `app/database`.
 
-Ensuite, pour créer une migration, nous allons utiliser [Artisan](/docs/4/artisan). Depuis la racine de votre projet, exécutez la ligne suivante dans votre terminal :
+Ensuite, pour créer une migration, nous allons utiliser [Artisan](/4/artisan). Depuis la racine de votre projet, exécutez la ligne suivante dans votre terminal :
 
     php artisan migrate:make create_users_table
 
@@ -160,4 +160,4 @@ Maintenant que nous avons rendu les `users` disponibles pour notre vue, nous pou
 
 Vous devez vous demander où se trouve la directive `echo`. Lorsque vous utilisez Blade, vous pouvez afficher des données en les entourant par des doubles accolades. Un vrai jeu d'enfant. Maintenant, vous devez être capable d'aller sur la route `/users` et de voir vos utilisateurs affichés dans la réponse.
 
-Ce n'est que le début. Dans ce tutoriel, vous avez vu les bases de Laravel, mais il y a encore tellement de choses excitantes à apprendre ! Continuez à lire la documentaiton et attaquez plus en profondeur les fonctionnalités puissantes offertes par [Eloquent](/docs/4/eloquent) et [Blade](/docs/4/templates). Ou, peut-être vous serez plus intéréssé par les [queues](/docs/4/queues) et les [tests unitaires](/docs/4/testing). Et ensuite, peut-être que vous souhaitez rendre plus souple votre architecture avec le [conteneur IoC](/docs/4/ioc). Le choix est vôtre !
+Ce n'est que le début. Dans ce tutoriel, vous avez vu les bases de Laravel, mais il y a encore tellement de choses excitantes à apprendre ! Continuez à lire la documentaiton et attaquez plus en profondeur les fonctionnalités puissantes offertes par [Eloquent](/4/eloquent) et [Blade](/4/templates). Ou, peut-être vous serez plus intéréssé par les [queues](/4/queues) et les [tests unitaires](/4/testing). Et ensuite, peut-être que vous souhaitez rendre plus souple votre architecture avec le [conteneur IoC](/4/ioc). Le choix est vôtre !

@@ -62,7 +62,7 @@ Pour augmenter le temps de réponse, les règles de bonnes pratiques nous indiqu
 <a name="bundle-assets"></a>
 ## Assets de bundle
 
-Avant d'apprendre comment ajouter et afficher les assets d'un bundle, vous devriez lire la documentation sur [la création et la publication d'assets de bundle](/docs/3/bundles#bundle-assets).
+Avant d'apprendre comment ajouter et afficher les assets d'un bundle, vous devriez lire la documentation sur [la création et la publication d'assets de bundle](/3/bundles#bundle-assets).
 
 Lorsque vous enregistrez des assets, le chemin est relatif au dossier  **public**. Cependant, ceci n'est pas pratique lorsque l'on gère des assets de bundle, puisqu'ils se trouvent dans le dossier **public/bundles**. Laravel est là pour vous rendre la tache plus facile ! Vous pouvez créer un conteneur qui gérera les assets d'un de vos bundles :
 

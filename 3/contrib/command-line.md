@@ -16,7 +16,7 @@
 
 Ce tutoriel explique les bases pour contribuer au projet sur [GitHub](https://github.com/) via la ligne de commande. Le workflow peut s'appliquer à beaucoup de projets sur GitHub, mais dans ce cas, nous nous focaliserons sur le projet [Laravel](https://github.com/laravel/laravel). Ce tutoriel est applicable sur OSX, Linux et Windows.
 
-Pour ce tutoriel, vous devez avoir installé [Git](http://git-scm.com/) et que vous avez créé un [compte GitHub](https://github.com/signup/free). Si ce n'est pas le cas, lisez la documentation [Laravel sur GitHub](/docs/3/contrib/github) pour vous familiariser avec les dépôts et branches de Laravel.
+Pour ce tutoriel, vous devez avoir installé [Git](http://git-scm.com/) et que vous avez créé un [compte GitHub](https://github.com/signup/free). Si ce n'est pas le cas, lisez la documentation [Laravel sur GitHub](/3/contrib/github) pour vous familiariser avec les dépôts et branches de Laravel.
 
 <a name="forking-laravel"></a>
 ## Forkez Laravel
@@ -53,7 +53,7 @@ Maintenant que vous avez un clone vierge du dépôt Laravel avec votre fork comm
 <a name="creating-branches"></a>
 ## Créez des Branches
 
-Tout d'abord, soyez sûr que vous travaillez dans la branche **develop**. Si vous soumettez des changements dans la branche **master**, il est peu probable qu'ils soient repris dans un futur proche. Pour plus d'informations sur ce sujet, lisez la documentation sur [Laravel sur GitHub](/docs/3/contrib/github). Pour switcher sur la branche develop :
+Tout d'abord, soyez sûr que vous travaillez dans la branche **develop**. Si vous soumettez des changements dans la branche **master**, il est peu probable qu'ils soient repris dans un futur proche. Pour plus d'informations sur ce sujet, lisez la documentation sur [Laravel sur GitHub](/3/contrib/github). Pour switcher sur la branche develop :
 
     # git checkout develop
 

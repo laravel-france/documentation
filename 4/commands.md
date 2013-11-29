@@ -120,7 +120,7 @@ Une fois que le développement de votre commande est terminé, vous devez l'enre
 
 	Artisan::add(new CustomCommand);
 
-Si votre commande est enregistrée dans le [conteneur IoC](/docs/4/ioc) de votre application, vous pouvez utiliser la méthode `Artisan::resolve` pour la rendre disponible à Artisan :
+Si votre commande est enregistrée dans le [conteneur IoC](/4/ioc) de votre application, vous pouvez utiliser la méthode `Artisan::resolve` pour la rendre disponible à Artisan :
 
 **Enregistre une commande qui se trouve dans le conteneur IoC**
 

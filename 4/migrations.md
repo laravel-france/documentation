@@ -9,7 +9,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Les migrations sont une sorte de contrôle de version pour votre base de données. Elles permettent de modifier le schéma des tables et de rester à jour sur l'état courant du schéma des tables. Les migrations sont souvent couplées avec le [Constructeur de Schéma](/docs/4/schema) pour gérer facilement les schémas de votre application.
+Les migrations sont une sorte de contrôle de version pour votre base de données. Elles permettent de modifier le schéma des tables et de rester à jour sur l'état courant du schéma des tables. Les migrations sont souvent couplées avec le [Constructeur de Schéma](/4/schema) pour gérer facilement les schémas de votre application.
 
 <a name="creating-migrations"></a>
 ## Création de migrations

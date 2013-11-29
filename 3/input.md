@@ -92,7 +92,7 @@ Vous aurez couramment besoin de repeupler vos formulaires après qu'ils aient é
 
 *Voir aussi :*
 
-- *[Sessions](/docs/3/session/config)*
+- *[Sessions](/3/session/config)*
 
 <a name="redirecting-with-old-input"></a>
 ## Redirection avec de vieilles entrées

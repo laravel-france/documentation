@@ -237,7 +237,7 @@ Vous aurez alors accès au message grâce à la méthode get de la classe Sessio
 
 *Voir aussi:*
 
-- *[Sessions](/docs/3/session/config)*
+- *[Sessions](/3/session/config)*
 
 <a name="downloads"></a>
 ## Téléchargement

@@ -145,7 +145,7 @@ Vous pouvez également définir un même comportement pour plusieurs vues :
         $view->with('count', User::count());
     });
 
-Si vous préférez utiliser une classe en tant que compositeur de vue de type classe, qui fournit l'avantage de pouvoir utiliser le [conteneur IoC](/docs/4/ioc), vous devez faire comme ceci :
+Si vous préférez utiliser une classe en tant que compositeur de vue de type classe, qui fournit l'avantage de pouvoir utiliser le [conteneur IoC](/4/ioc), vous devez faire comme ceci :
 
 	View::composer('profile', 'ProfileComposer');
 

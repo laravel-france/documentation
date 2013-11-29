@@ -60,7 +60,7 @@ Cet écouteur va gérer tous les événement qui commencent par "foo.". Notez qu
 <a name="using-classes-as-listeners"></a>
 ## Utilisation de classes en tant qu'écouteur
 
-Dans certains cas, vous pourriez vouloir utiliser une classe pour gérer un événement plutôt qu'une fonction anonyme. Les événements de classes sont résolus grâce au [conteneur IoC de Laravel](/docs/4/ioc), vous fournissant ainsi la puissance de l'injecteur de dépendance à votre classe.
+Dans certains cas, vous pourriez vouloir utiliser une classe pour gérer un événement plutôt qu'une fonction anonyme. Les événements de classes sont résolus grâce au [conteneur IoC de Laravel](/4/ioc), vous fournissant ainsi la puissance de l'injecteur de dépendance à votre classe.
 
 **Enregistrement d'une classe écouteur**
 

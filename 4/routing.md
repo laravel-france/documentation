@@ -173,7 +173,7 @@ Vous pouvez également spécifier une contrainte selon le verbe HTTP :
 
 **Classes de filtres**
 
-Pour du filtrage avancé, vous pouvez utiliser une classe plutôt qu'une fonction anonyme. Comme les filtres de classes sont résolus par [le conteneur IoC](/docs/4/ioc), vous serez en mesure d'utiliser l'injection de dépendance dans ces filtres pour une meilleure testabilité.
+Pour du filtrage avancé, vous pouvez utiliser une classe plutôt qu'une fonction anonyme. Comme les filtres de classes sont résolus par [le conteneur IoC](/4/ioc), vous serez en mesure d'utiliser l'injection de dépendance dans ces filtres pour une meilleure testabilité.
 
 **Définition d'une classe de filtre**
 
@@ -309,11 +309,11 @@ Il y a deux manières de lancer une erreur 404 depuis une route. Première méth
 
 Seconde méthode, vous pouvez lever une exception de type `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`.
 
-Plus d'informations sur la gestion des exceptions 404 et l'utilisation de réponses personalisées pour ces erreurs peuvent être trouvées dans la section [erreurs](/docs/4/errors#handling-404-errors) de la documentation.
+Plus d'informations sur la gestion des exceptions 404 et l'utilisation de réponses personalisées pour ces erreurs peuvent être trouvées dans la section [erreurs](/4/errors#handling-404-errors) de la documentation.
 
 <a name="resource-controllers"></a>
 ## Contrôleurs de resources
 
 Les contrôleurs de ressources rendent plus facile la construction de contrôleurs RESTful autour d'une ressource.
 
-Voir la documentation des [contrôleurs](/docs/4/controllers#resource-controllers) pour plus d'informations.
+Voir la documentation des [contrôleurs](/4/controllers#resource-controllers) pour plus d'informations.

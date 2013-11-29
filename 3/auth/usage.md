@@ -8,7 +8,7 @@
 - [Obtenir des infos sur l'utilisateur connecté](#user)
 - [Déconnexion](#logout)
 
-> **Note:** Avant d'utiliser la classe Auth, vous devez [configurer un driver de sessions](/docs/3/session/config).
+> **Note:** Avant d'utiliser la classe Auth, vous devez [configurer un driver de sessions](/3/session/config).
 
 <a name="hash"></a>
 ## Salage & chiffage Hashing
@@ -58,7 +58,7 @@ Utilisez la méthode **login** pour connecter un utilisateur sans utiliser ses i
 <a name="filter"></a>
 ## Protection de routes
 
-C'est une chose très commune de limiter l'accès à certaines parties du site aux anonymes. Avec Laravel, cela peut être fait très facilement en utilisant le [filtre auth](/docs/3/routes#filters). Si l'utilisateur est connecté, la requête continue son exécution, sinon il sera redirigé vers la [route nommée](/docs/3/routes#named-routes) "login".
+C'est une chose très commune de limiter l'accès à certaines parties du site aux anonymes. Avec Laravel, cela peut être fait très facilement en utilisant le [filtre auth](/3/routes#filters). Si l'utilisateur est connecté, la requête continue son exécution, sinon il sera redirigé vers la [route nommée](/3/routes#named-routes) "login".
 
 Pour protéeger une route, attachez simplement le filtre **auth** :
 

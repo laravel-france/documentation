@@ -81,7 +81,7 @@ Typiquement, le fichier **start.php** d'un bundle contient uniquement les décla
 
     );
 
-Remarquez que chacune de ces options correspond à une fonction de [l'autoloader](/docs/3/loading) Laravel. En fait, les valeurs de ces options seront automatiquement passées aux méthodes de l'autoloader.
+Remarquez que chacune de ces options correspond à une fonction de [l'autoloader](/3/loading) Laravel. En fait, les valeurs de ces options seront automatiquement passées aux méthodes de l'autoloader.
 
 Vous avez probablement remarqué le joker **(:bundle)**. Celui-ci sera automatiquement remplacé par le chemin du bundle. Un vrai jeu d'enfant !
 
@@ -128,7 +128,7 @@ Il est également possible de désactiver un bundle, afin qu'il ne soit jamais d
 <a name="routing-to-bundles"></a>
 ## Routage de bundles
 
-Veuillez vous référer à la documentation sur [le routage de bundles](/docs/3/routes#bundle-routes) et [les contrôleurs de bundles](/docs/3/controleurs#bundle-controllers) pour plus d'informations.
+Veuillez vous référer à la documentation sur [le routage de bundles](/3/routes#bundle-routes) et [les contrôleurs de bundles](/3/controleurs#bundle-controllers) pour plus d'informations.
 
 <a name="using-bundles"></a>
 ## Utilisations de bundles
@@ -178,7 +178,7 @@ Mais, comment les rendre disponibles dans le dossier **public** de l'application
 
 Cette commande crée un dossier pour les assets du bundle dans le dossier **public/bundles** de l'application. Par exemple, si votre bundle s'appelle "admin", alors le dossier **public/bundles/admin** sera créé, et contiendra tous les fichiers du dossier public de votre bundle.
 
-Pour plus d'informations sur l'exploitation d'assets de bundle, référez vous à la documentation sur [le management d'assets](/docs/3/vues/assets#bundle-assets).
+Pour plus d'informations sur l'exploitation d'assets de bundle, référez vous à la documentation sur [le management d'assets](/3/vues/assets#bundle-assets).
 
 <a name="installing-bundles"></a>
 ## Installation de bundles

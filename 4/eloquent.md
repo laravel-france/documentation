@@ -58,7 +58,7 @@ Une fois qu'un modèle est défini, vous êtes prêt à récupérer et à créer
 
     var_dump($user->name);
 
-> **Note:** Toutes les méthodes disponibles dans le [Query Builder](/docs/4/queries) sont également disponibles avec Eloquent.
+> **Note:** Toutes les méthodes disponibles dans le [Query Builder](/4/queries) sont également disponibles avec Eloquent.
 
 **Récupérer un modèle par sa clé primaire ou lancer une exception**
 

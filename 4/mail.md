@@ -77,7 +77,7 @@ Notez que la variable `$message` est toujours passée aux vues de message par la
 <a name="queueing-mail"></a>
 ## Mise en queue d'e-mail
 
-Etant donné que l'envoi d'e-mail peut augmenter drastiquement le temps de réponse de votre application, plusieurs développeurs choisissent de mettre en queue les emails pour un envoi de tâche de fond. Laravel rend cela simple en utilisant son [API de queue](/docs/4/queues). Pour mettre en queue un e-mail, utilisez simplement la méthode `queue` sur la classe `Mail` :
+Etant donné que l'envoi d'e-mail peut augmenter drastiquement le temps de réponse de votre application, plusieurs développeurs choisissent de mettre en queue les emails pour un envoi de tâche de fond. Laravel rend cela simple en utilisant son [API de queue](/4/queues). Pour mettre en queue un e-mail, utilisez simplement la méthode `queue` sur la classe `Mail` :
 
 **Mise en queue d'un e-mail**
 

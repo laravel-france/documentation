@@ -1,8 +1,8 @@
 # Conteneur IoC
 
-- [Définition](/docs/3/ioc#definition)
-- [Objets enregistrés](/docs/3/ioc#register)
-- [Résolution d'objets](/docs/3/ioc#resolve)
+- [Définition](/3/ioc#definition)
+- [Objets enregistrés](/3/ioc#register)
+- [Résolution d'objets](/3/ioc#resolve)
 
 <a name="definition"></a>
 ## Définition
@@ -45,4 +45,4 @@ Maintenant que vous avez enregistré SwiftMailer dans le conteneur, nous pouvons
 
     $mailer = IoC::resolve('mailer');
 
-> **Note:** Vous pouvez aussi [enregistrer les contrôleurs dans le conteneur](/docs/3/controllers#dependency-injection).
+> **Note:** Vous pouvez aussi [enregistrer les contrôleurs dans le conteneur](/3/controllers#dependency-injection).

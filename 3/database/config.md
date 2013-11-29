@@ -43,7 +43,7 @@ Comme vous avez pu le remarquer, chaque connexion définie dans le fichier **app
 
     'default' => 'sqlite'
 
-La connexion par défaut sera toujours utilisée par le [Fluent query builder](/docs/3/database/fluent). Si vous devez changer la connexion par défaut pour une requête, utilisez la méthode `Config::set`.
+La connexion par défaut sera toujours utilisée par le [Fluent query builder](/3/database/fluent). Si vous devez changer la connexion par défaut pour une requête, utilisez la méthode `Config::set`.
 
 <a href="options"></a>
 ## Surcharge des options PDO

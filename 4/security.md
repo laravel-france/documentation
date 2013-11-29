@@ -50,7 +50,7 @@ Pour connecter un utilisateur dans votre application, vous devez utiliser la mé
 
 Notez que `email` n'est pas requis, il est utilisé simplement en tant qu'exemple. Vous devez utiliser la colonne qui correspond à votre "nom d'utilisateur" dans votre base de données. La fonction `Redirect::intended` redirigera l'utilisateur vers l'URL qu'il tentait d'atteindre avant de se faire attraper par le filtre d'identification. Une URL par défaut peut être donnée à la méthode dans le cas où l'URL qu'il souhaitait atteindre n'est pas déterminée.
 
-Lorsque la méthode `attempt` est appelée, l'[événement](/docs/4/events) `auth.attempt` est lancé. Si l'identification est un succès et que l'utilisateur est connecté, l'événement `auth.login` sera également exécuté.
+Lorsque la méthode `attempt` est appelée, l'[événement](/4/events) `auth.attempt` est lancé. Si l'identification est un succès et que l'utilisateur est connecté, l'événement `auth.login` sera également exécuté.
 
 Pour déterminer si un utilisateur est déjà connecté à votre application, vous pouvez utiliser la méthode `check` :
 

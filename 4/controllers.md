@@ -9,7 +9,7 @@
 <a name="basic-controllers"></a>
 ## Contrôleurs basiques
 
-Plutôt que de définir toute la logique de votre application au niveau des routes dans le fichier `routes.php`, il est d'usage de déplacer le comportement de votre application dans des contrôleurs. Les contrôleurs permettent de regrouper en une classe, la logique de routes connexes, et aussi de prendre avantage des fonctionnalités avancées du framework comme [l'injection de dépendances](/docs/4/ioc).
+Plutôt que de définir toute la logique de votre application au niveau des routes dans le fichier `routes.php`, il est d'usage de déplacer le comportement de votre application dans des contrôleurs. Les contrôleurs permettent de regrouper en une classe, la logique de routes connexes, et aussi de prendre avantage des fonctionnalités avancées du framework comme [l'injection de dépendances](/4/ioc).
 
 Les contrôleurs sont stockés dans le dossier `app/controllers`, et ce dossier est enregistré dans l'option `classmap` de votre fichier `composer.json` par défaut.
 
@@ -53,7 +53,7 @@ Vous pouvez accéder au nom de l'action du contrôleur qui est lancé en utilisa
 <a name="controller-filters"></a>
 ## Filtres de contrôleurs
 
-[Les filtres](/docs/4/routing#route-filters) peuvent être spécifiés sur les routes de contrôleurs comme pour toutes les autres routes :
+[Les filtres](/4/routing#route-filters) peuvent être spécifiés sur les routes de contrôleurs comme pour toutes les autres routes :
 
 	Route::get('profile', array('before' => 'auth',
 				'uses' => 'UserController@showProfile'));

@@ -67,7 +67,7 @@ Besoin de récupérer une table entière ? Utilisez la méthode statique **all**
          echo $user->email;
     }
 
-Bien sûr, récupérer une table entière n'est pas très utile. Heureusement, **toutes les méthode du Fluent Query Builder sont disponibles avec Eloquent**. Commencez à requêter votre modèle avec une méthode statique disponible avec le [constructeur de requête fluide](/docs/3/database/fluent), et exécutez la requête avec les méthodes **get** ou **first**. La méthode get retournera un tableau de modèles, tandis que first retournera un simple modèle :
+Bien sûr, récupérer une table entière n'est pas très utile. Heureusement, **toutes les méthode du Fluent Query Builder sont disponibles avec Eloquent**. Commencez à requêter votre modèle avec une méthode statique disponible avec le [constructeur de requête fluide](/3/database/fluent), et exécutez la requête avec les méthodes **get** ou **first**. La méthode get retournera un tableau de modèles, tandis que first retournera un simple modèle :
 
     $user = User::where('email', '=', $email)->first();
 
@@ -559,4 +559,4 @@ Parfois, vous pourriez souhaiter ne pas mettre à disposition tous les attributs
 
     $author->delete();
 
-Notez cependant que cela ne supprimera pas les modèles liés (ex: tous les livres de l'auteur continuent d'exister), sauf si vous avez mis en place [des clés étrangères](/docs/3/database/schema#foreign-keys) et une suppression en cascade
+Notez cependant que cela ne supprimera pas les modèles liés (ex: tous les livres de l'auteur continuent d'exister), sauf si vous avez mis en place [des clés étrangères](/3/database/schema#foreign-keys) et une suppression en cascade

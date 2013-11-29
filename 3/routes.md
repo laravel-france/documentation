@@ -108,7 +108,7 @@ Libre à vous de charger cela pour que cela corresponde à ce que vous désirez 
 
 *Voir aussi :*
 
-- *[Événements](/docs/3/evenements)*
+- *[Événements](/3/evenements)*
 
 <a name="filters"></a>
 ## Filtres
@@ -244,7 +244,7 @@ Lorsque vous définissez une route, vous pouvez utiliser l'attribut https pour i
 <a name="bundle-routes"></a>
 ## Route de bundles
 
-Les Bundles sont le système de paquets modulaires de Laravel. Les bundles peuvent facilement être configurés pour réagir à certaines requêtes, nous reviendrons sur les [bundles plus en détail](/docs/3/bundles) plus tard. Pour l'instant, lisez cette section et gardez en tête que vous pouvez enregistrer des routes pour mener aux fonctionnalités d'un bundle, mais vous pouvez également enregistrer vos routes directement dans le bundle.
+Les Bundles sont le système de paquets modulaires de Laravel. Les bundles peuvent facilement être configurés pour réagir à certaines requêtes, nous reviendrons sur les [bundles plus en détail](/3/bundles) plus tard. Pour l'instant, lisez cette section et gardez en tête que vous pouvez enregistrer des routes pour mener aux fonctionnalités d'un bundle, mais vous pouvez également enregistrer vos routes directement dans le bundle.
 
 Ouvrez le fichier **application/bundles.php** et ajoutez ceci :
 
@@ -281,7 +281,7 @@ Bien sûr, vous pouvez utiliser le joker **(:bundle)** dans toutes vos routes, p
 <a name="controller-routing"></a>
 ## Routage de contrôleur
 
-Les contrôleurs fournissent une autre manière de géré la logique applicative. Si vous n'êtes pas familiarisé avec ce principe, vous devriez [vous renseigner sur les contrôleurs](/docs/3/controleurs) puis revenir ici.
+Les contrôleurs fournissent une autre manière de géré la logique applicative. Si vous n'êtes pas familiarisé avec ce principe, vous devriez [vous renseigner sur les contrôleurs](/3/controleurs) puis revenir ici.
 
 Il est important de comprendre que dans Laravel, toutes les routes possibles doivent être définies, même les routes vers les contrôleurs. Cela signifie que les méthodes d'un contrôleur qui ne sont pas liées à une route **ne seront pas** accessibles. Il est possible d'exposer automatiquement toutes les méthodes d'un contrôleur dans Laravel, grâce au système d'enregistrement de routes de contrôleur. Comme toujours jusqu'ici pour les routes, toutes ces routes se trouvent par défaut dans **application/routes.php**.
 

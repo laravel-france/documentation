@@ -43,12 +43,12 @@ Il est important de comprendre que dans Laravel, toutes les routes possibles doi
 
 Cela signifie que les méthodes d'un contrôleur qui ne sont pas liées à une route **ne seront pas** accessibles. Il est possible d'exposer automatiquement toutes les méthodes d'un contrôleur dans Laravel, grâce au système d'enregistrement de routes de contrôleur. Comme toujours jusqu'ici pour les routes, toutes ces routes se trouvent par défaut dans **application/routes.php**.
 
-Regardez la [page sur le routage](/docs/3/routes#controller-routing) pour plus d'informations.
+Regardez la [page sur le routage](/3/routes#controller-routing) pour plus d'informations.
 
 <a name="bundle-controllers"></a>
 ## Contrôleurs de Bundle
 
-Les Bundles sont le sytème de paquets modulaires de Laravel. Les bundles peuvent facilement être configurés pour réagir à certaines requêtes, nous reviendrons sur les [bundles plus en détail](/docs/3/bundles) plus tard.
+Les Bundles sont le sytème de paquets modulaires de Laravel. Les bundles peuvent facilement être configurés pour réagir à certaines requêtes, nous reviendrons sur les [bundles plus en détail](/3/bundles) plus tard.
 
 Créer un contrôleur qui appartient à un bundle est quasiment identique au fait de créer un contrôleur pour votre application. Il faut préfixer le nom du contrôleur avec le nom du bundle, si vous souhaitez créer un contrôleur Home dans le bundle admin, votre classe ressemblera à cela :
 
@@ -72,7 +72,7 @@ Mais, comment enregistrer un contrôleur de bundle dans le routeur ? En fait, c'
 
 Bien, nous pouvons maintenant accéder à notre contrôleur de bundle via le web !
 
-> **Note:** Avec Laravel, les doubles deux points sont utilisés pour désigner les bundles. Plus d'informations sur les bundles peuvent être trouvés dans la [documentation des bundles](/docs/3/bundles).
+> **Note:** Avec Laravel, les doubles deux points sont utilisés pour désigner les bundles. Plus d'informations sur les bundles peuvent être trouvés dans la [documentation des bundles](/3/bundles).
 
 <a name="action-filters"></a>
 ## Filtre d'actions
@@ -107,7 +107,7 @@ Cet exemple nous montre comment un filtre peut être executé uniquement lors de
 
 *Voir également:*
 
-- *[Filtres de routes](/docs/3/routes#filters)*
+- *[Filtres de routes](/3/routes#filters)*
 
 <a name="nested-controllers"></a>
 ## Contrôleurs imbriqués
@@ -174,7 +174,7 @@ Ceci est particulièrement pratique lorsque vous construisez des méthodes CRUD 
 <a name="dependency-injection"></a>
 ## Injection de dépendance
 
-Si vous souhaitez écrire des tests unitaires, vous allez probablement avoir besoin d'utiliser l'injection de dépendance dans le constructeur de votre contrôleur. Pas de problème, enregistrez juste votre contrôleur dans le  conteneur IoC [IoC container](/docs/3/ioc). Lorsque vous enregistrez votre contrôleur dans le conteneur, préfixez le avec la clé **controller**. Dans votre fichier **application/start.php**, vous pouvez enregistrer vos contrôleurs de la manière suivante :
+Si vous souhaitez écrire des tests unitaires, vous allez probablement avoir besoin d'utiliser l'injection de dépendance dans le constructeur de votre contrôleur. Pas de problème, enregistrez juste votre contrôleur dans le  conteneur IoC [IoC container](/3/ioc). Lorsque vous enregistrez votre contrôleur dans le conteneur, préfixez le avec la clé **controller**. Dans votre fichier **application/start.php**, vous pouvez enregistrer vos contrôleurs de la manière suivante :
 
     IoC::register('controller: user', function()
     {
@@ -183,7 +183,7 @@ Si vous souhaitez écrire des tests unitaires, vous allez probablement avoir bes
 
 Lorsqu'une requête vers un contrôleur entre dans votre application, Laravel va automatiquement déterminer si le contrôleur est enregistré dans le conteneur, et si il l'est, il va utiliser le conteneur pour résoudre une instance du contrôleur.
 
-> **Note:** Avant de vous lancer dans l'injection de dépendance de contrôleurs, vous pouvez lire un peu la documentation du superbe [IoC container](/docs/3/ioc) de Laravel.
+> **Note:** Avant de vous lancer dans l'injection de dépendance de contrôleurs, vous pouvez lire un peu la documentation du superbe [IoC container](/3/ioc) de Laravel.
 
 <a name="controller-factory"></a>
 ## Usine de contrôleur

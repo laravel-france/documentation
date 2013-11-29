@@ -113,9 +113,9 @@ Laravel fournit plusieurs opportunités d'utiliser le conteneur IoC pour augment
 
     }
 
-Dans cet exemple, la classe `OrderRepository` sera automatiquement injectée dans le contrôleur. Cela signifie que lors des [tests unitaires](/docs/4/testing), une classe d'imitation (mock) `OrderRepository` peut être liée dans le conteneur et injectée dans le contrôleur, vous permettant de créer facilement des bouchons (stub) de la couche d'intéraction avec la base de données.
+Dans cet exemple, la classe `OrderRepository` sera automatiquement injectée dans le contrôleur. Cela signifie que lors des [tests unitaires](/4/testing), une classe d'imitation (mock) `OrderRepository` peut être liée dans le conteneur et injectée dans le contrôleur, vous permettant de créer facilement des bouchons (stub) de la couche d'intéraction avec la base de données.
 
-[Les filtres](/docs/4/routing#route-filters), [les composeurs](/docs/4/responses#view-composers), et [les gestionnaires d'événements](/docs/4/events#using-classes-as-listeners) peuvent également être résolus par le conteneur IoC. Lors de leur enregistrement, donnez simplement le nom de la classe qui doit être utilisée :
+[Les filtres](/4/routing#route-filters), [les composeurs](/4/responses#view-composers), et [les gestionnaires d'événements](/4/events#using-classes-as-listeners) peuvent également être résolus par le conteneur IoC. Lors de leur enregistrement, donnez simplement le nom de la classe qui doit être utilisée :
 
 **Exemple d'utilisation de l'IoC**
 

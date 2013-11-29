@@ -66,7 +66,7 @@ Pointer le DocumentRoot vers le dossier **public** est une bonne pratique, à ut
 
 Tous les fichiers de configuration fournis se trouvent dans le dossier **config** de votre application. Nous vous recommandons d'y jeter un oeil, afin de voir et de comprendre basiquement les options qui s'offrent à vous. Vous pouvez porter une attention spéciale au fichier **application/config/application.php**, car il contient les options de configuration basique de votre application.
 
-Il est **extrêmement** important de changer l'option **key** avant de commencer à travailler, ou même de visiter votre site. Cette clé est utilisée par le framework pour le cryptage, le chiffrage, etc... L'option se trouve dans le fichier **application/config/application.php** et doit être définie en tant que chaîne de 32 caractères. Pour générer facilement une clé qui respecte le standard, vous pouvez utiliser l'outil en ligne de commande **Artisan**. Plus d'informations sur la page des [commandes d'Artisan](/docs/3/artisan/commands).
+Il est **extrêmement** important de changer l'option **key** avant de commencer à travailler, ou même de visiter votre site. Cette clé est utilisée par le framework pour le cryptage, le chiffrage, etc... L'option se trouve dans le fichier **application/config/application.php** et doit être définie en tant que chaîne de 32 caractères. Pour générer facilement une clé qui respecte le standard, vous pouvez utiliser l'outil en ligne de commande **Artisan**. Plus d'informations sur la page des [commandes d'Artisan](/3/artisan/commands).
 
 > **Note:** Si vous utilisez le mod_rewrite, vous devez définir dans l'option **index** une chaîne de caractères vide.
 

@@ -9,11 +9,11 @@
 <a name="introduction"></a>
 ## Introduction
 
-Les Facades fournissent une interface "static" vers des classes qui sont accessibles dans le [conteneur IoC](/docs/4/ioc). Laravel est livré avec plusieurs Facades et vous en avez probablement utilisés sans même le savoir !
+Les Facades fournissent une interface "static" vers des classes qui sont accessibles dans le [conteneur IoC](/4/ioc). Laravel est livré avec plusieurs Facades et vous en avez probablement utilisés sans même le savoir !
 
 Occasionnellement, vous pourriez souhaiter créer vos propres façades pour vos applications et vos packages, donc voyons le concept, le développement et l'utilisation de ces classes.
 
-> **Note:** Avant de s'attaquer aux Facades, il est fortement recommandé d'être familiarisé avec le [conteneur IoC](/docs/4/ioc) de Laravel.
+> **Note:** Avant de s'attaquer aux Facades, il est fortement recommandé d'être familiarisé avec le [conteneur IoC](/4/ioc) de Laravel.
 
 <a name="explanation"></a>
 ## Explication
@@ -79,7 +79,7 @@ Nous devons être capables de résoudre cette classe depuis le conteneur IoC. Al
         return new \PaymentGateway\Payment;
     });
 
-Un bon endroit pour enregistrer cette liaison peut être de créer un [fournisseur de service](/docs/4/ioc#service-providers) nommé `PaymentServiceProvider`. La liaison sera ajoutée dans la méthode `register()`. Vous pouvez configurer Laravel pour charger vos fournisseurs de services dans le fichier de configuration `app/config/app.php`.
+Un bon endroit pour enregistrer cette liaison peut être de créer un [fournisseur de service](/4/ioc#service-providers) nommé `PaymentServiceProvider`. La liaison sera ajoutée dans la méthode `register()`. Vous pouvez configurer Laravel pour charger vos fournisseurs de services dans le fichier de configuration `app/config/app.php`.
 
 Ensuite, nous pouvons créer notre propre classe façade :
 
@@ -102,4 +102,4 @@ Les classes dans le tableau `aliases` ne sont disponibles que dans quelques inst
 <a name="mocking-facades"></a>
 ## Mockage de Façades
 
-Les tests unitaires sont un aspect important de pourquoi les façades marchent comme cela. En fait, la testabilité est la raison pour laquelle les Façades existent. Regardez la section [Mockage de Façades](/docs/4/testing#mocking-facades) de la documentation.
+Les tests unitaires sont un aspect important de pourquoi les façades marchent comme cela. En fait, la testabilité est la raison pour laquelle les Façades existent. Regardez la section [Mockage de Façades](/4/testing#mocking-facades) de la documentation.

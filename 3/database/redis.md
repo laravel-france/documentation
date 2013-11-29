@@ -54,4 +54,4 @@ Vous souhaitez exécuter le plus simplement possible des commandes sur le serveu
 
     $values = Redis::lrange('names', 5, 10);
 
-> **Note:** Des drivers Redis pour le [cache](/docs/3/cache/config#redis) et les [sessions](/docs/3/session/config#redis) sont inclus avec Laravel.
+> **Note:** Des drivers Redis pour le [cache](/3/cache/config#redis) et les [sessions](/3/session/config#redis) sont inclus avec Laravel.
