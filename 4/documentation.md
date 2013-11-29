@@ -1,39 +1,46 @@
-- Préface
-    - [Introduction](/docs/introduction)
-    - [Apporter sa contribution à Laravel](/docs/contributing)
-- Les premiers pas
-    - [Installation](/docs/installation)
-    - [Configuration](/docs/configuration)
-    - [Cycle de vie d'une requête](/docs/lifecycle)
-    - [Le routage](/docs/routing)
-    - [Les requêtes et les entrées](/docs/requests)
-    - [Les vues et les réponses](/docs/responses)
-    - [Les contrôleurs](/docs/controllers)
-    - [Les erreurs et la journalisation](/docs/errors)
-- Continuons la découverte de Laravel
-    - [La gestion du cache](/docs/cache)
-    - [Étendre le Framework](/docs/extending)
-    - [Les événements](/docs/events)
-    - [Les conteneurs de dépendances](/docs/ioc)
-    - [La régionalisation](/docs/localization)
-    - [La messagerie](/docs/mail)
-    - [Le développement de packages](/docs/packages)
-    - [La pagination](/docs/pagination)
-    - [Les files de travaux](/docs/queues)
-    - [La sécurité](/docs/security)
-    - [Les sessions](/docs/session)
-    - [Les templates](/docs/templates)
-    - [Les tests unitaires](/docs/testing)
-    - [La validation](/docs/validation)
-- Base de données
-    - [Les bases](/docs/database)
-    - [Le requêteur](/docs/queries)
-    - [L'ORM Eloquent](/docs/eloquent)
-    - [La construction du schéma](/docs/schema)
-    - [Les migrations & et les chargements](/docs/migrations)
-    - [Redis](/docs/redis)
-- Artisan CLI
-    - [Présentation](/docs/artisan)
-    - [Développement](/docs/commands)
-- Éléments avancés
-    - [Architecture](#)
+<a name="preface"></a>
+### Préface
+ - [Introduction](/4/introduction)
+ - [Démarage rapide](/4/quick)
+ - [Contribuer à Laravel](/4/contributing)
+ <a name="premiers-pas"></a>
+### Premiers pas
+ - [Installation](/4/installation)
+ - [Configuration](/4/configuration)
+ - [Cycle de vie d'une requête](/4/lifecycle)
+ - [Le routage](/4/routing)
+ - [Requêtes et entrées](/4/requests)
+ - [Les vues et les réponses](/4/responses)
+ - [Les contrôleurs](/4/controllers)
+ - [Les erreurs et la journalisation](/4/errors)
+ <a name="aller-plus-loin"></a>
+### Aller plus loin
+ - [La gestion du cache](/4/cache)
+ - [Les événements](/4/events)
+ - [Étendre le Framework](/4/extending)
+ - [Facades](/4/facades)
+ - [Formulaires & HTML](/4/html)
+ - [Helpers](/4/helpers)
+ - [Le conteneur de dépendances](/4/ioc)
+ - [Traduction & Localisation](/4/localization)
+ - [Email](/4/mail)
+ - [Développement de packages](/4/packages)
+ - [La pagination](/4/pagination)
+ - [Les files de travaux](/4/queues)
+ - [La sécurité](/4/security)
+ - [Les sessions](/4/session)
+ - [Les templates](/4/templates)
+ - [Les tests unitaires](/4/testing)
+ - [La validation](/4/validation)
+ <a name="base-de-donnees"></a>
+### Base de données
+ - [Les bases de données](/4/database)
+ - [Query Builder](/4/queries)
+ - [L'ORM Eloquent](/4/eloquent)
+ - [Le constructeur de schéma](/4/schema)
+ - [Les migrations et la population](/4/migrations)
+ - [Redis](/4/redis)
+ <a name="artisan-cli"></a>
+### Artisan CLI
+ - [Présentation](/4/artisan)
+ - [Développement de commandes](/4/commands)
