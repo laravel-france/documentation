@@ -47,7 +47,7 @@ Lors de la lecture d'une variable dans le cache, si vous souhaitez enregistrer u
 
 Vous pouvez aussi combiner les méthodes `remember` et `forever` :
 
-    $value = Cache::rememberForever('users', $minutes, function()
+    $value = Cache::rememberForever('users', function()
     {
         return DB::table('users')->get();
     });

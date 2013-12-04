@@ -73,6 +73,7 @@ Commande  | Description
 `$table->timestamps();`  |  Ajoute les colonnes **created\_at** et **updated\_at**
 `$table->softDeletes();`  |  Ajoute la colonne deleted_at pour la suppression douce
 `$table->text('description');`  |  Equivalent de TEXT
+`$table->longtext('description');`  |  Equivalent de LONGTEXT
 `$table->binary('data');`  |  Equivalent de BLOB
 `$table->enum('choices', array('foo', 'bar'));` | Equivalent de ENUM
 `->nullable()`  |  Désigne une colonne qui autorise NULL
