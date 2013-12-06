@@ -21,7 +21,7 @@ Il existe plusieurs manières de paginer des éléments. La plus simple est d'ut
 
 	$users = DB::table('users')->paginate(15);
 
-Vous pouvez aussi paginer un modèle [Eloquent](/docs/eloquent) :
+Vous pouvez aussi paginer un modèle [Eloquent](/4/eloquent) :
 
 **Paginer un modèle Eloquent**
 

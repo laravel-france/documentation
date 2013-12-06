@@ -87,7 +87,7 @@ Puisqu'il est souvent nécessaire de combiner l'enregistrement des entrées avec
 
     return Redirect::to('form')->withInput(Input::except('password'));
 
-> **Remarque:** Vous pouvez transmettre d'autres données à l'aide de la classe [Session](/docs/session).
+> **Remarque:** Vous pouvez transmettre d'autres données à l'aide de la classe [Session](/4/session).
 
 **Lit une ancienne donnée**
 

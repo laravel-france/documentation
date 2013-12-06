@@ -189,4 +189,4 @@ Maintenant, vous pouvez l'appeler par son nom :
 <a name="generating-urls"></a>
 ## Génération d'URL
 
-Pour plus d'informations sur la génération d'URL, visitez la documentation sur les [helpers](/docs/helpers#urls).
+Pour plus d'informations sur la génération d'URL, visitez la documentation sur les [helpers](/4/helpers#urls).

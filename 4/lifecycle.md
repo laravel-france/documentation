@@ -11,9 +11,9 @@ Dans Laravel, le cycle de vie d'une requête est assez simple. Une requête est 
 <a name="start-files"></a>
 ## Les fichiers de démarrage
 
-Les fichiers de démarrage sont situés dans le répertoire `app/start`. Par défaut, les fichiers `global.php`, `local.php` et `artisan.php` sont inclus dans votre application. Pour plus de détails sur le fichier `artisan.php`, consultez la rubrique [Artisan CLI](/docs/commands#registering-commands).
+Les fichiers de démarrage sont situés dans le répertoire `app/start`. Par défaut, les fichiers `global.php`, `local.php` et `artisan.php` sont inclus dans votre application. Pour plus de détails sur le fichier `artisan.php`, consultez la rubrique [Artisan CLI](/4/commands#registering-commands).
 
-Par défaut, le fichier `global.php` contient quelques éléments de base tels que l'enregistrement du [gestionnaire d'erreurs](/docs/errors) et l'inclusion de votre fichier `app/filters.php`. Vous pouvez compléter ce fichier en fonction de vos besoins sans limite particulière. Ce fichier est automatiquement inclus à _chaque_ requête de votre application indépendamment de l'environnement. Pour plus d'informations sur les environnements, consultez la rubrique [Configuration](/docs/configuration).
+Par défaut, le fichier `global.php` contient quelques éléments de base tels que l'enregistrement du [gestionnaire d'erreurs](/4/errors) et l'inclusion de votre fichier `app/filters.php`. Vous pouvez compléter ce fichier en fonction de vos besoins sans limite particulière. Ce fichier est automatiquement inclus à _chaque_ requête de votre application indépendamment de l'environnement. Pour plus d'informations sur les environnements, consultez la rubrique [Configuration](/4/configuration).
 
 Bien sûr, si vous avez d'autres environnements que l'environnement `local`, vous devez créer un fichier de démarrage par environnement supplémentaire. A l'exécution d'un des environnements, le fichier de démarrage associé est automatiquement inclus dans votre application.
 

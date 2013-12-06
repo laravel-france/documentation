@@ -105,4 +105,4 @@ Le driver de session définit où les données de session seront stockées pour 
 - `memcached` / `redis` - la session utilisera un des plus rapides systèmes de mise en cache.
 - `array` - la session sera stockée dans un simple tableau PHP et ne sera pas persistante entre les requêtes.
 
-Le driver `array` est typiquement utilisé pour lancer des [tests unitaires](/docs/testing), de ce fait aucune donnée de session ne sera persistante.
+Le driver `array` est typiquement utilisé pour lancer des [tests unitaires](/4/testing), de ce fait aucune donnée de session ne sera persistante.

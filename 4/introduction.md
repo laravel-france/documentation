@@ -6,17 +6,17 @@
 - [Equipe de développement](#development-team)
 
 <a name="where-to-start"></a>
- ## Où débuter
+## Où débuter
 
  Apprendre un nouveau framework peut être intimidant, mais aussi excitant. Pour faciliter votre transition, nous avons essayé de créer une documentation concise et très claire pour Laravel. Voici quelques recommandations de ce qu'il faut lire en premier :
 
- - [Installation](/docs/installation) et [configuration](/docs/configuration).
- - [Routage](/docs/routing)
- - [Requêtes et entrées](/docs/requests)
- - [Vues et Réponses](/docs/responses)
- - [Contrôleurs](/docs/controllers)
+ - [Installation](/4/installation) et [configuration](/4/configuration).
+ - [Routage](/4/routing)
+ - [Requêtes et entrées](/4/requests)
+ - [Vues et Réponses](/4/responses)
+ - [Contrôleurs](/4/controllers)
 
-Après avoir lu tous ces documents, vous devriez avoir une bonne connaissance sur le système basique requête / réponse dans Laravel. Ensuite, vous pouvez lire sur [la configuration de votre base de données](/docs/database), le [Query Builder](/docs/queries), et [l'ORM Eloquent](/docs/eloquent). Ou, vous pouvez lire sur [l'authentification et la sécurité](4/security), de sorte que vous pouvez commencer à enregistrer des gens dans votre application.
+Après avoir lu tous ces documents, vous devriez avoir une bonne connaissance sur le système basique requête / réponse dans Laravel. Ensuite, vous pouvez lire sur [la configuration de votre base de données](/4/database), le [Query Builder](/4/queries), et [l'ORM Eloquent](/4/eloquent). Ou, vous pouvez lire sur [l'authentification et la sécurité](4/security), de sorte que vous pouvez commencer à enregistrer des gens dans votre application.
 
 <a name="laravel-philosophy"></a>
 ## Philosophie de Laravel
