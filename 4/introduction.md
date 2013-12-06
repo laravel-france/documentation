@@ -1,8 +1,22 @@
 # Introduction
 
+- [Où débuter](#where-to-start)
 - [Philosophie de Laravel](#laravel-philosophy)
-- [Apprentissage de Laravel](#learning-laravel)
+- [Ressources additionnelles](#additional-resources)
 - [Equipe de développement](#development-team)
+
+<a name="where-to-start"></a>
+ ## Où débuter
+
+ Apprendre un nouveau framework peut être intimidant, mais aussi excitant. Pour faciliter votre transition, nous avons essayé de créer une documentation concise et très claire pour Laravel. Voici quelques recommandations de ce qu'il faut lire en premier :
+
+ - [Installation](/docs/installation) et [configuration](/docs/configuration).
+ - [Routage](/docs/routing)
+ - [Requêtes et entrées](/docs/requests)
+ - [Vues et Réponses](/docs/responses)
+ - [Contrôleurs](/docs/controllers)
+
+Après avoir lu tous ces documents, vous devriez avoir une bonne connaissance sur le système basique requête / réponse dans Laravel. Ensuite, vous pouvez lire sur [la configuration de votre base de données](/docs/database), le [Query Builder](/docs/queries), et [l'ORM Eloquent](/docs/eloquent). Ou, vous pouvez lire sur [l'authentification et la sécurité](4/security), de sorte que vous pouvez commencer à enregistrer des gens dans votre application.
 
 <a name="laravel-philosophy"></a>
 ## Philosophie de Laravel
@@ -13,8 +27,8 @@ Laravel a pour objectif de rendre le développement agréable tout en permettant
 
 Laravel est accessible, puissant, fournissant des outils puissants pour des applications larges et robustes. Un superbe conteneur d'inversion de contrôle, un système de migration expressif, et un support pour l'intégration de tests unitaires vous donnent les outils nécessaires pour construire n'importe quelle application que vous devez réaliser.
 
-<a name="learning-laravel"></a>
-## Apprentissage de Laravel
+<a name="additional-resources"></a>
+## Ressources additionnelles
 
 Une des meilleurs façons d'apprendre Laravel est de lire sa documentation de bout en bout. Ce guide détaille tous les aspects du framework et la manière de les mettre en oeuvre dans vos applications.
 
