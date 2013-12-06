@@ -53,9 +53,9 @@ Pour éditer une table existante, nous utiliserons la méthode `Schema::table` :
 
 Le constructeur de table contient une variété de types de colonne que vous pouvez utiliser pour construire vos tables :
 
-Commande  | Description
+ Commande  | Description
 ------------- | -------------
-`$table->increments('id');`  |  Clé primaire de type auto-incrémentale
+ `$table->increments('id');`  |  Clé primaire de type auto-incrémentale
 `$table->bigIncrements('id');`  |  Clé primaire de type auto-incrémentale utilisant un équivalent de "grand entier"
 `$table->string('email');`  |  Equivalent de VARCHAR
 `$table->string('name', 100);`  |  Equivalent de VARCHAR avec une taille
@@ -73,7 +73,6 @@ Commande  | Description
 `$table->timestamps();`  |  Ajoute les colonnes **created\_at** et **updated\_at**
 `$table->softDeletes();`  |  Ajoute la colonne deleted_at pour la suppression douce
 `$table->text('description');`  |  Equivalent de TEXT
-`$table->longtext('description');`  |  Equivalent de LONGTEXT
 `$table->binary('data');`  |  Equivalent de BLOB
 `$table->enum('choices', array('foo', 'bar'));` | Equivalent de ENUM
 `->nullable()`  |  Désigne une colonne qui autorise NULL
@@ -93,10 +92,10 @@ Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le
 
 **Renommage d'une colonne**
 
-	Schema::table('users', function($table)
-	{
-		$table->renameColumn('from', 'to');
-	});
+    Schema::table('users', function($table)
+    {
+        $table->renameColumn('from', 'to');
+    });
 
 > **Note:** Le renommage de colonne de type `enum` n'est pas supporté.
 
@@ -124,17 +123,17 @@ Vous pouvez vérifier facilement l'existence d'une table ou d'une colonne en uti
 
 **Vérifie l'existence d'une table**
 
-	if (Schema::hasTable('users'))
-	{
-		//
-	}
+    if (Schema::hasTable('users'))
+    {
+        //
+    }
 
 **Vérifie l'existence d'une colonne**
 
-	if (Schema::hasColumn('users', 'email'))
-	{
-		//
-	}
+    if (Schema::hasColumn('users', 'email'))
+    {
+        //
+    }
 
 <a name="adding-indexes"></a>
 ## Ajout d'index
