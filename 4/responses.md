@@ -26,6 +26,10 @@ Une instance de `Response` hérite de la classe `Symfony\Component\HttpFoundatio
 
 	return $response;
 
+Si vous souhaitez accéder aux méthodes de la classe `Response` mais que vous souhaitez retourner une vue à l'utilisateur, vous pouvez utiliser la méthode `Response::view` :
+
+  return Response::view('hello')->header('Content-Type', $type);
+
 **Attachement d'un cookie à une réponse**
 
 	$cookie = Cookie::make('name', 'value');
@@ -187,3 +191,5 @@ Un **créateur** de vue fonctionne exactement comme les composeurs de vues ; cep
 	return Response::download($pathToFile);
 
 	return Response::download($pathToFile, $status, $headers);
+
+> **Note:** HttpFoundation de Symfony, qui s'occupe du téléchargement, a besoin que le fichier téléchargé ait un nom de fichier en ASCII.

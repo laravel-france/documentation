@@ -9,7 +9,9 @@
 <a name="error-detail"></a>
 ## Détail des erreurs
 
-Par défaut, les détails des erreurs sont autorisés par votre application. Cela signifie que quand une erreur se déroule, une page d'erreur vous sera affichée avec la pile d'exécution et un message d'erreur. Vous pouvez désactiver cela en mettant l'option `debug` du fichier `app/config/app.php` à `false`. **Il est fortement recommandé de passer cette option à false dans un environnement de production.**
+Par défaut, les détails des erreurs sont autorisés par votre application. Cela signifie que quand une erreur se déroule, une page d'erreur vous sera affichée avec la pile d'exécution et un message d'erreur. Vous pouvez désactiver cela en mettant l'option `debug` du fichier `app/config/app.php` à `false`.
+
+> **Note:** Il est fortement recommandé de passer cette option à `false` dans un environnement de production.
 
 <a name="handling-errors"></a>
 ## Gestion des erreurs
@@ -46,25 +48,31 @@ Pour écouter une erreur fatale PHP, vous devez utiliser la méthode `App::fatal
 
 Si vous avez plusieurs gestionnaires d'exception, ils doivent être définis du plus généric au plus spécifique. Ainsi, par exemple, un gestionnaire qui gère toutes les exceptions de type `Exception` doit être défini avant un type d'exception personnalisée comme `Illuminate\Encryption\DecryptException`.
 
+### Où placer vos gestionnaires d'erreurs
+
+Il n'y a pas vraiment d'endroit défini par l'enregistrement des gestionnaires d'erreurs. Laravel vous offre de la liberté à ce niveau là. Une option est de définir vos gestionnaires dans le fichier `start/global.php`. En général, il s'agit d'un endroit judicieux pour votre code de d'initialisation. Si ce fichier devient trop volumineux, vous pouvez créer un fichier `app/errors.php`, et l'inclure depuis votre script `start/global.php`. Une troisième option est de créer un [service provider](/4/ioc#service-providers) qui enregistre vos gestionnaires. Une fois de plus, il n'y a pas de réponse "correcte". Choisissez un emplacement que vous va.
+
 <a name="http-exceptions"></a>
 ## Exceptions HTTP
 
-Les exceptions HTTP sont des erreurs qui peuvent intervenir pendant une requête d'un client. Cela peut être une page non trouvée (404), un problème d'autorisation (401) ou même une erreur 500. Pour retourner une erreur de la sorte, utilisez la méthode suivante :
+Quelques exceptions décrivent des codes d'erreurs HTTP du serveur. Par exemple, cela pourrait être une erreur "Page non trouvée" (404), où "Non autorisé" (401) ou même une erreur 500 générée par le développeur. Pour retourner une erreur de ce type, utilisez ceci :
 
-    App::abort(404, 'Page not found');
+    App::abort(404);
 
-Le premier argument est le code HTTP, suivi d'un message d'erreur personnalisé que vous aimeriez montrer.
+Optionnellement, vous pouvez fournir une réponse :
+
+    App::abort(403, "Vous n'avez pas les droits nécessaires");
 
 Pour lever une erreur 401 "non autorisé", faites comme ceci :
 
     App::abort(401, 'You are not authorized.');
 
-Ces exceptions peuvent être exécutées n'importe quand durant le cycle de vie de la requête.
+Cette méthode peut être exécutées n'importe quand durant le cycle de vie de la requête.
 
 <a name="handling-404-errors"></a>
 ## Gestion des erreurs 404
 
-Vous pouvez enregistrer un gestionnaire qui gère toutes les erreurs 404 de votre application, vous permettant de retourner une page d'erreur 404 personnalisée :
+Vous pouvez enregistrer un gestionnaire qui gère toutes les erreurs 404 de votre application, vous permettant de retourner facilement une page d'erreur 404 personnalisée :
 
     App::missing(function($exception)
     {
@@ -74,7 +82,7 @@ Vous pouvez enregistrer un gestionnaire qui gère toutes les erreurs 404 de votr
 <a name="logging"></a>
 ## Logging
 
-Laravel vous fournit une classe pour faire de la journalisation, qui se base sur le puissant [Monolog](http://github.com/seldaek/monolog). Par défaut, Laravel est configuré pour créer des fichiers journaliers pour votre application, et ils seront stockés dans `app/storage/logs`. Vous pouvez écrire dans ces fichiers de logs de la manière suivante :
+Laravel vous fournit une classe pour faire de la journalisation, qui se base sur le puissant composant [Monolog](http://github.com/seldaek/monolog). Par défaut, Laravel est configuré pour créer un seul fichier de log pour votre application, et ce fichier est stocké dans `app/storage/logs`. Vous pouvez écrire dans dans le log de la manière suivante :
 
     Log::info('This is some useful information.');
 
