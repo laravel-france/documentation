@@ -15,9 +15,13 @@ Laravel utilise [Composer](http://getcomposer.org) pour gérer ses dépendances.
 <a name="install-laravel"></a>
 ## Installation de Laravel
 
+### Via Laravel Installer
+
+D'abord, téléchargez [l'archive PHAR de Laravel installer](http://laravel.com/laravel.phar). Pour des raisons pratique, nous vous conseillons de renommer le fichier en `laravel` et de le déplacer dans `/usr/local/bin`. Une fois installé, la simple commande `laravel new` vous créera une installation fraiche de Laravel dans le dossier spécifié. Par exemple, `laravel new blog` créera un dossier `blog` qui contiendra une installation fraiche de Laravel avec toutes les dépendances installées. Cette méthode est plus rapide que celle via Composer
+
 ### Via Composer Create-Project
 
-Vous pouvez installer Laravel en exécutant la commande `create-project` de composer dans votre terminal :
+Vous pouvez également installer Laravel en exécutant la commande `create-project` de composer dans votre terminal :
 
     composer create-project laravel/laravel --prefer-dist
 
@@ -44,7 +48,8 @@ Laravel n'a presque pas besoin de configuration pour fonctionner. En fait, vous 
 
 <a name="permissions"></a>
 ### Permissions
-Laravel a besoin que le serveur web ait un accès en écriture sur les dossiers à l'intérieur de `app/storage`.
+
+Laravel peut avoir besoin que le serveur web ait un accès en écriture sur les dossiers à l'intérieur de `app/storage`.
 
 <a name="paths"></a>
 ### Chemins
