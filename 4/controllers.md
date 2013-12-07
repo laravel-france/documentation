@@ -37,14 +37,18 @@ Si vous organisez votre code avec des namespaces PHP, utilisez simplement le nom
 
 	Route::get('foo', 'Namespace\FooController@method');
 
+> **Note:** Comme nous utilisons [Composer](http://getcomposer.org) pour charger automatiquement nos classes, vos contrôleurs peuvent se trouver n'importe où dans votre application, tant que Composer sait comment les charger. Vous n'êtes pas obligé de placer tous vos contrôleurs dans le dossier `app/controllers`. L'exploitation des contrôleurs est complètement déliée du système de fichier.
+
 Vous pouvez également nommer ces routes avec la propriété `as` :
 
 	Route::get('foo', array('uses' => 'FooController@method',
 											'as' => 'name'));
 
-Pour générer une URL vers une action de contrôleur, utilisez la méthode `URL::action` :
+Pour générer une URL vers une action de contrôleur, utilisez la méthode `URL::action` ou le helper `action` :
 
     $url = URL::action('FooController@method');
+
+		$url = action('FooController@method');
 
 Vous pouvez accéder au nom de l'action du contrôleur qui est lancé en utilisant la méthode `currentRouteAction` :
 
@@ -169,11 +173,11 @@ Et, vous pouvez aussi spécifier quelles méthodes doivent être disponibles via
 <a name="handling-missing-methods"></a>
 ## Gestion de méthodes manquantes
 
-Une méthode attrape-tout peut être créée, elle sera appelée quand aucune autre méthode n'est trouvée dans un contrôleur donné. La méthode doit s'appeler `missingMethod`, et elle reçoit le tableau de paramètres de la requête en tant que seul argument :
+Une méthode attrape-tout peut être créée, elle sera appelée quand aucune autre méthode n'est trouvée dans un contrôleur donné. La méthode doit s'appeler `missingMethod`, et elle reçoit  la méthode ainsi que le tableau de paramètres de la requête :
 
 **Définition d'une méthode attrape-tout**
 
-	public function missingMethod($parameters)
+	public function missingMethod($method, $parameters)
 	{
 		//
 	}
