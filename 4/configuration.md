@@ -51,6 +51,9 @@ Dans cet exemple, 'local' est le nom de l'environnement, et 'your-machine-name' 
 
 Vous pouvez également passer une fonction anonyme à la méthode `detectEnvironment`, vous permettant d'implémenter votre propre détection d'environnement :
 
+Si vous avez besoin d'une détection d'environnement plus flexible, vous pouvez passer une fonction anonyme à la méthode `detectEnvironment`, vous permettant de faire la détection comme vous le souhaitez :
+
+
 	$env = $app->detectEnvironment(function()
 	{
 		return $_SERVER['MY_LARAVEL_ENV'];
@@ -62,10 +65,24 @@ Vous pouvez accéder à l'environnement courant de l'application par la méthode
 
 	$environment = App::environment();
 
+Vous pouvez également passé des arguments à la méthode `environment ` method to check if the environment matches a given value:
+
+  if (App::environment('local'))
+  {
+    // L'environnement est local
+  }
+
+  if (App::environment('local', 'staging'))
+  {
+    // L'environnement est local ou staging...
+  }
+
+
+
 <a name="maintenance-mode"></a>
 ## Mode de maintenance
 
-Lorsque votre application est en mode de maintenance, une vue personnalisée sera afficher sur toutes les routes de votre applications. C'est une manière simple de "désactiver" votre application pendant sa mise à jour. Un appel à la méthode `App::down` est déjà présent dans votre fichier `app/start/global.php`. La réponse de cette méthode sera envoyée aux utilisateurs lorsque l'application est en mode de maintenance.
+Lorsque votre application est en mode de maintenance, une vue personnalisée sera afficher sur toutes les routes de votre applications. C'est une manière simple de "désactiver" votre application pendant sa mise à jour ou durant des tâches de maintenance. Un appel à la méthode `App::down` est déjà présent dans votre fichier `app/start/global.php`. La réponse de cette méthode sera envoyée aux utilisateurs lorsque l'application est en mode de maintenance.
 
 Pour activer le mode de maintenance, exécutez la commande Artisan `down` :
 
@@ -81,3 +98,7 @@ Pour afficher une vue lorsque votre application est en mode maintenance, vous po
 	{
     		return Response::view('maintenance', array(), 503);
 	});
+
+### Maintenance Mode & Queues
+
+Quand vous êtes en mode maintenance, aucune [tâche de fond](/4/queues) ne sera gérée. Les tâches seront à nouveaux traitées normalement lorsque l'application ne sera plus en mode maintenance.
