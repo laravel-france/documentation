@@ -1,9 +1,8 @@
-<a name="general" id="general"></a>
 ### Général
 - [Accueil](/3/home)
 - [Installation](/3/installation)
     - [Pré-requis](/3/installation#requirements)
-    - [Installation](/3/installation#installationation)
+    - [Installation](/3/installation#installation)
     - [Configuration du serveur](/3/installation#server-configuration)
     - [Configuration basique](/3/installation#basic-configuration)
     - [Environnements](/3/installation#Environnements)
@@ -78,7 +77,6 @@
 - [IoC Container](/3/ioc)
 - [Tests unitaires](/3/testing)
 
-<a name="base_de_donnees" id="base_de_donnees"></a>
 ### Base de données
 
 - [Configuration](/3/database/config)
@@ -89,25 +87,21 @@
 - [Migrations](/3/database/migrations)
 - [Redis](/3/database/redis)
 
-<a name="caching" id="caching"></a>
 ### Caching
 
 - [Configuration](/3/cache/config)
 - [Usage](/3/cache/usage)
 
-<a name="sessions" id="sessions"></a>
 ### Sessions
 
 - [Configuration](/3/session/config)
 - [Utilisation](/3/session/usage)
 
-<a name="authentication" id="authentication"></a>
 ### Authentification
 
 - [Configuration](/3/auth/config)
 - [Utilisation](/3/auth/usage)
 
-<a name="artisan" id="artisan"></a>
 ### Artisan CLI
 
 - [Tâches](/3/artisan/tasks)
