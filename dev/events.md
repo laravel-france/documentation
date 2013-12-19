@@ -64,7 +64,7 @@ Lors de l'enregistrement d'un écouteur d'événement, vous pouvez utiliser un j
 
 Cet écouteur va gérer tous les événement qui commencent par `foo.`.
  
-Vous pouvez utiliser la méthode `Event::fired` pour déterminer quel événement a été lancé :
+Vous pouvez utiliser la méthode `Event::firing` pour déterminer quel événement a été lancé :
  
     Event::listen('foo.*', function($param)
     {
