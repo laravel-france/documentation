@@ -27,7 +27,7 @@ Une nouvelle méthode `whereHas` a été ajoutée également pour  [retrouver de
 
 ### Connexion lecture/écriture en base de données
 
-Une gestion automatique de connexions séparées pour la lecture et l'écriture en base de données est maintenant disponible dans la couche de base de données, que ce soit pour le Query Builder ou Eloquent. Pour plus d'informations, consultez [la documentation](/4.1/database#read-write-connections).
+Une gestion automatique de connexions séparées pour la lecture et l'écriture en base de données est maintenant disponible dans la couche de base de données, que ce soit pour le Query Builder ou Eloquent. Pour plus d'informations, consultez [la documentation](/dev/database#read-write-connections).
 
 ### Priorité de queues
 
