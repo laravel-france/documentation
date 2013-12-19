@@ -35,13 +35,6 @@ Ajouter la section de configuration `failed` dans votre fichier `app/config/queu
 
 Si `app/controllers/BaseController.php` a un déclaration `use` en haut, changez `use Illuminate\Routing\Controllers\Controller;` pour `use Illuminate\Routing\Controller;`.
 
-Si vous surchargiez la méthode `missingMethod` dans un de vos contrôleurs, ajoutez le paramètre `$method` en tant que premier argument :
-
-	public function missingMethod($method, $parameters = array())
-	{
-		//
-	}
-
 ### Mise à jour du rappel de mot de passe
 
 Le rappel de mot de passe a été revu pour une flexibilité plus grande. Vous pouvez regarder à quoi ressemble le nouveau contrôleur en executant la commande `php artisan auth:reminders-controller`. Vous pouvez aussi regarder [la documentation mise à jour](/4.1/security#password-reminders-and-reset) et mettre à jour votre application en conséquence.
