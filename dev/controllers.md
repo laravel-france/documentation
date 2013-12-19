@@ -205,7 +205,7 @@ Une méthode attrape-tout peut être créée, elle sera appelée quand aucune au
 
 **Définition d'une méthode attrape-tout**
 
-	public function missingMethod($method, $parameters)
+	public function missingMethod($parameters)
 	{
 		//
 	}
