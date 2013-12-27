@@ -1,16 +1,16 @@
-# Les files de travaux
+# Les files de travaux (queue)
 
 - [Configuration](#configuration)
 - [Utilisation](#basic-usage)
-- [Mise en queue de fonction anonymes](#queueing-closures)
-- [Activer le gestionnaire d'exécution de la file de travaux](#running-the-queue-listener)
-- [Queues en mode Push](#push-queues)
+- [Mise en queue de fonctions anonymes](#queueing-closures)
+- [Activer l'exécution du gestionnaire des files de travaux](#running-the-queue-listener)
+- [File de travaux en mode Push](#push-queues)
 - [Tâches échouées](#failed-jobs)
 
 <a name="configuration"></a>
 ## Configuration
 
-Le composant Queue fournit une API unique donnant accès à une variété de systèmes de files de travaux. Queue permet d'exécuter de manière différée une tâche consommatrice de temps comme l'envoi de message, ce qui accélère considérablement les requêtes d' application.
+Le composant Queue fournit une API unique donnant accès à une variété de systèmes de files de travaux. Queue permet d'exécuter de manière différée une tâche consommatrice de temps comme l'envoi de message, ce qui accélère considérablement les requêtes d'application.
 
 La configuration d'une file de travaux s'effectue dans le fichier `app/config/queue.php`. Dans ce fichier, vous y trouverez les éléments de déclaration de chacun des pilotes de file de travaux inclus dans le framework comme [Beanstalkd](http://kr.github.com/beanstalkd), [IronMQ](http://iron.io), [Amazon SQS](http://aws.amazon.com/sqs), et le pilote de synchronisation (pilote destiné à être utilisé en local).
 
@@ -50,19 +50,25 @@ Si vous souhaitez que votre tâche utilise une autre méthode que `fire`, vous d
 
     Queue::push('SendEmail@send', array('message' => $message));
     
-Si vous avez besoin de passer les mêmes données à plusieurs queues, vous pouvez utiliser la méthode `Queue::bulk` :
+**Spécifie une file de travaux en particulier pour un job**
+
+Vous pouvez également renseigner le nom de la file de travaux (queue ou tube) sur laquelle la tâche devra être exécutée :
+
+	Queue::push('SendEmail@send', array('message' => $message), 'emails');
 
 **Passage des mêmes données à plusieurs jobs**
 
-  Queue::bulk(array('SendEmail', 'NotifyUser'), $payload);
+Si vous avez besoin de passer les mêmes données à plusieurs files de travaux, vous pouvez utiliser la méthode `Queue::bulk` :
+
+	Queue::bulk(array('SendEmail', 'NotifyUser'), $payload);
     
 Parfois, vous pourriez vouloir repousser l'exécution d'une tâche. Par exemple, vous pourriez vouloir envoyer un mail à votre utilisateur 15 minutes après sont enregistrement. Vous pouvez le faire en utilisant la méthode `Queue::later` :
 
 **Repousse l'exécution d'une tâche**
 
-  $date = Carbon::now()->addMinutes(15);
-
-  Queue::later($date, 'SendEmail@send', array('message' => $message));
+	$date = Carbon::now()->addMinutes(15);
+	
+	Queue::later($date, 'SendEmail@send', array('message' => $message));
 
 Dans cet exemple, nous utilisons [Carbon](https://github.com/briannesbitt/Carbon) pour spécifier le délai après lequel nous exécuterons la tâche. Une altérnative est de passer un nombre de secondes en entier en tant que premier argument.
 
