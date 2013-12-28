@@ -107,7 +107,7 @@ Pour accéder à un élément taggué, passez la même liste ordonnée de tags u
 
     $anne = Cache::tags('people', 'artists')->get('Anne');
 
-    $john = $cache::tags(array('people', 'authors')->get('John');
+    $john = $cache::tags(array('people', 'authors'))->get('John');
 
 Vous pouvez vider tous les items d'un tag avec un nom, ou une liste de nom. Par exemple, la ligne ci dessous supprimera tous les éléments avec 'people', 'authors', ou les deux. Donc Anne et John seront supprimés.
 
