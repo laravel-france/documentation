@@ -221,7 +221,7 @@ Le contrôleur généré aura déjà la méthode `getRemind` qui s'occupe d'affi
 
 Le formulaire de la vue `password.remind` peut ressembler à cela :
 
-    <form action="{{ action('RemindersController@postReset') }}" method="POST">
+    <form action="{{ action('RemindersController@postRemind') }}" method="POST">
         <input type="email" name="email">
         <input type="submit" value="Send Reminder">
      </form>

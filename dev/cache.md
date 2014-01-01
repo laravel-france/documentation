@@ -113,7 +113,7 @@ Vous pouvez vider tous les items d'un tag avec un nom, ou une liste de nom. Par 
 
   Cache::tags('people', 'authors')->flush();
 
-Et la ligne ci dessous supprimera uniquement les éléments taggués avec 'author', donc uniquement John.
+Et la ligne ci dessous supprimera uniquement les éléments taggués avec 'authors', donc uniquement John.
 
     Cache::tags('authors')->flush();
 

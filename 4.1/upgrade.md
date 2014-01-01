@@ -61,4 +61,4 @@ La route actuelle est accessible via `Route::current()` à la place de `Route::g
 
 ### Composer Update
 
-Une fois que tout les étapes au dessus sont réalisées, vous pouvez lancer la commande `composer update`  pour mettre à jour les fichiers du framework !
+Une fois que tout les étapes au dessus sont réalisées, vous pouvez lancer la commande `composer update`  pour mettre à jour les fichiers du framework ! Si vous avez des erreurs de chargement de classes, essayez de lancer composer update avec l'option `--no-scripts` comme cela : `composer update --no-scripts`.

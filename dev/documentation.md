@@ -2,7 +2,6 @@
 ### Préface
  - [Introduction](/dev/introduction)
  - [Démarrage rapide](/dev/quick)
- - [Contribuer à Laravel](/dev/contributing)
  - [Release Notes](/dev/releases)
  - [Mise à jour](/dev/upgrade)
  <a name="premiers-pas"></a>

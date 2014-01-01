@@ -1,4 +1,4 @@
-# Intéractions avec les bases de données
+# Interactions avec les bases de données
 
 - [Configuration](#configuration)
 - [Connexions de lecture / écriture](#read-write-connections)
@@ -88,6 +88,20 @@ Pour exécuter une liste d'opérations durant une transaction, vous pouvez utili
 
 		DB::table('posts')->delete();
 	});
+
+> **Note:** Si un exception est lancée dans la fonction anonyme de `transaction`, alors la transaction sera annulée automatiquement.
+
+Vous pouvez démarrer une transaction vous même :
+
+    DB::beginTransaction();
+
+Vous pouvez ensuite annuler la transaction avec la méthode `rollback`:
+
+    DB::rollback();
+
+Et pour finir, vous pouvez commiter une transaction via la méthode `commit` :
+
+    DB::commit();
 
 <a name="accessing-connections"></a>
 ## Accéder aux connexions

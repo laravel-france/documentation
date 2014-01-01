@@ -141,4 +141,4 @@ Si vous avez besoin d'appeler une autre commande depuis votre commande, vous pou
 
 **Appel d'une autre commande**
 
-	$this->call('command.name', array('argument' => 'foo', '--option' => 'bar'));
+	$this->call('command:name', array('argument' => 'foo', '--option' => 'bar'));

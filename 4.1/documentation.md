@@ -2,7 +2,6 @@
 ### Préface
  - [Introduction](/4.1/introduction)
  - [Démarrage rapide](/4.1/quick)
- - [Contribuer à Laravel](/4.1/contributing)
  - [Release Notes](/4.1/releases)
  - [Mise à jour](/4.1/upgrade)
  <a name="premiers-pas"></a>
