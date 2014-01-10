@@ -11,7 +11,7 @@ La liste complète des changements peut être obtenue par la commande `php artis
 
 ### Nouveau composant SSH
 
-Un tout nouveau composant `SSH` a été inclus dans cette version. Cette fonctionnalité permet de se connecter en SSH à des serveurs distants et de lancer des commandes. pour en savoir plus, consultez [la documentation du composant SSH](/dev/ssh).
+Un tout nouveau composant `SSH` a été inclus dans cette version. Cette fonctionnalité permet de se connecter en SSH à des serveurs distants et de lancer des commandes. Pour en savoir plus, consultez [la documentation du composant SSH](/dev/ssh).
 
 La nouvelle commande `php artisan tail` utilise le composant SSH. Pour plus d'informations, regardez la  [documentation de la commande `tail`](http:///dev/ssh#tailing-remote-logs).
 
@@ -33,7 +33,7 @@ Une gestion automatique de connexions séparées pour la lecture et l'écriture 
 
 Vous pouvez maintenant gérer des priorités de queue en passant une liste séparée par une virgule à la commande `queue:listen`.
 
-### Gestion des tâche échouée
+### Gestion des tâches échouées
 
 Le solution de queue inclus maintenant une gestion automatique des tâches en échec en utilisant la nouvelle option `--tries` sur la commande `queue:listen`. Plus d'informations sur la gestion des tâches en échec dans la [documentation des queues](/dev/queues#failed-jobs).
 
