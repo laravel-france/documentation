@@ -165,15 +165,27 @@ La classe `Request` fournit beaucoup de méthodes permettant d'examiner les él�
 
     $value = Request::server('PATH_INFO');
 
+#### Détermine si le protocole de la requête est HTTPS
+
+    if (Request::secure()) {
+        //
+    }
+
 #### Détermine si une requête est de type AJAX
 
     if (Request::ajax()) {
         //
     }
 
-#### Détermine si le protocole de la requête est HTTPS
+#### Détermine si le content type d'une requête est JSON
 
-    if (Request::secure()) {
+    if (Request::isJson())) {
+        //
+    }
+
+#### Détermine si une requête demande du JSON
+
+    if (Request::wantsJson())) {
         //
     }
 

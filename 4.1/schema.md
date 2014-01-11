@@ -91,7 +91,7 @@ Si vous utilisez une base de données MySQL, vous pouvez utiliser la méthode `a
 <a name="renaming-columns"></a>
 ## Renommage de colonnes
 
-Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le constructeur de schéma :
+Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le constructeur de schéma. Avant de renommer une colonne, assurez vous d'avoir la dépendance `doctrine/dbal` dans votre fichier `composer.json`.
 
 #### Renommage d'une colonne
 

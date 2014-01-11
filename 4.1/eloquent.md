@@ -397,9 +397,9 @@ Notez qu'Eloquent devine la clé étrangère en se basant sur le nom du modèle.
 
     return $this->hasOne('Phone', 'foreign_key', 'local_key'););
 
-Pour définir la relation inverse sur le modèle `Phone`, nous utilisons la méthode `belongsTo` :
-
 #### Définition de la relation inverse
+
+Pour définir la relation inverse sur le modèle `Phone`, nous utilisons la méthode `belongsTo` :
 
     class Phone extends Eloquent {
 
@@ -595,9 +595,9 @@ Maintenant, nous pouvons récupérer les photos soit de notre staff, soit d'une 
         //
     }
 
-Cependant, la vraie magie de la polymorphie apparait lorsque vous accédez au staff ou à la commande depuis le modèle `Photo` :
-
 #### Récupération du propriétaire de la Photo
+
+Cependant, la vraie magie de la polymorphie apparait lorsque vous accédez au staff ou à la commande depuis le modèle `Photo` :
 
     $photo = Photo::find(1);
 

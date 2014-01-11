@@ -166,10 +166,18 @@ Une classe compositeur de vue doit être définie comme ceci :
 		{
 			$view->with('count', User::count());
 		}
-
 	}
 
-Notez qu'il n'y a pas de convention sur l'endroit où les compositeurs de vues doivent être stockés. Vous êtes libres de les mettre où vous le souhaitez, tant qu'ils peuvent être chargés automatiquement par l'une des directives de votre fichier `composer.json`.
+#### Définition de plusieurs compositeurs
+
+Vous pouvez utiliser la méthode `composers` pour enregistrer un groupe de compositeurs en une fois :
+
+    View::composers(array(
+        'AdminComposer' => array('admin.index', 'admin.profile'),
+        'UserComposer' => 'user',
+     ));
+
+ > **Note:** Il n'y a pas de convention sur l'endroit où les compositeurs de vues doivent être stockés. Vous êtes libres de les mettre où vous le souhaitez, tant qu'ils peuvent être chargés automatiquement par l'une des directives de votre fichier `composer.json`.
 
 ### Créateurs de vues
 

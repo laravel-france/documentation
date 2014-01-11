@@ -203,11 +203,11 @@ La plupart des sites fournissent la possibilité à l'utilisateur de réinitiali
 
     }
 
-Ensuite, une table doit être créée pour stocker le jeton de réinitialisation du mot de passe. Pour générer une migration pour cette table, exécutez simplement la commande artisan `auth:reminders` :
+Ensuite, une table doit être créée pour stocker le jeton de réinitialisation du mot de passe. Pour générer une migration pour cette table, exécutez simplement la commande artisan `auth:reminders-table` :
 
 #### Génération de la migration pour la table de rappel
 
-    php artisan auth:reminders
+    php artisan auth:reminders-table
 
     php artisan migrate
 
