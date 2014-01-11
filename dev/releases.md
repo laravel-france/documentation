@@ -7,13 +7,13 @@
 
 ### Liste complète des changements
 
-La liste complète des changements peut être obtenue par la commande `php artisan changes` d'une installation de Laravel 4.1, ou en [regardant le fichier des changements sur Github](https://github.com/laravel/framework/blob/dev/src/Illuminate/Foundation/changes.json). Ces notes couvrent seulement les améliorations majeures et les changements de cette version.
+La liste complète des changements peut être obtenue par la commande `php artisan changes` d'une installation de Laravel 4.1, ou en [regardant le fichier des changements sur Github](https://github.com/laravel/framework/blob/4.1/src/Illuminate/Foundation/changes.json). Ces notes couvrent seulement les améliorations majeures et les changements de cette version.
 
 ### Nouveau composant SSH
 
 Un tout nouveau composant `SSH` a été inclus dans cette version. Cette fonctionnalité permet de se connecter en SSH à des serveurs distants et de lancer des commandes. Pour en savoir plus, consultez [la documentation du composant SSH](/dev/ssh).
 
-La nouvelle commande `php artisan tail` utilise le composant SSH. Pour plus d'informations, regardez la  [documentation de la commande `tail`](http:///dev/ssh#tailing-remote-logs).
+La nouvelle commande `php artisan tail` utilise le composant SSH. Pour plus d'informations, regardez la  [documentation de la commande `tail`](http:///4.1/ssh#tailing-remote-logs).
 
 ### Boris dans le Tinker
 

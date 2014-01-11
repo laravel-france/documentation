@@ -15,7 +15,7 @@
 <a name="opening-a-form"></a>
 ## Ouverture d'un formulaire
 
-**Ouverture d'un formulaire**
+#### Ouverture d'un formulaire
 
     {{ Form::open(array('url' => 'foo/bar')) }}
         //
@@ -48,11 +48,11 @@ Si votre formulaire contient un champ pour la mise en ligne de fichier, ajoutez 
 
 Laravel fournit une méthode simple pour protéger votre application des attaques Cross-Site Request Forgery. Premièrement, un jeton aléatoire est placé dans la session de l'utilisateur. Ne vous en inquiétez pas, cela se fait tout seul. Le jeton CSRF sera ajouté à vos formulaires en tant que champ caché automatiquement. Cependant, si vous souhaitez générer le code HTML pour le champ caché, vous pouvez utiliser la méthode `token` :
 
-**Ajout du jeton CSRF à un formulaire**
+#### Ajout du jeton CSRF à un formulaire
 
     echo Form::token();
 
-**Attache un filtre CSRF à une route**
+#### Attache un filtre CSRF à une route
 
     Route::post('profile', array('before' => 'csrf', function()
     {
@@ -64,7 +64,7 @@ Laravel fournit une méthode simple pour protéger votre application des attaque
 
 Souvent, vous voudrez remplir un formulaire selon le contenu d'un modèle. Pour ce faire, utilisez la méthode `Form::model` :
 
-**Ouverture d'un formulaire lié à un modèle**
+#### Ouverture d'un formulaire lié à un modèle
 
     echo Form::model($user, array('route' => 'user.update'))
 
@@ -81,11 +81,11 @@ Cela vous permet de construire des formulaires plus rapidement car cela lit les 
 <a name="labels"></a>
 ## Labels
 
-**Génération d'un label**
+#### Génération d'un label
 
     echo Form::label('email', 'E-Mail Address');
 
-**Ajour d'attributs HTML supplémentaires**
+#### Ajour d'attributs HTML supplémentaires
 
     echo Form::label('email', 'E-Mail Address', array('class' => 'awesome'));
 
@@ -94,21 +94,21 @@ Cela vous permet de construire des formulaires plus rapidement car cela lit les 
 <a name="text"></a>
 ## Texte, Textarea et champs cachés
 
-**Génération d'un champ de texte simple**
+#### Génération d'un champ de texte simple
 
     echo Form::text('username');
 
-**Ajout d'une valeur par défaut**
+#### Ajout d'une valeur par défaut
 
     echo Form::text('email', 'example@gmail.com');
 
 > **Note:** Les méthodes *hidden* et *textarea* ont la même signature que la méthode *text*.
 
-**Génération d'un champ mot de passe**
+#### Génération d'un champ mot de passe
 
     echo Form::password('password');
 
-**Autres types d'input**
+#### Autres types d'input
 
     echo Form::email($name, $value = null, $attributes = array());
     echo Form::file($name, $attributes = array());
@@ -116,12 +116,12 @@ Cela vous permet de construire des formulaires plus rapidement car cela lit les 
 <a name="checkboxes-and-radio-buttons"></a>
 ## Checkbox et boutons radios
 
-**Génération d'un champ checkbox ou radio**
+#### Génération d'un champ checkbox ou radio
 
     echo Form::checkbox('name', 'value');
     echo Form::radio('name', 'value');
 
-**Génération d'un champ checkbox ou radio coché**
+#### Génération d'un champ checkbox ou radio coché
 
     echo Form::checkbox('name', 'value', true);
     echo Form::radio('name', 'value', true);
@@ -129,40 +129,40 @@ Cela vous permet de construire des formulaires plus rapidement car cela lit les 
 <a name="file-input"></a>
 ## Fichiers
 
-**Génération d'un champ fichier**
+#### Génération d'un champ fichier
 
     echo Form::file('image');
 
 <a name="drop-down-lists"></a>
 ## Listes de sélection
 
-**Génération d'une liste de sélection**
+#### Génération d'une liste de sélection
 
     echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
 
-**Génération d'une liste de sélection avec un champ sélectionné par défaut**
+#### Génération d'une liste de sélection avec un champ sélectionné par défaut
 
     echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 
-**Génération d'une liste avec groupes**
+#### Génération d'une liste avec groupes
 
     echo Form::select('animal', array(
         'Cats' => array('leopard' => 'Leopard'),
         'Dogs' => array('spaniel' => 'Spaniel'),
     ));
 
-**Génération d'une liste déroulante avec une liste de nombres**
+#### Génération d'une liste déroulante avec une liste de nombres
 
     echo Form::selectRange('number', 10, 20);
 
-**Génération d'une liste déroulante avec les noms des mois**
+#### Génération d'une liste déroulante avec les noms des mois
 
     echo Form::selectMonth('month');
 
 <a name="buttons"></a>
 ## Boutons
 
-**Génération d'un bouton submit**
+#### Génération d'un bouton submit
 
     echo Form::submit('Click Me!');
 
@@ -173,7 +173,7 @@ Cela vous permet de construire des formulaires plus rapidement car cela lit les 
 
 Il est simple de définir vos propres helpers de classes de formulaire personnalisés appelés "macros". Voilà comment ça marche. Premièrement, enregistrez simplement la macro avec un nom et une fonction anonyme :
 
-**Enregistrement d'une macro**
+#### Enregistrement d'une macro
 
     Form::macro('myField', function()
     {
@@ -182,7 +182,7 @@ Il est simple de définir vos propres helpers de classes de formulaire personnal
 
 Maintenant, vous pouvez l'appeler par son nom :
 
-**Appel d'une macro personnalisée**
+#### Appel d'une macro personnalisée
 
     echo Form::myField();
 

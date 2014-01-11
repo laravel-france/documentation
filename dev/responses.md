@@ -10,14 +10,14 @@
 <a name="basic-responses"></a>
 ## Réponses basiques
 
-**Retourne une chaîne de caractères depuis une route**
+#### Retourne une chaîne de caractères depuis une route
 
 	Route::get('/', function()
 	{
 		return 'Hello World';
 	});
 
-**Création d'une réponse personnalisée**
+#### Création d'une réponse personnalisée
 
 Une instance de `Response` hérite de la classe `Symfony\Component\HttpFoundation\Response`, qui fournit une multitude de méthodes pour construire une réponse HTTP.
 
@@ -31,7 +31,7 @@ Si vous souhaitez accéder aux méthodes de la classe `Response` mais que vous s
 
   return Response::view('hello')->header('Content-Type', $type);
 
-**Attachement d'un cookie à une réponse**
+#### Attachement d'un cookie à une réponse
 
 	$cookie = Cookie::make('name', 'value');
 
@@ -40,37 +40,37 @@ Si vous souhaitez accéder aux méthodes de la classe `Response` mais que vous s
 <a name="redirects"></a>
 ## Redirections
 
-**Retourne une redirection**
+#### Retourne une redirection
 
 	return Redirect::to('user/login');
 
-**Retourne une redirection avec des données flash**
+#### Retourne une redirection avec des données flash
 
     return Redirect::to('user/login')->with('message', 'Login Failed');
 
 > **Note** : Depuis que la méthode `with` envoie les données à la session, vous pouvez récupérer les données en utilisant la méthode `Session::get`.
 
-**Retourne une redirection vers une route nommée**
+#### Retourne une redirection vers une route nommée
 
 	return Redirect::route('login');
 
-**Retourne une redirection vers une route nommée avec des paramètres**
+#### Retourne une redirection vers une route nommée avec des paramètres
 
 	return Redirect::route('profile', array(1));
 
-**Retourne une redirection vers une route nommée avec des paramètres nommés**
+#### Retourne une redirection vers une route nommée avec des paramètres nommés
 
 	return Redirect::route('profile', array('user' => 1));
 
-**Retourne une redirection vers une action d'un contrôleur**
+#### Retourne une redirection vers une action d'un contrôleur
 
 	return Redirect::action('HomeController@index');
 
-**Retourne une redirection vers une action d'un contrôleur avec des paramètres**
+#### Retourne une redirection vers une action d'un contrôleur avec des paramètres
 
 	return Redirect::action('UserController@profile', array(1));
 
-**Retourne une redirection vers une action d'un contrôleur avec des paramètres nommés**
+#### Retourne une redirection vers une action d'un contrôleur avec des paramètres nommés
 
 	return Redirect::action('UserController@profile', array('user' => 1));
 
@@ -98,11 +98,11 @@ Cette vue peut être retournée en tant que réponse comme ceci :
 
 Le second argument passé ici à `View::make` est un tableau de données qui doivent être passées à la vue.
 
-**Passage de données à une vue**
+#### Passage de données à une vue
 
     // Using conventional approach
 	$view = View::make('greeting')->with('name', 'Steve');
-    
+
     // Using Magic Methods
     $view = View::make('greeting')->withName('steve');
 
@@ -116,7 +116,7 @@ Vous pouvez également partager des données avec toutes les vues :
 
     View::share('name', 'Steve');
 
-**Passage d'une sous-vue à une vue**
+#### Passage d'une sous-vue à une vue
 
 Vous pouvez également passer une vue à une autre vue. Par exemple, nous pouvons passer une sous-vue qui se trouve dans le fichier `app/views/child/view.php`, à une autre vue de la manière suivante :
 
@@ -138,7 +138,7 @@ La sous-vue peut alors être rendue depuis la vue parent :
 
 Les compositeurs de vues sont des fonctions anonymes ou des méthodes de classes qui sont appelées lorsqu'une vue est créée. Si vous avez des données que vous souhaitez lier à une vue chaque fois qu'elle est créée dans votre application, alors un compositeur de vue peut organiser ce code en un seul endroit. Par conséquent, les compositeurs de vues peuvent fonctionner comme des "VueModèle" ( design pattern MVVM ) ou des "Présentation" (design pattern MVP).
 
-**Définition d'un compositeur de vue**
+#### Définition d'un compositeur de vue
 
 	View::composer('profile', function($view)
 	{
@@ -166,10 +166,18 @@ Une classe compositeur de vue doit être définie comme ceci :
 		{
 			$view->with('count', User::count());
 		}
-
 	}
 
-Notez qu'il n'y a pas de convention sur l'endroit où les compositeurs de vues doivent être stockés. Vous êtes libres de les mettre où vous le souhaitez, tant qu'ils peuvent être chargés automatiquement par l'une des directives de votre fichier `composer.json`.
+#### Définition de plusieurs compositeurs
+
+Vous pouvez utiliser la méthode `composers` pour enregistrer un groupe de compositeurs en une fois :
+
+    View::composers(array(
+        'AdminComposer' => array('admin.index', 'admin.profile'),
+        'UserComposer' => 'user',
+     ));
+
+ > **Note:** Il n'y a pas de convention sur l'endroit où les compositeurs de vues doivent être stockés. Vous êtes libres de les mettre où vous le souhaitez, tant qu'ils peuvent être chargés automatiquement par l'une des directives de votre fichier `composer.json`.
 
 ### Créateurs de vues
 
@@ -183,15 +191,15 @@ Un **créateur** de vue fonctionne exactement comme les composeurs de vues ; cep
 <a name="special-responses"></a>
 ## Réponses spéciales
 
-**Création d'une réponse JSON**
+#### Création d'une réponse JSON
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'));
 
-**Création d'une réponse JSONP**
+#### Création d'une réponse JSONP
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'))->setCallback(Input::get('callback'));
 
-**Création d'un téléchargement de fichier**
+#### Création d'un téléchargement de fichier
 
 	return Response::download($pathToFile);
 

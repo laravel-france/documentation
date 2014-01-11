@@ -66,7 +66,7 @@ Pour exécuter des commandes sans utiliser la connexion par défaut, utilisez le
 
 Le Pipelining doit être utilisé lorsque vous avez besoin d'envoyer plusieurs commandes au serveur en une opération. Pour ce faire, utilisez la méthode `pipeline` :
 
-**Envoi de plusieurs commandes au serveur**
+#### Envoi de plusieurs commandes au serveur
 
     Redis::pipeline(function($pipe)
     {

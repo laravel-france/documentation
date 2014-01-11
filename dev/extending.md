@@ -29,9 +29,9 @@ Chacun de ses managers implémente une méthode `extend` qui peut être utilisé
 
 <a name="where-to-extend"></a>
  ## Où enregistrer ses extensions
- 
+
 Cette documentation couvre comment étendre une variété de composants de Laravel, mais vous pourriez vous demander où placer ses extensions. Comme beaucoup de code d'amorçage, vous êtes libre de placer certaines extensions dans vos fichiers `start`. Les extensions de Cache ou d'Auth sont de bonnes candidates pour cette approche. D'autres extensions, comme les `Session`, doivent être placées dans le méthode `register` d'un service provider car elles sont necessaires assez tôt dans le cycle de vie d'une requête.
- 
+
 <a name="cache"></a>
 ## Cache
 
@@ -82,11 +82,11 @@ Etendre Laravel avec un driver de session personnalisé est aussi simple que d'�
     {
         // Return implementation of SessionHandlerInterface
     });
-    
+
 ### Où étendre Session
 
 Les extensions de Session doivent être enregistrées différement d'autres extensions comme Cache ou Auth. Comme les sessions doivent être démarrées tôt dans le cycle de vie d'une requête, faire l'enregistrement dans un fichier `start` serait trop tard. Dans ce cas, un [service provider](/dev/ioc#service-providers) sera nécessaire. Vous devez placer votre extension de Session dans la méthode `register` de votre service provider, et le provider doit être placé en dessous du provider par defaut : `Illuminate\Session\SessionServiceProvider` dans la tableau `providers` du fichier de configuration.
- 
+
 ### Ecriture de l'extension de Session
 
 Notez que notre driver doit implémenter le contrat `SessionHandlerInterface`. Cette interface est inclue dans PHP 5.4+. Si vous utilisez PHP 5.3, cette interface sera définie pour vous par Laravel pour être compatible. Cette interface contient quelques méthodes à implémenter. Une implémentation pour MongoDB ressemblerait à cela :
@@ -100,7 +100,7 @@ Notez que notre driver doit implémenter le contrat `SessionHandlerInterface`. C
         public function destroy($sessionId) {}
         public function gc($lifetime) {}
 
-    }   
+    }
 
 Regardons rapidement le rôle de chacune de ses méthodes :
 

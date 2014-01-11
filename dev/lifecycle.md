@@ -55,7 +55,7 @@ Les fichiers de démarrage servent à mettre n'importe quel code de démarrage. 
 
 Vous pouvez ajouter des opérations précédant et suivant l'exécution de la requête en enregistrant les gestionnaires des événements `before`, `after`, `finish`, et `shutdown`.
 
-**Enregistrer des gestionnaires d'événements**
+#### Enregistrer des gestionnaires d'événements
 
 	App::before(function($request)
 	{

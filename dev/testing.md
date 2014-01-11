@@ -21,7 +21,7 @@ Un fichier de test d'exemple est fourni dans le dossier `app/tests`. Après avoi
 
 Pour créer un cas de test, créez simplement un nouveau fichier de test dans le dossier `app/tests`. La classe pour tester doit hériter de `TestCase`. Vous pouvez ensuite définir vos méthodes de test comme vous le feriez d'habitude avec PHPUnit.
 
-**Exemple de classe de test**
+#### Exemple de classe de test
 
     class FooTest extends TestCase {
 
@@ -46,7 +46,7 @@ Lors de l'exécution de vos tests unitaires, Laravel va automatiquement définir
 
 Vous pouvez facilement appeler une de vos routes pour un test en utilisant la méthode `call` :
 
-**Appel d'une route depuis un test**
+#### Appel d'une route depuis un test
 
     $response = $this->call('GET', 'user/profile');
 
@@ -58,7 +58,7 @@ Vous pouvez ensuite inspecter l'objet `Illuminate\Http\Response` retourné :
 
 Vous pouvez également appeler un contrôleur depuis un test :
 
-**Appel d'un contrôleur depuis un test**
+#### Appel d'un contrôleur depuis un test
 
     $response = $this->action('GET', 'HomeController@index');
 
@@ -102,7 +102,7 @@ Lorsque vous testez, vous voudrez souvent mocker un appel à une façade statiqu
 
 Nous pouvons mocker l'appel à la classe `Event` en utilisant la méthode `shouldReceive` sur la facade, qui retournera une instance d'un mock [Mockery](https://github.com/padraic/mockery).
 
-**Mockage d'une Façade**
+#### Mockage d'une Façade
 
     public function testGetIndex()
     {
@@ -118,7 +118,7 @@ Nous pouvons mocker l'appel à la classe `Event` en utilisant la méthode `shoul
 
 Laravel est livré avec plusieurs méthodes `assert` pour vous faciliter les tests :
 
-**Affirme qu'une réponse est OK**
+#### Affirme qu'une réponse est OK
 
     public function testMethod()
     {
@@ -127,11 +127,11 @@ Laravel est livré avec plusieurs méthodes `assert` pour vous faciliter les tes
         $this->assertResponseOk();
     }
 
-**Affirme que le statut de la réponse est correct**
+#### Affirme que le statut de la réponse est correct
 
     $this->assertResponseStatus(403);
 
-**Affirme qu'une réponse est une redirection**
+#### Affirme qu'une réponse est une redirection
 
     $this->assertRedirectedTo('foo');
 
@@ -139,7 +139,7 @@ Laravel est livré avec plusieurs méthodes `assert` pour vous faciliter les tes
 
     $this->assertRedirectedToAction('Controller@method');
 
-**Affirme qu'une vue a des données**
+#### Affirme qu'une vue a des données
 
     public function testMethod()
     {
@@ -149,7 +149,7 @@ Laravel est livré avec plusieurs méthodes `assert` pour vous faciliter les tes
         $this->assertViewHas('age', $value);
     }
 
-**Affirme qu'une session a des données**
+#### Affirme qu'une session a des données
 
     public function testMethod()
     {
@@ -158,8 +158,8 @@ Laravel est livré avec plusieurs méthodes `assert` pour vous faciliter les tes
         $this->assertSessionHas('name');
         $this->assertSessionHas('age', $value);
     }
-    
-**Affirme qu'un ancien Input a des données**
+
+#### Affirme qu'un ancien Input a des données
 
     public function testMethod()
     {
@@ -175,7 +175,7 @@ La classe `TestCase` contient plusieurs "Helper" pour faciliter le test de vos a
 
 Vous pouvez définir l'utilisateur actuellement connecté avec la méthode `be` :
 
-**Définit un utilisateur comme étant connecté**
+#### Définit un utilisateur comme étant connecté
 
     $user = new User(array('name' => 'John'));
 
@@ -183,7 +183,7 @@ Vous pouvez définir l'utilisateur actuellement connecté avec la méthode `be` 
 
 Vous pouvez re-peupler votre base de données depuis les tests unitaires en utilisant la méthode `seed` :
 
-**Re-popule la base de données depuis les tests**
+#### Re-popule la base de données depuis les tests
 
     $this->seed();
 

@@ -44,33 +44,33 @@ Notez que deux clés ont été ajoutées au tableau de configuration : `read` et
 
 Une fois la connexion configurée, vous pouvez exécuter des requêtes à l'aide de la classe `DB`.
 
-**Exécuter une commande Select**
+#### Exécuter une commande Select
 
 	$results = DB::select('select * from users where id = ?', array(1));
 
 La méthode `select` retourne un tableau de lignes.
 
-**Exécuter une commande Insert**
+#### Exécuter une commande Insert
 
 	DB::insert('insert into users (id, name) values (?, ?)', array(1, 'Dayle'));
 
-**Exécuter une commande Update**
+#### Exécuter une commande Update
 
 	DB::update('update users set votes = 100 where name = ?', array('John'));
 
-**Exécuter une commande Delete**
+#### Exécuter une commande Delete
 
 	DB::delete('delete from users');
 
 > **Remarque:** Les commandes `update` et `delete` retournent le nombre de lignes affectées par l'opération.
 
-**Exécuter une requête quelconque**
+#### Exécuter une requête quelconque
 
 	DB::statement('drop table users');
 
 Vous pouvez écouter pour des événements de requêtes en utilisant la méthode `DB::listen` :
 
-**Ecoute d'événements de requêtes**
+#### Ecoute d'événements de requêtes
 
     DB::listen(function($sql, $bindings, $time)
     {
@@ -110,7 +110,7 @@ Lorsque plusieurs connexions sont ouvertes, vous pouvez accéder à la connexion
 
 	$users = DB::connection('foo')->select(...);
 
-Parfois vous pourriez avoir besoin de vous reconnecter à une base de données : 
+Parfois vous pourriez avoir besoin de vous reconnecter à une base de données :
 
     DB::reconnect('foo');
 
@@ -126,5 +126,5 @@ Par défaut, Laravel tient un journal de log de toutes les requêtes qui ont ét
     DB::connection()->disableQueryLog();
 
 Pour récupérer les requêtes exécutées dans un tableau, vous pouvez utiliser la méthode `getQueryLog` :
- 
+
     $queries = DB::getQueryLog();

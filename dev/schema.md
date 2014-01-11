@@ -84,16 +84,16 @@ Le constructeur de table contient une variété de types de colonne que vous pou
 
 Si vous utilisez une base de données MySQL, vous pouvez utiliser la méthode `after` pour spécifier l'ordre des colonnes :
 
-**Utilisation de after sur MySQL**
+#### Utilisation de after sur MySQL
 
     $table->string('name')->after('email');
 
 <a name="renaming-columns"></a>
 ## Renommage de colonnes
 
-Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le constructeur de schéma :
+Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le constructeur de schéma. Avant de renommer une colonne, assurez vous d'avoir la dépendance `doctrine/dbal` dans votre fichier `composer.json`.
 
-**Renommage d'une colonne**
+#### Renommage d'une colonne
 
     Schema::table('users', function($table)
     {
@@ -105,14 +105,14 @@ Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le
 <a name="dropping-columns"></a>
 ## Suppression de colonnes
 
-**Suppression d'une colonne d'une table**
+#### Suppression d'une colonne d'une table
 
     Schema::table('users', function($table)
     {
         $table->dropColumn('votes');
     });
 
-**Suppression de plusieurs colonnes d'une table**
+#### Suppression de plusieurs colonnes d'une table
 
     Schema::table('users', function($table)
     {
@@ -124,14 +124,14 @@ Pour renommer une colonne, vous devez utiliser la méthode `renameColumn` sur le
 
 Vous pouvez vérifier facilement l'existence d'une table ou d'une colonne en utilisant les méthodes `hasTable` et `hasColumn` :
 
-**Vérifie l'existence d'une table**
+#### Vérifie l'existence d'une table
 
     if (Schema::hasTable('users'))
     {
         //
     }
 
-**Vérifie l'existence d'une colonne**
+#### Vérifie l'existence d'une colonne
 
     if (Schema::hasColumn('users', 'email'))
     {
@@ -143,7 +143,7 @@ Vous pouvez vérifier facilement l'existence d'une table ou d'une colonne en uti
 
 Le constructeur de schéma supporte plusieurs types d'index. Il y a deux manières de les ajouter. La première est de manière fluide, lors de la définition d'une colonne :
 
-**Crée de manière fluide une colonne et un index**
+#### Crée de manière fluide une colonne et un index
 
     $table->string('email')->unique();
 
@@ -165,7 +165,7 @@ Commande  | Description
 
 Laravel fournit également de quoi ajouter des clés étrangères à vos tables :
 
-**Ajout d'une clé étrangère à une table**
+#### Ajout d'une clé étrangère à une table
 
     $table->foreign('user_id')->references('id')->on('users');
 

@@ -28,7 +28,7 @@ Tous les packages Laravel sont distribués via [Packagist](http://packagist.org)
 
 La manière la plus simple de créer un package Laravel est d'utiliser la commande Artisan `workbench` de Laravel. D'abord, vous aurez besoin de définir quelques options dans le fichier `app/config/workbench.php`. Dans ce fichier, vous trouverez une option `name` et `email`. Ces valeurs sont utilisées pour générer un fichier `composer.json` pour vos nouveaux packages. Une fois que vous avez inscrit ces valeurs, vous êtes prêt à construire un package !
 
-**Exécution de la commande Artistan `workbench`**
+#### Exécution de la commande Artistan `workbench`
 
 	php artisan workbench vendor/package --resources
 
@@ -45,7 +45,7 @@ Une fois que le fournisseur a été enregistré, vous êtes prêt à développer
 
 Lorsque vous utilisez la commande `workbench`, votre package sera créé en respectant des conventions qui permettront au package de s'intégrer facilement avec les autres parties du framework Laravel :
 
-**Structure basique d'un package Laravel**
+#### Structure basique d'un package Laravel
 
 	/src
 		/Vendor
@@ -88,11 +88,11 @@ Il n'y a pas d'"emplacement par défaut" pour les classes de fournisseurs de ser
 
 Lorsque vous utilisez une ressource depuis un package, comme des options de configuration ou des vues, un double deux points ( :: ) sera généralement utilisé :
 
-**Chargement d'une vue depuis un package**
+#### Chargement d'une vue depuis un package
 
 	return View::make('package::view.name');
 
-**Récupération d'une option de configuration depuis un package**
+#### Récupération d'une option de configuration depuis un package
 
 	return Config::get('package::group.option');
 
@@ -109,7 +109,7 @@ Une fois que la commande `workbench` a créé le package, vous pouvez utiliser `
 
 Si vous avez besoin de regénérer les fichiers de chargement automatique de vos packages, vous pouvez utiliser la commande `php artisan dump-autoload`. Cette commande va regénérer les fichiers de chargement automatique de votre projet de base, ainsi que de tous les workbenchs que vous avez créés.
 
-**Exécution de la commande Dump Autoload**
+#### Exécution de la commande Dump Autoload
 
     php artisan dump-autoload
 
@@ -118,7 +118,7 @@ Si vous avez besoin de regénérer les fichiers de chargement automatique de vos
 
 Dans les versions précédentes de Laravel, une clause `handles` était utilisée pour spécifier à quelles URIs le package peut répondre. Cependant dans Laravel 4, un package peut répondre à n'importe quelle URI. Pour charger un fichier de route pour votre package, ajoutez simplement un `include` vers le fichier dans la méthode `boot`.
 
-**Inclusion d'un fichier de route dans le fournisseur de service**
+#### Inclusion d'un fichier de route dans le fournisseur de service
 
 	public function boot()
 	{
@@ -132,19 +132,19 @@ Dans les versions précédentes de Laravel, une clause `handles` était utilisé
 
 Certains packages peuvent avoir besoin de fichiers de configuration. Ces fichiers doivent être définis de la même manière que les autres fichiers de configuration de votre application. Et, si vous utilisez la méthode `$this->package` écrite par défaut avec l'outil workbench, alors vous pourrez accéder à vos fichiers de configuration en utilisant la syntaxe habituelle des doubles deux points :
 
-**Accès à une option de configuration d'un package**
+#### Accès à une option de configuration d'un package
 
 	Config::get('package::file.option');
 
 Cependant, si votre package contient uniquement un fichier de configuration, vous pouvez simplement l'appeler `config.php`. S'il s'appelle ainsi, vous pouvez accéder directement à ces options, sans avoir à spécifier le nom du fichier :
 
-**Accès directe à une option du fichier config.php**
+#### Accès directe à une option du fichier config.php
 
 	Config::get('package::option');
 
 Parfois, vous pourriez souhaiter enregistrer des ressources de package, tel que des vues, en dehors de la méthode typique `$this->package`. Typiquement, cela sera uniquement fait si les ressource ne sont pas dans un endroit conventionnel. Pour enregistrer des ressources manuellement, utilisez la méthode `addNamespace` sur les classes `View`, `Lang`, et `Config` :
 
-**Enregistrement d'un namespace de ressource manuellement**
+#### Enregistrement d'un namespace de ressource manuellement
 
     View::addNamespace('package', __DIR__.'/path/to/views');
 
@@ -158,7 +158,7 @@ La signature de la méthode `addNamespace` est la même pour les classes `View`,
 
 Quand d'autres développeurs installent votre package, ils peuvent vouloir surcharger certaines options de configuration. Cependant, s'ils changent les valeurs dans le code source de votre package, ils seront écrasés quand Composer mettra à jour le package. A la place, la commande artisan `config:publish` devrait être utilisée :
 
-**Execution de la commande config:publish**
+#### Execution de la commande config:publish
 
 	php artisan config:publish vendor/package
 
@@ -171,17 +171,17 @@ Quand cette commande est exécutée, les fichiers de configuration de votre pack
 
 Vous pouvez créer et exécuter facilement des migrations pour n'importe lequel de vos packages. Pour créer une migration pour un package dans le workbench, utilisez l'option `--bench` :
 
-**Création d'une migration pour un package dans le workbench**
+#### Création d'une migration pour un package dans le workbench
 
 	php artisan migrate:make create_users_table --bench="vendor/package"
 
-**Exécution de migrations d'un package dans le workbench**
+#### Exécution de migrations d'un package dans le workbench
 
 	php artisan migrate --bench="vendor/package"
 
 Pour lancer les migrations d'un package terminé qui a été installé via Composer, dans le dossier `vendor`, vous devez utiliser l'option `--package` :
 
-**Exécution de migrations d'un package installé**
+#### Exécution de migrations d'un package installé
 
 	php artisan migrate --package="vendor/package"
 
@@ -190,7 +190,7 @@ Pour lancer les migrations d'un package terminé qui a été installé via Compo
 
 Certains packages peuvent contenir des ressources tels que du JavaScript, CSS, des images. Cependant, nous sommes incapables de créer un lien vers les dossiers `vendor` ou `workbench`, nous devons trouver un moyen de bouger ses ressources dans le dossier `public` de notre application. La commande artisan `asset:publish` se charge de cela pour vous :
 
-**Déplace les ressources d'un package vers le dossier public**
+#### Déplace les ressources d'un package vers le dossier public
 
     php artisan asset:publish
 

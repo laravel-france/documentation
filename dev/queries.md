@@ -23,7 +23,7 @@ Le Query Builder (Constructeur de requête) de Laravel fournit une interface pra
 <a name="selects"></a>
 ## Sélection
 
-**Récupérer toutes les lignes d'une table**
+#### Récupérer toutes les lignes d'une table
 
 	$users = DB::table('users')->get();
 
@@ -32,17 +32,17 @@ Le Query Builder (Constructeur de requête) de Laravel fournit une interface pra
 		var_dump($user->name);
 	}
 
-**Récupérer une ligne d'une table**
+#### Récupérer une ligne d'une table
 
 	$user = DB::table('users')->where('name', 'John')->first();
 
 	var_dump($user->name);
 
-**Retrouve une seule colonne d'une ligne**
+#### Retrouve une seule colonne d'une ligne
 
 	$name = DB::table('users')->where('name', 'John')->pluck('name');
 
-**Retrouve une liste des valeurs d'une colonne**
+#### Retrouve une liste des valeurs d'une colonne
 
 	$roles = DB::table('roles')->lists('title');
 
@@ -50,7 +50,7 @@ Cette méthode retournera un tableau des titres des rôles. Vous pouvez égaleme
 
 	$roles = DB::table('roles')->lists('title', 'name');
 
-**Spécification d'une clause SELECT**
+#### Spécification d'une clause SELECT
 
 	$users = DB::table('users')->select('name', 'email')->get();
 
@@ -58,34 +58,34 @@ Cette méthode retournera un tableau des titres des rôles. Vous pouvez égaleme
 
 	$users = DB::table('users')->select('name as user_name')->get();
 
-**Ajout d'une clause SELECT à une requête existante**
+#### Ajout d'une clause SELECT à une requête existante
 
     $query = DB::table('users')->select('name');
 
     $users = $query->addSelect('age')->get();
 
-**Utilisation de la clause WHERE**
+#### Utilisation de la clause WHERE
 
 	$users = DB::table('users')->where('votes', '>', 100)->get();
 
-**Utilisation de OR WHERE**
+#### Utilisation de OR WHERE
 
 	$users = DB::table('users')
 	                    ->where('votes', '>', 100)
 	                    ->orWhere('name', 'John')
 	                    ->get();
 
-**Utilisation de WHERE BETWEEN**
+#### Utilisation de WHERE BETWEEN
 
 	$users = DB::table('users')
 	                    ->whereBetween('votes', array(1, 100))->get();
 
-**Utilisation de WHERE NOT BETWEEN**
+#### Utilisation de WHERE NOT BETWEEN
 
     $users = DB::table('users')
         ->whereNotBetween('votes', array(1, 100))->get();
 
-**Utilisation de WHERE IN avec un tableau**
+#### Utilisation de WHERE IN avec un tableau
 
 	$users = DB::table('users')
 	                    ->whereIn('id', array(1, 2, 3))->get();
@@ -93,12 +93,12 @@ Cette méthode retournera un tableau des titres des rôles. Vous pouvez égaleme
 	$users = DB::table('users')
 	                    ->whereNotIn('id', array(1, 2, 3))->get();
 
-**Utilisation de WHERE NULL pour trouver des valeurs non définies**
+#### Utilisation de WHERE NULL pour trouver des valeurs non définies
 
 	$users = DB::table('users')
 	                    ->whereNull('updated_at')->get();
 
-**Utilisation de ORDER BY, GROUP BY, And HAVING**
+#### Utilisation de ORDER BY, GROUP BY, And HAVING
 
 	$users = DB::table('users')
 	                    ->orderBy('name', 'desc')
@@ -106,7 +106,7 @@ Cette méthode retournera un tableau des titres des rôles. Vous pouvez égaleme
 	                    ->having('count', '>', 100)
 	                    ->get();
 
-**Offset & Limite**
+#### Offset & Limite
 
 	$users = DB::table('users')->skip(10)->take(5)->get();
 
@@ -115,14 +115,14 @@ Cette méthode retournera un tableau des titres des rôles. Vous pouvez égaleme
 
 Le Query Builder peut être utilisé pour faire des jointures. Regardez l'exemple suivant :
 
-**Jointure basique**
+#### Jointure basique
 
 	DB::table('users')
 	            ->join('contacts', 'users.id', '=', 'contacts.user_id')
 	            ->join('orders', 'users.id', '=', 'orders.user_id')
 	            ->select('users.id', 'contacts.phone', 'orders.price');
 
-**Jointure de type Left Join**
+#### Jointure de type Left Join
 
     DB::table('users')
         ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
@@ -152,7 +152,7 @@ Si vous souhaitez utiliser une clause where sur vos jointures, vous pouvez utili
 
 Parfois vous pouvez avoir besoin de créer des clauses WHERE avancées comme des "WHERE EXISTS" ou des requêtes avec des clauses imbriquées. Le Query Builder de Laravel peut gérer cela également :
 
-**Groupage de paramètres**
+#### Groupage de paramètres
 
 	DB::table('users')
 	            ->where('name', '=', 'John')
@@ -167,7 +167,7 @@ La requête ci-dessus exécutera la requête suivante :
 
 	select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
 
-**Clause EXISTS**
+#### Clause EXISTS
 
 	DB::table('users')
 	            ->whereExists(function($query)
@@ -190,7 +190,7 @@ La requête ci-dessus exécutera la requête suivante:
 
 Le Query Builder fournit naturellement des méthodes d'agrégats, tel que `count`, `max`, `min`, `avg`, et `sum`.
 
-**Utilisation des méthodes d'agrégats**
+#### Utilisation des méthodes d'agrégats
 
 	$users = DB::table('users')->count();
 
@@ -207,7 +207,7 @@ Le Query Builder fournit naturellement des méthodes d'agrégats, tel que `count
 
 Parfois vous aurez besoin d'utiliser des expressions brutes dans une requête. Ces expressions seront injectées dans la requête en tant que simple chaîne, faites donc attention aux injections SQL ! Pour créer une requête bruite, utilisez la méthode `DB::raw` :
 
-**Utilisation d'une expression brute**
+#### Utilisation d'une expression brute
 
 	$users = DB::table('users')
 	                     ->select(DB::raw('count(*) as user_count, status'))
@@ -215,7 +215,7 @@ Parfois vous aurez besoin d'utiliser des expressions brutes dans une requête. C
 	                     ->groupBy('status')
 	                     ->get();
 
-**Incrémente ou décrémente une valeur**
+#### Incrémente ou décrémente une valeur
 
 	DB::table('users')->increment('votes');
 
@@ -232,7 +232,7 @@ Vous pouvez également spécifier des colonnes additionelles à mettre à jour:
 <a name="inserts"></a>
 ## Insertions
 
-**Insertion d'une ligne dans une table**
+#### Insertion d'une ligne dans une table
 
 	DB::table('users')->insert(
 		array('email' => 'john@example.com', 'votes' => 0)
@@ -240,7 +240,7 @@ Vous pouvez également spécifier des colonnes additionelles à mettre à jour:
 
 Si la table a un identifiant de type qui s'auto-incrémente, utilisez la méthode `insertGetId` pour insérer la ligne et récuperer son Id :
 
-**Insertion d'une ligne dans une table et récupération de l'ID dans la ligne créée**
+#### Insertion d'une ligne dans une table et récupération de l'ID dans la ligne créée
 
 	$id = DB::table('users')->insertGetId(
 		array('email' => 'john@example.com', 'votes' => 0)
@@ -248,7 +248,7 @@ Si la table a un identifiant de type qui s'auto-incrémente, utilisez la méthod
 
 > **Note:** Si vous utilisez PostgreSQL, la méthode insertGetId assume que la colonne auto-incrémentée s'appelle "id".
 
-**Insertion de plusieurs lignes**
+#### Insertion de plusieurs lignes
 
 	DB::table('users')->insert(array(
 		array('email' => 'taylor@example.com', 'votes' => 0),
@@ -258,7 +258,7 @@ Si la table a un identifiant de type qui s'auto-incrémente, utilisez la méthod
 <a name="updates"></a>
 ## Mises à jour
 
-**Mise à jour d'une ligne dans une table**
+#### Mise à jour d'une ligne dans une table
 
 	DB::table('users')
 	            ->where('id', 1)
@@ -267,15 +267,15 @@ Si la table a un identifiant de type qui s'auto-incrémente, utilisez la méthod
 <a name="deletes"></a>
 ## Suppressions
 
-**Suppression d'une ligne dans une table**
+#### Suppression d'une ligne dans une table
 
 	DB::table('users')->where('votes', '<', 100)->delete();
 
-**Suppression de toutes les lignes d'une table**
+#### Suppression de toutes les lignes d'une table
 
 	DB::table('users')->delete();
 
-**Suppression d'une table**
+#### Suppression d'une table
 
 	DB::table('users')->truncate();
 
@@ -284,7 +284,7 @@ Si la table a un identifiant de type qui s'auto-incrémente, utilisez la méthod
 
 Le constructeur de requête vous fournit également une manière rapide de faire des unions :
 
-**Exécution d'une requête Union**
+#### Exécution d'une requête Union
 
 	$first = DB::table('users')->whereNull('first_name');
 
@@ -310,7 +310,7 @@ Pour "verrouiller les mises à jour" lors d'un SELECT, vous pouvez utiliser la m
 
 Vous pouvez facilement mettre en cache les résultats d'une requête en utilisant la méthode `remember` :
 
-**Mise en cache du résultat d'une requête**
+#### Mise en cache du résultat d'une requête
 
 	$users = DB::table('users')->remember(10)->get();
 

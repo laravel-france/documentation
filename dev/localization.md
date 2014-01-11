@@ -26,7 +26,7 @@ Les chaînes de langues sont stockées dans des fichiers à l'intérieur du doss
 
 Les fichiers de langues sont simplements des tableaux avec des clés. Par exemple:
 
-**Fichier de langue d'exemple**
+#### Fichier de langue d'exemple
 
 	<?php
 
@@ -36,14 +36,14 @@ Les fichiers de langues sont simplements des tableaux avec des clés. Par exempl
 
 La langue par défaut est définie dans le fichier de configuration `app/config/app.php`. Vous pouvez changer la langue durant l'exécution grâce à la méthode `App::setLocale` :
 
-**Changement de langue durant l'exécution**
+#### Changement de langue durant l'exécution
 
 	App::setLocale('fr');
 
 <a name="basic-usage"></a>
 ## Utilisation basique
 
-**Retrouve une ligne depuis un fichier de traduction**
+#### Retrouve une ligne depuis un fichier de traduction
 
 	echo Lang::get('messages.welcome');
 
@@ -55,7 +55,7 @@ Vous pouvez aussi utiliser la fonction `trans`, qui est un alias de la méthode 
 
     echo trans('messages.welcome');
 
-**Ligne de traduction variable**
+#### Ligne de traduction variable
 
 Vous pouvez placer une variable dans votre ligne de langue :
 
@@ -65,7 +65,7 @@ Ensuite, passez un tableau de correspondance en tant que second argument à la m
 
 	echo Lang::get('messages.welcome', array('name' => 'Dayle'));
 
-**Determine si un fichier de traduction contient une ligne**
+#### Determine si un fichier de traduction contient une ligne
 
 	if (Lang::has('messages.welcome'))
 	{

@@ -20,14 +20,14 @@ Comprendre le conteneur IoC de Laravel est essentiel pour construire des applica
 
 Il y a deux manières pour faire résoudre des dépendances au conteneur IoC : via des fonctions anonymes, ou alors en résolution automatique. Nous allons d'abord voir l'utilisation de fonctions anonymes. Premièrement, un "type" doit être lié dans le conteneur :
 
-**Liaison d'un type dans le conteneur**
+#### Liaison d'un type dans le conteneur
 
     App::bind('foo', function($app)
     {
         return new FooBar;
     });
 
-**Résolution d'un type depuis le conteneur**
+#### Résolution d'un type depuis le conteneur
 
     $value = App::make('foo');
 
@@ -35,7 +35,7 @@ Quand la méthode `App::make` est appelée, la fonction anonyme est exécutée e
 
 Parfois, vous voudrez lier quelque chose dans le conteneur qui ne doit pas être instancié à chaque appel, mais vous souhaiteriez que la même instance soit retournée à chaque fois :
 
-**Liaison d'un type "partagé" dans le conteneur**
+#### Liaison d'un type "partagé" dans le conteneur
 
     App::singleton('foo', function()
     {
@@ -44,12 +44,12 @@ Parfois, vous voudrez lier quelque chose dans le conteneur qui ne doit pas être
 
 Vous pouvez également lier un objet existant au conteneur en utilisant la méthode `instance` :
 
-**Liaison d'un object existant dans le conteneur**
+#### Liaison d'un object existant dans le conteneur
 
     $foo = new Foo;
 
     App::instance('foo', $foo);
-    
+
 <a name="where-to-register"></a>
 ## Où enregistrer ses liaisons
 
@@ -62,7 +62,7 @@ Si votre application à un nombre important de liaisons IoC, vous pouvez sépare
 
 Le conteneur IoC est assez puissant pour résoudre des classes sans aucune configuration dans la plupart des cas. Par exemple :
 
-**Résolution automatique d'une classe**
+#### Résolution automatique d'une classe
 
     class FooBar {
 
@@ -81,7 +81,7 @@ Quand un type n'est pas lié dans le conteneur, il utilisera la Reflexion PHP po
 
 Cependant, dans certains cas, une classe peut dépendre d'une interface et non d'un type "concret". Quand le cas se produit, la méthode `App::bind` peut être utilisée pour informer le conteneur de quelle implémentation de l'interface doit être injectée :
 
-**Liaison d'une implémentation d'une interface**
+#### Liaison d'une implémentation d'une interface
 
     App::bind('UserRepositoryInterface', 'DbUserRepository');
 
@@ -103,7 +103,7 @@ Etant donné que nous avons lié l'interface `UserRepositoryInterface`, le type 
 
 Laravel fournit plusieurs opportunités d'utiliser le conteneur IoC pour augmenter la flexibilité et la testabilité de votre application. Un exemple peut être la résolution d'un contrôleur. Tous les contrôleurs sont résolus par le conteneur IoC, cela signifie que l'on peut utiliser le typage objet implicite dans le constructeur du contrôleur, et ils seront automatiquement injectés.
 
-**Déclaration de dépendance par typage object implicite dans le contrôleur**
+#### Déclaration de dépendance par typage object implicite dans le contrôleur
 
     class OrderController extends BaseController {
 
@@ -125,7 +125,7 @@ Dans cet exemple, la classe `OrderRepository` sera automatiquement injectée dan
 
 [Les filtres](/dev/routing#route-filters), [les composeurs](/dev/responses#view-composers), et [les gestionnaires d'événements](/dev/events#using-classes-as-listeners) peuvent également être résolus par le conteneur IoC. Lors de leur enregistrement, donnez simplement le nom de la classe qui doit être utilisée :
 
-**Exemple d'utilisation de l'IoC**
+#### Exemple d'utilisation de l'IoC
 
     Route::filter('foo', 'FooFilter');
 
@@ -142,7 +142,7 @@ En fait, une grande partie des composants du coeur du framework Laravel inclut u
 
 Pour créer un fournisseur de service, votre classe doit hériter de la classe `Illuminate\Support\ServiceProvider` et définir une méthode `register` :
 
-**Définition d'un fournisseur de service**
+#### Définition d'un fournisseur de service
 
     use Illuminate\Support\ServiceProvider;
 
@@ -162,7 +162,7 @@ Notez que dans la méthode `register`, le conteneur IoC de l'application est dis
 
 Vous pouvez également enregistrer un fournisseur de service lors de l'exécution de la méthode `App::register` :
 
-**Enregistrement d'un fournisseur de service lors de l'exécution**
+#### Enregistrement d'un fournisseur de service lors de l'exécution
 
     App::register('FooServiceProvider');
 
@@ -171,7 +171,7 @@ Vous pouvez également enregistrer un fournisseur de service lors de l'exécutio
 
 Le conteneur lance des événements chaque fois qu'il résout un objet. Vous pouvez écouter cet événement en utilisant la méthod `resolving` :
 
-**Enregistrement d'un écouteur de résolution**
+#### Enregistrement d'un écouteur de résolution
 
     App::resolvingAny(function($object)
     {

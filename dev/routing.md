@@ -16,28 +16,28 @@
 
 La plupart des routes de votre application seront définies dans le fichier `app/routes.php`. La route la plus simple sur Laravel consiste en une URI et une fonction de retour anonyme.
 
-**Route GET basique**
+#### Route GET basique
 
     Route::get('/', function()
     {
         return 'Hello World';
     });
 
-**Route POST basique**
+#### Route POST basique
 
     Route::post('foo/bar', function()
     {
         return 'Hello World';
     });
 
-**Enregistrement d'une route répondant à tous les verbes HTTP**
+#### Enregistrement d'une route répondant à tous les verbes HTTP
 
     Route::any('foo', function()
     {
         return 'Hello World';
     });
 
-**Force une route à utiliser HTTPS**
+#### Force une route à utiliser HTTPS
 
     Route::get('foo', array('https', function()
     {
@@ -56,21 +56,21 @@ Vous aurez souvent besoin de générer des URLs vers vos routes, pour ce faire u
         return 'User '.$id;
     });
 
-**Paramètre optionnel de routes**
+#### Paramètre optionnel de routes
 
     Route::get('user/{name?}', function($name = null)
     {
         return $name;
     });
 
-**Paramètre optionnel de routes avec une valeur par défaut**
+#### Paramètre optionnel de routes avec une valeur par défaut
 
     Route::get('user/{name?}', function($name = 'John')
     {
         return $name;
     });
 
-**Routes avec paramètre contraintes par une expression régulière**
+#### Routes avec paramètre contraintes par une expression régulière
 
     Route::get('user/{name}', function($name)
     {
@@ -83,8 +83,8 @@ Vous aurez souvent besoin de générer des URLs vers vos routes, pour ce faire u
         //
     })
     ->where('id', '[0-9]+');
-    
-**Passage d'un tableau de contraintes**
+
+#### Passage d'un tableau de contraintes
 
 Bien sûr, vous pouvez passer un tableau de contraintes quand cela est nécessaire :
 
@@ -93,8 +93,8 @@ Bien sûr, vous pouvez passer un tableau de contraintes quand cela est nécessai
         //
     })
     ->where(array('id' => '[0-9]+', 'name' => '[a-z]+'))
-    
-**Definition d'une expression globale**
+
+#### Definition d'une expression globale
 
 Si vous voulez un paramètre de route pour toujours être contraint par une expression régulière donnée, vous pouvez utiliser la méthode `pattern` :
 
@@ -104,8 +104,8 @@ Si vous voulez un paramètre de route pour toujours être contraint par une expr
     {
         // Only called if {id} is numeric.
     });
-    
-**Accès à une valeur d'un paramètre de route A Route Parameter Value**
+
+#### Accès à une valeur d'un paramètre de route A Route Parameter Value
 
 Si vous avez besoin d'accéder à la valeur d'un paramètre de route en dehors de la route, vous pouvez utiliser la méthode `Route::input` :
 
@@ -122,7 +122,7 @@ Si vous avez besoin d'accéder à la valeur d'un paramètre de route en dehors d
 
 Les filtres de routes fournissent une manière simple de limiter l'accès à certaines routes, ce qui est utile par exemple pour les parties d'un site qui nécessitent une identification. Il y a plusieurs filtres inclus avec le framework Laravel par défaut, dont un filtre `auth`, un filtre `auth.basic`, un filtre `guest`, et un filtre `csrf`. Ils sont situés dans le fichier `app/filters.php`.
 
-**Définition d'un filtre de route**
+#### Définition d'un filtre de route
 
     Route::filter('old', function()
     {
@@ -133,25 +133,25 @@ Les filtres de routes fournissent une manière simple de limiter l'accès à cer
 
 Si une réponse est retournée par un filtre, cette réponse sera considérée comme la réponse de la requête et la route ne sera pas exécutée, et les filtres `after` seront annulés également.
 
-**Attachement d'un filtre à une route**
+#### Attachement d'un filtre à une route
 
     Route::get('user', array('before' => 'old', function()
     {
         return 'You are over 200 years old!';
     }));
 
-**Attachement d'un filtre à une action sur un contrôleur**
+#### Attachement d'un filtre à une action sur un contrôleur
 
     Route::get('user', array('before' => 'old', 'uses' => 'UserController@showProfile'));
 
-**Attachement de plusieurs filtres à une route**
+#### Attachement de plusieurs filtres à une route
 
     Route::get('user', array('before' => 'auth|old', function()
     {
         return 'You are authenticated and over 200 years old!';
     }));
 
-**Spécification des paramètres de filtres**
+#### Spécification des paramètres de filtres
 
     Route::filter('age', function($route, $request, $value)
     {
@@ -170,7 +170,7 @@ Les filtres 'after' reçoivent une `$response` en tant que troisième argument d
         //
     });
 
-**Filtres basés sur un patron de route**
+#### Filtres basés sur un patron de route
 
 Vous pouvez aussi spécifier qu'un filtre s'applique sur un jeu entier de routes en se basant sur leurs URIs.
 
@@ -187,11 +187,11 @@ Vous pouvez également spécifier une contrainte selon le verbe HTTP :
 
     Route::when('admin/*', 'admin', array('post'));
 
-**Classes de filtres**
+#### Classes de filtres
 
 Pour du filtrage avancé, vous pouvez utiliser une classe plutôt qu'une fonction anonyme. Comme les filtres de classes sont résolus par [le conteneur IoC](/dev/ioc), vous serez en mesure d'utiliser l'injection de dépendance dans ces filtres pour une meilleure testabilité.
 
-**Définition d'une classe de filtre**
+#### Définition d'une classe de filtre
 
     class FooFilter {
 
@@ -202,7 +202,7 @@ Pour du filtrage avancé, vous pouvez utiliser une classe plutôt qu'une fonctio
 
     }
 
-**Enregistrement d'un filtre basé sur une classe**
+#### Enregistrement d'un filtre basé sur une classe
 
     Route::filter('foo', 'FooFilter');
 
@@ -253,7 +253,7 @@ Parfois, vous pourriez avoir besoin d'appliquer un filtre sur tout un groupe de 
 
 Les routes de Laravel permettent également de router à partir d'un sous-domaine. En utilisant un paramètre de routes en sous-domaine, ce dernier sera alors passé en tant que paramètre à la route :
 
-**Enregistrement d'un groupe de routes à partir du sous-domaine**
+#### Enregistrement d'un groupe de routes à partir du sous-domaine
 
     Route::group(array('domain' => '{account}.myapp.com'), function()
     {
@@ -269,7 +269,7 @@ Les routes de Laravel permettent également de router à partir d'un sous-domain
 
 Un groupe de route peut être préfixé en utilisant l'option `prefix` dans le tableau d'attribut d'un groupe de routes :
 
-**Préfixage d'un groupe de routes**
+#### Préfixage d'un groupe de routes
 
     Route::group(array('prefix' => 'admin'), function()
     {
@@ -286,7 +286,7 @@ Un groupe de route peut être préfixé en utilisant l'option `prefix` dans le t
 
 La liaison de modèle fournit une manière agréable d'injecter l'instance d'un modèle à l'intérieur d'une route. Par exemple, plutôt que d'injecter un ID d'utilisateur, Vous pouvez injecter le modèle entier qui correspond à l'ID. Premièrement, utilisez la méthode `Route::model` pour spécifier le modèle qui doit être utilisé pour un paramètre spécifique :
 
-**Liaison d'un paramètre à un modèle**
+#### Liaison d'un paramètre à un modèle
 
     Route::model('user', 'User');
 

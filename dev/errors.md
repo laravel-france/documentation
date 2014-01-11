@@ -102,7 +102,7 @@ Monolog a une multitude de gestionnaires supplémentaires que vous pouvez utilis
 
 Vous pouvez également enregistrer un événement pour attraper tous les messages passés à la journalisation :
 
-**Enregistrement d'un écouteur de journalisation**
+#### Enregistrement d'un écouteur de journalisation
 
     Log::listen(function($level, $message, $context)
     {
