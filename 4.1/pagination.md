@@ -17,13 +17,13 @@ La vue `pagination::slider` a pour fonction de produire une restitution élabor�
 
 Il existe plusieurs manières de paginer des éléments. La plus simple est d'utiliser la méthode `paginate` du requêteur ou d'un modèle Eloquent.
 
-**Paginer le résultat d'une requête de base de données**
+#### Paginer le résultat d'une requête de base de données
 
 	$users = DB::table('users')->paginate(15);
 
 Vous pouvez aussi paginer un modèle [Eloquent](/4.1/eloquent) :
 
-**Paginer un modèle Eloquent**
+#### Paginer un modèle Eloquent
 
     $allUsers = User::paginate(15);
 
@@ -57,11 +57,11 @@ Vous pouvez également accéder à des informations additionelles sur la paginat
 
 Si vous souhaitez créer une pagination manuellement en fournissant un tableau d'éléments, utilisez la méthode `Paginator::make` :
 
-**Créer manuellement une pagination**
+#### Créer manuellement une pagination
 
 	$paginator = Paginator::make($items, $totalItems, $perPage);
 
-**Personnaliser l'URI de la pagination**
+#### Personnaliser l'URI de la pagination
 
 Vous pouvez aussi personnaliser l'URI utilisée par la pagination via la méthode `setBaseUrl` :
 
@@ -90,7 +90,7 @@ L'appel à cette méthode permet de générer des URLs qui ressemblent à cela  
 
     http://example.com/something?page=2#foo
 
-    
+
 <a name="converting-to-json"></a>
 ## Conversion en JSON
 

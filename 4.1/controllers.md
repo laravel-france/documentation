@@ -109,7 +109,7 @@ Si vous voulez utiliser une autre méthode du contrôleur en tant que filtre, vo
         {
             $this->beforeFilter('@filterRequests');
         }
-        
+
         /**
          * Filter the incoming requests.
          */
@@ -117,7 +117,7 @@ Si vous voulez utiliser une autre méthode du contrôleur en tant que filtre, vo
         {
             //
         }
-        
+
     }
 
 
@@ -126,7 +126,7 @@ Si vous voulez utiliser une autre méthode du contrôleur en tant que filtre, vo
 
 Laravel vous permet de définir une seule route pour gérer toutes les actions d'un contrôleur en utilisant une simple convention de nommage REST. Premièrement, définissez la route en utilisant la méthode `Route::controller` :
 
-**Définition d'un contrôleur RESTful**
+#### Définition d'un contrôleur RESTful
 
 	Route::controller('users', 'UserController');
 
@@ -167,7 +167,7 @@ Maintenant nous pouvons enregistrer une route "resourceful" vers notre contrôle
 
 Cette simple déclaration de route crée de multiples routes pour gérer une variété d'actions RESTful sur notre ressource "photo". De plus, le contrôleur généré contiendra déjà des méthodes pour chacune de ces actions avec une note vous informant à quelles URIs et à quels verbes HTTP ils répondent.
 
-**Actions gérées par un contrôleur de ressource**
+#### Actions gérées par un contrôleur de ressource
 
 Verb      | Path                        | Action       | Route Name
 ----------|-----------------------------|--------------|---------------------
@@ -192,7 +192,7 @@ Et, vous pouvez aussi spécifier quelles méthodes doivent être disponibles via
 
     Route::resource('photo', 'PhotoController',
             array('except' => array('create', 'store', 'update', 'delete')));
-            
+
 Par défaut, toutes les actions des contrôleurs de ressources ont un nom; Cependant vous pouvez surcharger ces noms en passant un tableau `names` avec vos options :
 
     Route::resource('photo', 'PhotoController',
@@ -203,7 +203,7 @@ Par défaut, toutes les actions des contrôleurs de ressources ont un nom; Cepen
 
 Une méthode attrape-tout peut être créée, elle sera appelée quand aucune autre méthode n'est trouvée dans un contrôleur donné. La méthode doit s'appeler `missingMethod`, et elle reçoit  la méthode ainsi que le tableau de paramètres de la requête :
 
-**Définition d'une méthode attrape-tout**
+#### Définition d'une méthode attrape-tout
 
 	public function missingMethod($parameters)
 	{

@@ -23,17 +23,17 @@ Si votre application n'utilise pas Eloquent, vous pouvez utiliser le driver d'au
 
 La classe Laravel `Hash` fournit un cryptage sécurisé Bcrypt :
 
-**Cryptage d'un mot de passe en utilisant Bcrypt**
+#### Cryptage d'un mot de passe en utilisant Bcrypt
 
     $password = Hash::make('secret');
 
-**Vérification d'un mot de passe contre son équivalent crypté**
+#### Vérification d'un mot de passe contre son équivalent crypté
 
     if (Hash::check('secret', $hashedPassword)) {
         // The passwords match...
     }
 
-**Vérifie si un mot de passe a besoin d'être recrypté**
+#### Vérifie si un mot de passe a besoin d'être recrypté
 
     if (Hash::needsRehash($hashed)) {
         $hashed = Hash::make('secret');
@@ -54,7 +54,7 @@ Lorsque la méthode `attempt` est appelée, l'[événement](/4.1/events) `auth.a
 
 Pour déterminer si un utilisateur est déjà connecté à votre application, vous pouvez utiliser la méthode `check` :
 
-**Détermine si un utilisateur est identifié**
+#### Détermine si un utilisateur est identifié
 
     if (Auth::check()) {
         // The user is logged in...
@@ -62,7 +62,7 @@ Pour déterminer si un utilisateur est déjà connecté à votre application, vo
 
 Si vous souhaitez fournir la fonctionnalité "Se souvenir de moi" dans votre application, vous devez passer `true` en tant que second argument à la méthode `attempt`, cela gardera l'utilisateur connecté indéfiniement (ou jusqu'à ce qu'il se déconnecte) :
 
-**Identifier un utilisateur et se souvenir de lui**
+#### Identifier un utilisateur et se souvenir de lui
 
     if (Auth::attempt(array('email' => $email, 'password' => $password), true)) {
         // The user is being remembered...
@@ -70,7 +70,7 @@ Si vous souhaitez fournir la fonctionnalité "Se souvenir de moi" dans votre app
 
 > **Note:** Si la méthode `attempt` retourne `true`, alors l'utilisateur est connecté à votre application.
 
-**Détermine si un utilisateur est connecté avec l'option remember**
+#### Détermine si un utilisateur est connecté avec l'option remember
 
 Si vous utiliser l'option "remember" lors de la connexion de l'utilisateur, vous pouvez utiliser la méthode `viaRemember` pour savoir si l'utilisateur a été connecté via le cookie :
 
@@ -78,7 +78,7 @@ Si vous utiliser l'option "remember" lors de la connexion de l'utilisateur, vous
     {
         //
     }
- 
+
 Vous pouvez ajouter des conditions particulières à la requête d'identification :
 
     if (Auth::attempt(array('email' => $email, 'password' => $password, 'active' => 1))) {
@@ -89,7 +89,7 @@ Vous pouvez ajouter des conditions particulières à la requête d'identificatio
 
 Une fois qu'un utilisateur est connecté, vous pouvez accéder à son modèle/enregistrement :
 
-**Accès à l'utilisateur connecté**
+#### Accès à l'utilisateur connecté
 
     $email = Auth::user()->email;
 
@@ -99,7 +99,7 @@ Pour connecter simplement un utilisateur dans votre application en utilisant son
 
 La méthode `validate` vous permet de valider que les identifiants d'un utilisateur sont corrects sans le connecter à l'application :
 
-**Valide les identifiants d'un utilisateur sans le connecter**
+#### Valide les identifiants d'un utilisateur sans le connecter
 
     if (Auth::validate($credentials)) {
         //
@@ -107,13 +107,13 @@ La méthode `validate` vous permet de valider que les identifiants d'un utilisat
 
 Vous pouvez également utiliser la méthode `once` pour connecter un utilisateur le temps d'une seule requête. Il n'y aura ni session ni cookie pour cet utilisateur.
 
-**Connecte un utilisateur pour une seule requête**
+#### Connecte un utilisateur pour une seule requête
 
     if (Auth::once($credentials)) {
         //
     }
 
-**Déconnecte un utilisateur**
+#### Déconnecte un utilisateur
 
     Auth::logout();
 
@@ -133,7 +133,7 @@ Ceci est l'équivalent de la connexion d'un utilisateur via la commande `attempt
 
 Les filtres de routes peuvent être utilisés pour autoriser uniquement les utilisateurs connectés à accéder à certaines routes. Laravel fournit un filtre `auth` par défaut, qui se situe dans le fichier `app/filters.php`.
 
-**Protection d'une route**
+#### Protection d'une route
 
     Route::get('profile', array('before' => 'auth', function()
     {
@@ -144,11 +144,11 @@ Les filtres de routes peuvent être utilisés pour autoriser uniquement les util
 
 Laravel fournit une méthode simple pour protéger votre application contre les attaques de type [CSRF](http://fr.wikipedia.org/wiki/Cross-site_request_forgery).
 
-**Insertion du jeton CSRF dans votre formulaire**
+#### Insertion du jeton CSRF dans votre formulaire
 
     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
-**Validation du jeton CSRF envoyé**
+#### Validation du jeton CSRF envoyé
 
     Route::post('register', array('before' => 'csrf', function()
     {
@@ -160,7 +160,7 @@ Laravel fournit une méthode simple pour protéger votre application contre les 
 
 L'identification HTTP Basic fournit une manière rapide d'identifier des utilisateurs de votre application sans avoir à créer une page de "login". Pour commencer, attachez le filtre `auth.basic` à votre route :
 
-**Protection d'une route avec HTTP Basic**
+#### Protection d'une route avec HTTP Basic
 
     Route::get('profile', array('before' => 'auth.basic', function()
     {
@@ -173,7 +173,7 @@ Par défaut, le filtre `basic` utilisera la colonne `email` de l'enregistrement 
 
 Vous pouvez également utiliser l'identification HTTP Basic sans conserver l'utilisateur connecté en session après la requête, ce qui est utile pour l'identification dans une API. Pour ce faire, créez un filtre qui retourne la méthode `onceBasic` :
 
-**Définit un filtre HTTP Basic de connexion stateless**
+#### Définit un filtre HTTP Basic de connexion stateless
 
     Route::filter('basic.once', function()
     {
@@ -192,7 +192,7 @@ Si vous utilisez PHP FastCGI, l'authentification HTTP Basic ne fonctionnera pas 
 
 La plupart des sites fournissent la possibilité à l'utilisateur de réinitialiser son mot de passe. Plutôt que de vous forcer à réimplémenter cela sur chaque application, Laravel fournit des méthodes pratiques pour envoyer un rappel de mot de passe ou réinitialiser ce dernier. Pour commencer, vérifiez que votre modèle `User` implémente l'interface `Illuminate\Auth\RemindableInterface`. Bien sûr, le modèle par défaut `User` inclus dans le framework l'implémente déjà.
 
-**Implémentation de l'interface RemindableInterface**
+#### Implémentation de l'interface RemindableInterface
 
     class User extends Eloquent implements RemindableInterface {
 
@@ -205,7 +205,7 @@ La plupart des sites fournissent la possibilité à l'utilisateur de réinitiali
 
 Ensuite, une table doit être créée pour stocker le jeton de réinitialisation du mot de passe. Pour générer une migration pour cette table, exécutez simplement la commande artisan `auth:reminders` :
 
-**Génération de la migration pour la table de rappel**
+#### Génération de la migration pour la table de rappel
 
     php artisan auth:reminders
 
@@ -260,19 +260,19 @@ Par défaut, la méthode `Password::reset` vérifiera que le mot de passe fait p
 
 Laravel fournit une solution pour du chiffrage fort AES-256 avec l'extension PHP mcrypt:
 
-**Chiffrage d'une valeur**
+#### Chiffrage d'une valeur
 
     $encrypted = Crypt::encrypt('secret');
 
 > **Note:** Veuillez vous assurer d'avoir défini une clé de 32 caractères aléatoires dans l'option `key` du fichier de configuration `app/config/app.php`. Sans cela, le chiffrage ne sera pas assez fort.
 
-**Déchiffrage d'une valeur**
+#### Déchiffrage d'une valeur
 
     $decrypted = Crypt::decrypt($encryptedValue);
 
 Vous pouvez également préciser le chiffrement ou le mode utilisé par le chiffreur :
 
-**Réglage du chiffrement et du mode**
+#### Réglage du chiffrement et du mode
 
     Crypt::setMode('ctr');
 

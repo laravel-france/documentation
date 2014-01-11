@@ -16,46 +16,46 @@ Les sessions sont paramétrables dans le fichier `app/config/session.php`. Exami
 <a name="session-usage"></a>
 ## Utilisation
 
-**Enregistrer une information dans une variable de session**
+#### Enregistrer une information dans une variable de session
 
 	Session::put('key', 'value');
 
-**Empile une valeur dans une variable de session**
+#### Empile une valeur dans une variable de session
 
     Session::push('user.teams', 'developers');
-    
+
     Session::push('user', 'patrick');
 
-**Lire une variable de session**
+#### Lire une variable de session
 
 	$value = Session::get('key');
 
-**Lire une variable ou retourner une valeur par défaut**
+#### Lire une variable ou retourner une valeur par défaut
 
 	$value = Session::get('key', 'default');
 
 	$value = Session::get('key', function() { return 'default'; });
 
-**Retourner toutes les données de la session**
+#### Retourner toutes les données de la session
 
     $data = Session::all();
 
-**Déterminer l'existence d'une variable de session**
+#### Déterminer l'existence d'une variable de session
 
 	if (Session::has('users'))
 	{
 		//
 	}
 
-**Supprimer une variable de session**
+#### Supprimer une variable de session
 
 	Session::forget('key');
 
-**Supprimer toutes les variables de session**
+#### Supprimer toutes les variables de session
 
 	Session::flush();
 
-**Régénérer l'identifiant de session**
+#### Régénérer l'identifiant de session
 
 	Session::regenerate();
 
@@ -66,11 +66,11 @@ Si vous souhaitez enregistrer des variables de session uniquement pour les trans
 
 	Session::flash('key', 'value');
 
-**Répéter le flash pour une autre requête**
+#### Répéter le flash pour une autre requête
 
 	Session::reflash();
 
-**Répéter le flash de certaines variables**
+#### Répéter le flash de certaines variables
 
 	Session::keep(array('username', 'email'));
 

@@ -11,7 +11,7 @@
 
 La classe `Event` du framework Laravel vous permet de souscrire et d'écouter des événements dans votre application.
 
-**Enregistrement à un événement**
+#### Enregistrement à un événement
 
     Event::listen('user.login', function($user)
     {
@@ -20,13 +20,13 @@ La classe `Event` du framework Laravel vous permet de souscrire et d'écouter de
         $user->save();
     });
 
-**Déclencher un événement**
+#### Déclencher un événement
 
     $event = Event::fire('user.login', array($user));
 
 Vous pouvez spécifier une priorité pour vos écouteurs d'événements. Les écouteurs ayant une plus grande priorité seront exécutés en premier, tandis que les écouteurs qui ont la même priorité seront exécutés dans leur ordre d'enregistrement.
 
-**Enregistrement à un événement avec priorité**
+#### Enregistrement à un événement avec priorité
 
     Event::listen('user.login', 'LoginHandler', 10);
 
@@ -34,7 +34,7 @@ Vous pouvez spécifier une priorité pour vos écouteurs d'événements. Les éc
 
 Vous pouvez stopper la propagation d'un événement aux autres, en retournant 'false' depuis l'écouteur :
 
-**Stoppe la propagation d'un événement**
+#### Stoppe la propagation d'un événement
 
     Event::listen('user.login', function($event)
     {
@@ -55,7 +55,7 @@ Si vos fichiers `start` deviennent ingérables, vous pouvez créer un fichier `a
 
 Lors de l'enregistrement d'un écouteur d'événement, vous pouvez utiliser un joker :
 
-**Enregistrement d'un écouteur joker**
+#### Enregistrement d'un écouteur joker
 
     Event::listen('foo.*', function($param)
     {
@@ -63,9 +63,9 @@ Lors de l'enregistrement d'un écouteur d'événement, vous pouvez utiliser un j
     });
 
 Cet écouteur va gérer tous les événement qui commencent par `foo.`.
- 
+
 Vous pouvez utiliser la méthode `Event::firing` pour déterminer quel événement a été lancé :
- 
+
     Event::listen('foo.*', function($param)
     {
         if (Event::firing() == 'foo.bar')
@@ -79,13 +79,13 @@ Vous pouvez utiliser la méthode `Event::firing` pour déterminer quel événeme
 
 Dans certains cas, vous pourriez vouloir utiliser une classe pour gérer un événement plutôt qu'une fonction anonyme. Les événements de classes sont résolus grâce au [conteneur IoC de Laravel](/4.1/ioc), vous fournissant ainsi la puissance de l'injecteur de dépendance à votre classe.
 
-**Enregistrement d'une classe écouteur**
+#### Enregistrement d'une classe écouteur
 
     Event::listen('user.login', 'LoginHandler');
 
 Par défaut, la méthode `handle` de la classe `LoginHandler` sera appelée :
 
-**Définition d'une classe écouteur d'événement**
+#### Définition d'une classe écouteur d'événement
 
     class LoginHandler {
 
@@ -98,7 +98,7 @@ Par défaut, la méthode `handle` de la classe `LoginHandler` sera appelée :
 
 Si vous ne souhaitez pas utiliser la méthode par défaut `handle`, vous pouvez préciser le nom d'une méthode que vous souhaitez utiliser :
 
-**Spécifie quelle méthode doit être utilisée**
+#### Spécifie quelle méthode doit être utilisée
 
     Event::listen('user.login', 'LoginHandler@onLogin');
 
@@ -107,11 +107,11 @@ Si vous ne souhaitez pas utiliser la méthode par défaut `handle`, vous pouvez 
 
 En utilisant les méthodes `queue` et `flush`, vous pouvez mettre en attente un événement à déclarer, mais sans le lancer tout de suite :
 
-**Enregistrement d'un événement dans la file d'attente**
+#### Enregistrement d'un événement dans la file d'attente
 
     Event::queue('foo', array($user));
 
-**Enregistrement d'un videur**
+#### Enregistrement d'un videur
 
     Event::flusher('foo', function($user)
     {
@@ -127,7 +127,7 @@ Finalement, vous pouvez exécuter le "videur" et vider tous les événements en 
 
 Les classes d'abonnement sont des classes qui peuvent souscrire à plusieurs événements, enregistrés au sein même de ces classes. Ces classes doivent définir une méthode `subscribe` qui reçoit en unique argument une instance du répartiteur d'événement :
 
-**Définition d'une classe d'abonnement**
+#### Définition d'une classe d'abonnement
 
     class UserEventHandler {
 
@@ -164,7 +164,7 @@ Les classes d'abonnement sont des classes qui peuvent souscrire à plusieurs év
 
 Une fois que la classe a été définie, elle doit être enregistrée avec la classe `Event`.
 
-**Enregistrement d'une classe d'abonnement**
+#### Enregistrement d'une classe d'abonnement
 
     $subscriber = new UserEventHandler;
 

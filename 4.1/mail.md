@@ -56,7 +56,7 @@ Lors de l'ajout de fichiers joints, vous devez définir le type MIME et/ou un no
 
 Incruster des images dans les messages est généralement laborieux ; cependant, Laravel fournit une manière pratique d'attacher des images aux messages et d'obtenir le Content-ID approprié.
 
-**Incruster une image dans une vue de message**
+#### Incruster une image dans une vue de message
 
 	<body>
 		Here is an image:
@@ -64,7 +64,7 @@ Incruster des images dans les messages est généralement laborieux ; cependant,
 		<img src="<?php echo $message->embed($pathToFile); ?>">
 	</body>
 
-**Incruster dans une vue de message, une image présente en mémoire**
+#### Incruster dans une vue de message, une image présente en mémoire
 
 	<body>
 		Here is an image from raw data:
@@ -79,7 +79,7 @@ Notez que la variable `$message` est toujours passée aux vues de message par la
 
 Etant donné que l'envoi d'e-mail peut augmenter drastiquement le temps de réponse de votre application, plusieurs développeurs choisissent de mettre en queue les emails pour un envoi de tâche de fond. Laravel rend cela simple en utilisant son [API de queue](/4.1/queues). Pour mettre en queue un e-mail, utilisez simplement la méthode `queue` sur la classe `Mail` :
 
-**Mise en queue d'un e-mail**
+#### Mise en queue d'un e-mail
 
 	Mail::queue('emails.welcome', $data, function($m)
 	{
@@ -105,6 +105,6 @@ Si vous souhaitez spécifier une queue spécifique, ou "tube", sur laquelle votr
 
 Lors du développement d'une application qui envoie des e-mails, il est généralement préférable de désactiver l'envoi des e-mails depuis votre environnement local, ou de développement. Pour ce faire, vous pouvez soit utiliser la méthode `Mail::pretend`, ou définir l'option `pretend` dans le fichier de configuration `app/config/mail.php` à `true`. Quand l'e-mail est en mode `pretend`, les messages seront écris dans le fichier de log de votre application plutôt que d'être envoyés au destinataire.
 
-**Active le mode simulation d'envoi d'e-mail**
+#### Active le mode simulation d'envoi d'e-mail
 
 	Mail::pretend();

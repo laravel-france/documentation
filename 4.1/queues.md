@@ -25,13 +25,13 @@ Les dépendances suivantes sont requises pour les drivers de queues listés :
 
 Pour ajouter une tâche à la file d'attente, utilisez la méthode `Queue::push` :
 
-**Ajouter une tâche à la file de travaux**
+#### Ajouter une tâche à la file de travaux
 
 	Queue::push('SendEmail', array('message' => $message));
 
 Le premier paramètre attendu par la méthode `push` est le nom de la classe à utiliser pour l'exécution de la tâche. Le second paramètre est un tableau de données à transmettre à la procédure d'exécution de la tâche.
 
-**Définir une procédure d'exécution de tâche**
+#### Définir une procédure d'exécution de tâche
 
 	class SendEmail {
 
@@ -46,35 +46,35 @@ Remarquez que seul l'appel de la méthode `fire` en joignant l'instance de tâch
 
 Si vous souhaitez que votre tâche utilise une autre méthode que `fire`, vous devez spécifier la méthode lorsque vous poussez la tâche :
 
-**Spécifie une méthode personnalisée**
+#### Spécifie une méthode personnalisée
 
     Queue::push('SendEmail@send', array('message' => $message));
-    
-**Spécifie une file de travaux en particulier pour un job**
+
+#### Spécifie une file de travaux en particulier pour un job
 
 Vous pouvez également renseigner le nom de la file de travaux (queue ou tube) sur laquelle la tâche devra être exécutée :
 
 	Queue::push('SendEmail@send', array('message' => $message), 'emails');
 
-**Passage des mêmes données à plusieurs jobs**
+#### Passage des mêmes données à plusieurs jobs
 
 Si vous avez besoin de passer les mêmes données à plusieurs files de travaux, vous pouvez utiliser la méthode `Queue::bulk` :
 
 	Queue::bulk(array('SendEmail', 'NotifyUser'), $payload);
-    
+
 Parfois, vous pourriez vouloir repousser l'exécution d'une tâche. Par exemple, vous pourriez vouloir envoyer un mail à votre utilisateur 15 minutes après sont enregistrement. Vous pouvez le faire en utilisant la méthode `Queue::later` :
 
-**Repousse l'exécution d'une tâche**
+#### Repousse l'exécution d'une tâche
 
 	$date = Carbon::now()->addMinutes(15);
-	
+
 	Queue::later($date, 'SendEmail@send', array('message' => $message));
 
 Dans cet exemple, nous utilisons [Carbon](https://github.com/briannesbitt/Carbon) pour spécifier le délai après lequel nous exécuterons la tâche. Une altérnative est de passer un nombre de secondes en entier en tant que premier argument.
 
 Une fois la tâche exécutée, vous devez la supprimer de la file d'attente à l'aide de la méthode `delete` au sein de l'instance de tâche :
 
-**Supprimer une tâche terminée**
+#### Supprimer une tâche terminée
 
 	public function fire($job, $data)
 	{
@@ -85,7 +85,7 @@ Une fois la tâche exécutée, vous devez la supprimer de la file d'attente à l
 
 Pour réintégrer une tâche dans la file d'attente, utilisez la méthode `release` :
 
-**Réintégrer une tâche dans la file d'attente**
+#### Réintégrer une tâche dans la file d'attente
 
 	public function fire($job, $data)
 	{
@@ -100,7 +100,7 @@ De plus, indiquez le temps d'attente en seconde avant réintégration :
 
 Si une exception survient à l'exécution d'une tâche, cette tâche est automatiquement réintégrée à la file d'attente. Contrôlez le nombre de tentatives effectuées à l'aide de la méthode `attempts` :
 
-**Vérifier le nombre de tentatives d'exécution**
+#### Vérifier le nombre de tentatives d'exécution
 
 	if ($job->attempts() > 3)
 	{
@@ -109,7 +109,7 @@ Si une exception survient à l'exécution d'une tâche, cette tâche est automat
 
 Vous pouvez également accéder à l'identifiant d'une tâche :
 
-**Accès à l'ID d'une tâche**
+#### Accès à l'ID d'une tâche
 
     $job->getJobId();
 
@@ -118,7 +118,7 @@ Vous pouvez également accéder à l'identifiant d'une tâche :
 
 Vous pouvez également placer une fonction anonyme dans la queue. Ceci est vraiment pratique pour des tâches rapides et simples à placer dans la queue :
 
-**Placer une fonction anonyme dans la queue**
+#### Placer une fonction anonyme dans la queue
 
     Queue::push(function() use ($id)
     {
@@ -134,7 +134,7 @@ Lorsque vous utilisez Iron.io [en tant que queue en mode push](#push-queues), vo
 
 Laravel fournit une commande Artisan permettant d'activer l'exécution des tâches lorsqu'elles sont ajoutées à la file d'attente. Il s'agit de la commande `queue:listen` :
 
-**Démarrer l'exécution de la file de travaux**
+#### Démarrer l'exécution de la file de travaux
 
     php artisan queue:listen
 
@@ -150,21 +150,21 @@ Vous pouvez passer une liste de connexions séparée par des virgules à la comm
 
 Dans cet exemple, les tâches sur `high-connection` seront toujours traitées avant celles de `low-connection`.
 
-**Spécification d'un délai maximum**
+#### Spécification d'un délai maximum
 
 Vous pouvez également définir le temps maximum en secondes qu'une tâche est autorisée à prendre :
 
     php artisan queue:listen --timeout=60
-    
-**Spécification d'un temps d'attente**
+
+#### Spécification d'un temps d'attente
 
 En plus, vous pouvez spécifier le nombre de secondes d'attente avant de la recherche pour les nouveaux jobs :
 
     php artisan queue:listen --sleep=5
-    
+
 Notez que la queue attends seulement quand aucune tâche n'est dans la file. Si plusieurs tâches sont disponibles, la queue continue son exécution sans arrêt.
 
-**Exécuter la première tâche de la file d'attente**
+#### Exécuter la première tâche de la file d'attente
 
 Pour exécuter uniquement la première tâche de la file d'attente, utilisez la commande `queue:work` :
 
@@ -177,7 +177,7 @@ Les queues en mode Push vous permettent d'utiliser la puissance des queue de Lar
 
 Ensuite, vous pouvez utiliser la commande Artisan `queue:subscribe` pour enregistrer l'URL de votre application qui recevra les nouvelles tâches en queues :
 
-**Enregistrement d'un receveur de tâches en mode Push**
+#### Enregistrement d'un receveur de tâches en mode Push
 
 	php artisan queue:subscribe queue_name http://foo.com/queue/receive
 

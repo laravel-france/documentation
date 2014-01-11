@@ -9,7 +9,7 @@
 
 Une méthode pour utiliser les templates dans Laravel est d'utiliser les layouts de contrôleur. En spécifiant la propriété `layout` sur un contrôleur, la vue spécifiée sera créée pour vous et sera utilisée en tant que réponse aux actions.
 
-**Définition d'un layout sur un contrôleur**
+#### Définition d'un layout sur un contrôleur
 
 	class UserController extends BaseController {
 
@@ -33,7 +33,7 @@ Une méthode pour utiliser les templates dans Laravel est d'utiliser les layouts
 
 Blade est un moteur de template simple et puissant fourni par Laravel. A la différence des layouts de contrôleurs, Blade est conduit par _l'héritage de template_ et _les sections_. Les templates Blade doivent avoir comme extension `.blade.php`.
 
-**Définition d'un layout Blade**
+#### Définition d'un layout Blade
 
 	<!-- app/views/layouts/master.blade.php -->
 
@@ -49,7 +49,7 @@ Blade est un moteur de template simple et puissant fourni par Laravel. A la diff
 		</body>
 	</html>
 
-**Utilisation d'un layout Blade**
+#### Utilisation d'un layout Blade
 
 	@extends('layouts.master')
 
@@ -72,13 +72,13 @@ Parfois, quand vous n'êtes pas sûr qu'une section a été définie, vous pouve
 <a name="other-blade-control-structures"></a>
 ## Structures de contrôle Blade
 
-**Affichage de données**
+#### Affichage de données
 
     Hello, {{ $name }}.
 
     The current UNIX timestamp is {{ time() }}.
 
-**Affichage de données si elles existent**
+#### Affichage de données si elles existent
 
 Parfois, vous pourrez vouloir afficher une variable, sans être sûr cependant qu'elle soit définie. Le code équivalent serait :
 
@@ -88,7 +88,7 @@ Cependant, plutôt que d'écrire une condition ternaire, Blade permet d'utiliser
 
     {{ $name or 'Default' }}
 
-**Affichage de textes bruts avec accolades**
+#### Affichage de textes bruts avec accolades
 
 Si vous avez besoin d'afficher un texte brut entre accolades et sans traitement par Blade, vous devez préfixer les accolades de votre texte avec un symbole `@` :
 
@@ -100,7 +100,7 @@ Bien sûr, toutes les données utilisateurs doivent être échappées ou purifi�
 
 > **Note:** Soyez vraiment prudent lors de l'affichage de contenu soumit par les utilisateurs de votre application. Utilisez toujours les triples accollades pour échapper toutes les entitées HTML dans le contenu.
 
-**Déclaration If**
+#### Déclaration If
 
     @if (count($records) === 1)
         I have one record!
@@ -114,7 +114,7 @@ Bien sûr, toutes les données utilisateurs doivent être échappées ou purifi�
 		You are not signed in.
 	@endunless
 
-**Boucles**
+#### Boucles
 
 	@for ($i = 0; $i < 10; $i++)
 		The current value is {{ $i }}
@@ -128,7 +128,7 @@ Bien sûr, toutes les données utilisateurs doivent être échappées ou purifi�
 		<p>I'm looping forever.</p>
 	@endwhile
 
-**Inclusion d'une sous-vue**
+#### Inclusion d'une sous-vue
 
 	@include('view.name')
 
@@ -136,22 +136,22 @@ Vous pouvez aussi passer un tableau de données à la vue incluse :
 
     @include('view.name', array('some'=>'data'))
 
-**Sections de remplacement**
+#### Sections de remplacement
 
 Par défaut, les sections sont ajoutées à n'importe quel contenu précédent qui existe dans la section. Pour remplacer une section entièrement, vous pouvez utiliser la déclaration `overwrite`:
 
     @extends('list.item.container')
-  
+
     @section('list.item.content')
         <p>This is an item of type {{ $item->type }}</p>
     @overwrite
 
-**Affichage d'une ligne de langue**
+#### Affichage d'une ligne de langue
 
 	@lang('language.line')
 
 	@choice('language.line', 1);
 
-**Commentaires**
+#### Commentaires
 
 	{{-- This comment will not be in the rendered HTML --}}

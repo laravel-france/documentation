@@ -32,7 +32,7 @@ Avant de commencer, n'oubliez pas de configurer votre connexion à la base de do
 
 Pour commencer, créez un modèle Eloquent. Ils sont généralement stockés dans le dossier `app/models`, mais vous êtes libre de les mettre dans n'importe quel endroit qui peut être chargé automatiquement en accord avec votre fichier `composer.json`.
 
-**Définition d'un modèle Eloquent**
+#### Définition d'un modèle Eloquent
 
     class User extends Eloquent {}
 
@@ -48,11 +48,11 @@ Eloquent va également présumer que votre table a une clé primaire nommée `id
 
 Une fois qu'un modèle est défini, vous êtes prêt à récupérer et à créer des enregistrements dans votre table. Notez que vous aurez besoin de créer des colonnes `updated_at` et `created_at` sur votre table par défaut. Si vous ne voulez pas de ces colonnes, qui sont auto-maintenues par Laravel, définissez une propriété `$timestamps` à `false`.
 
-**Retourne tous les modèles**
+#### Retourne tous les modèles
 
     $users = User::all();
 
-**Retourne un modèle par sa clé primaire**
+#### Retourne un modèle par sa clé primaire
 
     $user = User::find(1);
 
@@ -60,7 +60,7 @@ Une fois qu'un modèle est défini, vous êtes prêt à récupérer et à créer
 
 > **Note:** Toutes les méthodes disponibles dans le [Query Builder](/4.1/queries) sont également disponibles avec Eloquent.
 
-**Récupérer un modèle par sa clé primaire ou lancer une exception**
+#### Récupérer un modèle par sa clé primaire ou lancer une exception
 
 Parfois vous pourriez vouloir lancer une exception si un modèle n'est pas trouvé, vous permettant d'attraper les exceptions en utilisant un gestionnaire d'événement `error` et afficher une page 404.
 
@@ -77,7 +77,7 @@ Pour enregistrer le gestionnaire d'erreur, écoutez auprès d'un `ModelNotFoundE
         return Response::make('Not Found', 404);
     });
 
-**Requêtage utilisant le modèle Eloquent**
+#### Requêtage utilisant le modèle Eloquent
 
     $users = User::where('votes', '>', 100)->take(10)->get();
 
@@ -87,15 +87,15 @@ Pour enregistrer le gestionnaire d'erreur, écoutez auprès d'un `ModelNotFoundE
 
 Bien sûr, vous pouvez également utiliser les fonctions d'agrégat du Query Builder.
 
-**Agrégat avec Eloquent**
+#### Agrégat avec Eloquent
 
     $count = User::where('votes', '>', 100)->count();
 
 Si vous êtes dans l'impossibilité de générer la requête que vous souhaitez via l'interface Fluent, alors n'hésitez pas à utiliser la méthode `whereRaw`:
 
   $users = User::whereRaw('age > ? and votes = 100', array(25))->get();
-  
-**Ségmentation des résultats**
+
+#### Ségmentation des résultats
 
 Si vous avez besoin de traiter beaucoup (des milliesr) d'enregistrements Eloquent, utiliser la méthode `chunk` vous permettra d'économiser beaucoup de RAM :
 
@@ -109,7 +109,7 @@ Si vous avez besoin de traiter beaucoup (des milliesr) d'enregistrements Eloquen
 
 Le premier argument est le nom de lignes que vous souhaitez recevoir par ségment, La fonction anonyme passée en second argument sera appelée pour chaque ségment provenant de la base de données.
 
-**Spécification de la connexion**
+#### Spécification de la connexion
 
 Vous pouvez spécifier quelle connexion à la base de données est utilisée quand vous lancez une requête Eloquent. Utilisez simplement la méthode `on` :
 
@@ -124,7 +124,7 @@ Pour commencer, définissez les propriétés `fillable` ou `guarded` sur votre m
 
 La propriété `fillable` spécifie quels attributs peuvent être assignés en masse. Cela peut être défini dans la classe ou au niveau de l'instance du modèle.
 
-**Définition de l'attribut fillable dans un modèle**
+#### Définition de l'attribut fillable dans un modèle
 
     class User extends Eloquent {
 
@@ -136,7 +136,7 @@ Dans cet exemple, seuls les trois attributs listés peuvent être assignés lors
 
 L'inverse de `fillable` est `guarded`, et il contient une "blacklist" plutôt qu'un laisser passer :
 
-**Définition de l'attribut guarded dans un modèle**
+#### Définition de l'attribut guarded dans un modèle
 
     class User extends Eloquent {
 
@@ -146,7 +146,7 @@ L'inverse de `fillable` est `guarded`, et il contient une "blacklist" plutôt qu
 
 Dans l'exemple ci-dessus, les attributs `id` et `password` **ne peuvent pas** être assignés en masse. Tous les autres attributs peuvent être assignés lors d'un assignement de masse.  Vous pouvez aussi bloquer **tous** les attributs lors de l'assignement de masse en utilisant guard :
 
-**Bloque tous les attributs lors de l'assignement de masse**
+#### Bloque tous les attributs lors de l'assignement de masse
 
     protected $guarded = array('*');
 
@@ -155,7 +155,7 @@ Dans l'exemple ci-dessus, les attributs `id` et `password` **ne peuvent pas** ê
 
 Pour créer un nouvel enregistrement dans la base de données pour un modèle, créez simplement une nouvelle instance d'un modèle et appelez la méthode `save`.
 
-**Sauvegarde un nouveau modèle**
+#### Sauvegarde un nouveau modèle
 
     $user = new User;
 
@@ -169,7 +169,7 @@ Vous pouvez également utiliser la méthode `create` pour sauvegarder un modèle
 
 Après avoir sauvé ou créé un nouveau modèle qui utilise un ID auto-incrémental, vous pouvez retrouver l'ID en accédant à l'attribut `id` de l'objet.
 
-**Mise en place de l'attribut guarded sur le modèle**
+#### Mise en place de l'attribut guarded sur le modèle
 
     class User extends Eloquent {
 
@@ -177,11 +177,11 @@ Après avoir sauvé ou créé un nouveau modèle qui utilise un ID auto-incréme
 
     }
 
-**Création d'un utilisateur en utilisant la méthode create**
+#### Création d'un utilisateur en utilisant la méthode create
 
     // Create a new user in the database...
     $user = User::create(array('name' => 'John'));
-    
+
     // Retrieve the user by the attributes, or create it if it doesn't exist...
     $user = User::firstOrCreate(array('name' => 'John'));
 
@@ -190,7 +190,7 @@ Après avoir sauvé ou créé un nouveau modèle qui utilise un ID auto-incréme
 
 Pour mettre à jour un modèle, récupérez le, changez un attribut, et utilisez la méthode `save` :
 
-**Mise à jour d'un Modèle**
+#### Mise à jour d'un Modèle
 
     $user = User::find(1);
 
@@ -200,7 +200,7 @@ Pour mettre à jour un modèle, récupérez le, changez un attribut, et utilisez
 
 Parfois vous pourriez vouloir sauvegarder non seulement le modèle, mais aussi toutes ses relations. Pour ce faire, utilisez la méthode `push` :
 
-**Sauvegarde un modèle et ses relations**
+#### Sauvegarde un modèle et ses relations
 
     $user->push();
 
@@ -210,13 +210,13 @@ Vous pouvez aussi lancer une mise à jour sur un ensemble de modèles :
 
 Pour supprimer un modèle, appelez simplement la méthode `delete` sur une instance :
 
-**Suppression d'un modèle existant**
+#### Suppression d'un modèle existant
 
     $user = User::find(1);
 
     $user->delete();
 
-**Suppression de modèles par leur clé**
+#### Suppression de modèles par leur clé
 
     User::destroy(1);
 
@@ -230,7 +230,7 @@ Bien sûr, vous pouvez également supprimer un ensemble de modèles :
 
 Si vous souhaitez simplement mettre à jour les timestamps d'un modèle, utilisez la méthode `touch` :
 
-**Mise à jour uniquement des timestamps d'un modèle**
+#### Mise à jour uniquement des timestamps d'un modèle
 
     $user->touch();
 
@@ -251,7 +251,7 @@ Pour ajouter une colonne `deleted_at` à votre table, vous pouvez utiliser la m�
 
 Maintenant, lorsque vous appellez la méthode `delete` sur le modèle, la colonne `deleted_at` sera remplie avec la date et l'heure de suppression. Lorsque vous requêtez un modèle avec de la suppression douce, les modèles "supprimés" ne seront pas inclus dans le résultat. Pour forcer l'apparition des modèles réputés supprimés, utilisez la méthode `withTrashed` sur la requête :
 
-**Force l'affichage des lignes réputées supprimées**
+#### Force l'affichage des lignes réputées supprimées
 
     $users = User::withTrashed()->where('account_id', 1)->get();
 
@@ -290,7 +290,7 @@ Pour déterminer si un modèle donné a été supprimé de manière douce, vous 
 
 Par défaut, Eloquent maintiendra les colonnes `created_at` et `updated_at` de votre table automatiquement. Ajoutez simplement ces colonnes de type `timestamp` à votre table et Eloquent va automatiquement se charger du reste. Si vous ne souhaitez pas qu'Eloquent s'en occupe, ajoutez la propriété suivante au modèle :
 
-**Désactivation de l'auto-timestamps**
+#### Désactivation de l'auto-timestamps
 
     class User extends Eloquent {
 
@@ -302,7 +302,7 @@ Par défaut, Eloquent maintiendra les colonnes `created_at` et `updated_at` de v
 
 Si vous souhaitez personnaliser le format de vos timestamps, surchargez la méthode `getDateFormat` de votre modèle :
 
-**Création d'un format de timestamp personnalisé pour ce modèle**
+#### Création d'un format de timestamp personnalisé pour ce modèle
 
     class User extends Eloquent {
 
@@ -318,7 +318,7 @@ Si vous souhaitez personnaliser le format de vos timestamps, surchargez la méth
 
 Les cadres vous permettent de réutiliser facilement des logiques de requêtes dans vos modèles. Pour définir un cadre, préfixez simplement une méthode du modèle avec `scope`:
 
-**Définition d'un cadre de requête**
+#### Définition d'un cadre de requête
 
     class User extends Eloquent {
 
@@ -333,11 +333,11 @@ Les cadres vous permettent de réutiliser facilement des logiques de requêtes d
         }
     }
 
-**Utilisation d'un cadre de requête**
+#### Utilisation d'un cadre de requête
 
     $users = User::popular()->women()->orderBy('created_at')->get();
 
-**Cadres dynamiques**
+#### Cadres dynamiques
 
 Des fois, vous pouvez vouloir définir un cadre qui accepte des paramètres. Ajoutez juste vos paramètres dans la fonction de cadre :
 
@@ -370,7 +370,7 @@ Bien sûr, vos tables sont probablement liées les unes aux autres. Par exemple,
 
 Une relation un-vers-un est une relation très basique. Par exemple, un modèle `User` peut avoir un téléphone modèle `Phone`. Nous définissons la relation de la manière suivante avec Eloquent :
 
-**Définition d'une relation un vers un**
+#### Définition d'une relation un vers un
 
     class User extends Eloquent {
 
@@ -399,7 +399,7 @@ Notez qu'Eloquent devine la clé étrangère en se basant sur le nom du modèle.
 
 Pour définir la relation inverse sur le modèle `Phone`, nous utilisons la méthode `belongsTo` :
 
-**Définition de la relation inverse**
+#### Définition de la relation inverse
 
     class Phone extends Eloquent {
 
@@ -432,7 +432,7 @@ Additionnellement, vous pouvez passer un troisième paramètre qui spécifie le 
 
   }
 
- 
+
 <a name="one-to-many"></a>
 ### Un vers plusieurs (1:n)
 
@@ -463,7 +463,7 @@ Une fois encore, vous pouvez surcharger le nom de la clé étrangère en passant
 
 Pour définir la relation inverse, sur le modèle `Comment`, nous utilisons la méthode `belongsTo` :
 
-**Définition de la relation inverse**
+#### Définition de la relation inverse
 
     class Comment extends Eloquent {
 
@@ -539,7 +539,7 @@ Même si la table `posts` le contient pas une colonne `country_id`, la relation 
         {
             return $this->hasManyThrough('Post', 'User');
         }
- 
+
     }
 
 Si vous souhaitez définir manuellement les clés de la relation, vous pouvez le faire grâce au troisième et au quatrième argument de la méthode :
@@ -587,7 +587,7 @@ Les relations polymorphiques permettent à un modèle d'appartenir à plus d'un 
 
 Maintenant, nous pouvons récupérer les photos soit de notre staff, soit d'une commande :
 
-**Récupération d'une relation polymorphique**
+#### Récupération d'une relation polymorphique
 
     $staff = Staff::find(1);
 
@@ -597,7 +597,7 @@ Maintenant, nous pouvons récupérer les photos soit de notre staff, soit d'une 
 
 Cependant, la vraie magie de la polymorphie apparait lorsque vous accédez au staff ou à la commande depuis le modèle `Photo` :
 
-**Récupération du propriétaire de la Photo**
+#### Récupération du propriétaire de la Photo
 
     $photo = Photo::find(1);
 
@@ -607,7 +607,7 @@ La relation `imageable` du modèle `Photo` retournera soit une instance de `Staf
 
 Pour vous aider à comprendre comment cela marche, jetons un oeil à la structure de la base de données pour une relation polymorphique :
 
-**Structure de la base de données pour une relation polymorphique**
+#### Structure de la base de données pour une relation polymorphique
 
     staff
         id - integer
@@ -630,7 +630,7 @@ Les champs clés à remarquer ici sont `imageable_id` et `imageable_type` de la 
 
 Lorsque vous accédez aux lignes d'un modèle, vous pourriez vouloir limiter vos résultats en se basant sur l'existence d'une relation. Par exemple, pour récupérer les billets d'un blog qui ont au moins un commentaire. Pour ce faire, vous pouvez utiliser la méthode `has` :
 
-**Requête d'une relation lors de la sélection**
+#### Requête d'une relation lors de la sélection
 
     $posts = Post::has('comments')->get();
 
@@ -742,7 +742,7 @@ Il est également possible de faire du chargement lié directement sur une colle
 
 Vous aurez souvent besoin d'insérer des nouveaux modèles liés. Par exemple, pour insérer un commentaire lié à un post de blog, plutôt que de définir manuellement la clé étrangère `post_id` sur le modèle, vous pouvez insérer un nouveau commentaire directement depuis son modèle parent `Post` :
 
-**Attachement à un modèle lié**
+#### Attachement à un modèle lié
 
     $comment = new Comment(array('message' => 'A new comment.'));
 
@@ -766,7 +766,7 @@ Lors de la mise à jour d'une relation `belongsTo`, vous pouvez utiliser la mét
 
 Vous devrez également insérer des modèles liés par une relation `plusieurs vers plusieurs`. Continuons d'utiliser nos modèles d'exemples `User` et `Role`. Nous pouvons facilement attacher des nouveaux rôles à un utilisateur avec la méthode :
 
-**Attache des modèles liés par une relation plusieurs vers plusieurs**
+#### Attache des modèles liés par une relation plusieurs vers plusieurs
 
     $user = User::find(1);
 
@@ -782,7 +782,7 @@ Naturellement, l'opposé de `attach` est `detach` :
 
 Vous pouvez également utiliser la méthode `sync` pour attacher des modèles liés. La méthode `sync` accepte un tableau d'IDs à placer dans la table pivot. Une fois cette opération terminée, seuls les IDs dans le tableau seront dans la table pivot pour le modèle :
 
-**Utilisation de la méthode Sync pour attacher des modèles liés**
+#### Utilisation de la méthode Sync pour attacher des modèles liés
 
     $user->roles()->sync(array(1, 2, 3));
 
@@ -846,13 +846,13 @@ Si vous souhaitez que votre table pivot ait les timestamps `created_at` et `upda
 
 Pour supprimer toutes les lignes de la table pivot pour un modèle, vous pouvez utiliser la méthode `detach` :
 
-**Suppression des lignes de la table pivot**
+#### Suppression des lignes de la table pivot
 
     User::find(1)->roles()->detach();
 
 Notez que cette opération ne supprimera pas les enregistrements de la table `roles`, mais seulement de la table pivot.
 
-**Définition d'un modèle de pivot personnalisé**
+#### Définition d'un modèle de pivot personnalisé
 
 Laravel vous permet de définir votre propre modèle de pivot. Pour ce faire, créez votre propose modèle de "Base" qui étend `Eloquent`. Dans vos autres modèles Eloquent, héritez de cette "Base" plutôt que d'`Eloquent`. Dans votre modèle de "Base", Ajoutez la fonction suivante qui retourne une instance de de votre modèle de pivot personnalisé :
 
@@ -868,7 +868,7 @@ Toutes les requêtes qui renvoient plusieurs résultats par Eloquent, via la mé
 
 Par exemple, nous pouvons déterminer si une liste de résultats contient une clé primaire donnée en utilisant la méthode `contains` :
 
-**Vérifie si une collection contient une clé**
+#### Vérifie si une collection contient une clé
 
     $roles = User::find(1)->roles;
 
@@ -888,14 +888,14 @@ Si une collection est castée en une chaîne, alors sa représentation JSON sera
 
 Les collections Eloquent contiennent également quelques méthodes utiles pour boucler et filtrer sur les objets qu'elle contient :
 
-**Bouclage de collections**
+#### Bouclage de collections
 
     $roles = $user->roles->each(function($role)
     {
 
     });
 
-**Filtrage de collections**
+#### Filtrage de collections
 
 Lors du filtrage de collections, le retour fourni sera utilisé comme retour pour [array_filter](http://php.net/manual/en/function.array-filter.php).
 
@@ -908,7 +908,7 @@ Lors du filtrage de collections, le retour fourni sera utilisé comme retour pou
 
  > **Note:** lors du filtrage d'une collection et la conversion en JSON, essayez d'appeler les `valeurs` de la première fonction pour remettre à zéro les clés du tableau.
 
-**Applique une fonction sur chaque object d'une collection**
+#### Applique une fonction sur chaque object d'une collection
 
     $roles = User::find(1)->roles;
 
@@ -917,7 +917,7 @@ Lors du filtrage de collections, le retour fourni sera utilisé comme retour pou
 
     });
 
-**Tri une collection par une valeur**
+#### Tri une collection par une valeur
 
     $roles = $roles->sortBy(function($role)
     {
@@ -926,7 +926,7 @@ Lors du filtrage de collections, le retour fourni sera utilisé comme retour pou
 
 Parfois, vous pourriez vouloir retourner une collection personnalisée avec vos propres méthodes ajoutées. Vous devez spécifier cela dans votre modèle Eloquent en surchargeant la méthode `newCollection` :
 
-**Retourne un type de collection personnalisé**
+#### Retourne un type de collection personnalisé
 
     class User extends Eloquent {
 
@@ -942,7 +942,7 @@ Parfois, vous pourriez vouloir retourner une collection personnalisée avec vos 
 
 Eloquent fournit une manière efficace de transformer vos attributs de modèle lorsque vous les récupérez ou les définissez. Définissez simplement une méthode `getFooAttribute` sur votre modèle pour créer un accesseur. Gardez à l'esprit que les méthodes doivent être en camelCase, même si les colonnes de votre base sont en snake_case :
 
-**Définition d'un accesseur**
+#### Définition d'un accesseur
 
     class User extends Eloquent {
 
@@ -957,7 +957,7 @@ Dans l'exemple ci-dessus, la colonne `first_name` a un accesseur. Notez que la v
 
 Les mutateurs sont déclarés dans le même esprit :
 
-**Définition d'un mutateur**
+#### Définition d'un mutateur
 
     class User extends Eloquent {
 
@@ -998,7 +998,7 @@ Chaque fois qu'un nouvel item est sauvegardé pour la première fois, les évén
 
 Si `false` est retourné par la méthode `creating`, `updating`, ou `saving`, alors l'action est annulée :
 
-**Annulation de la création d'un modèle**
+#### Annulation de la création d'un modèle
 
     User::creating(function($user)
     {
@@ -1007,7 +1007,7 @@ Si `false` est retourné par la méthode `creating`, `updating`, ou `saving`, al
 
 Les modèles Eloquent contiennent également une méthode static `boot`, qui peut être l'endroit idéal pour s'abonner aux événements.
 
-**Mise en place de la méthode boot d'un modèle**
+#### Mise en place de la méthode boot d'un modèle
 
     class User extends Eloquent {
 
@@ -1050,7 +1050,7 @@ Vous pouvez enregistrer une instancve d'un observateur en utlisant la méthode `
 
 Quand vous construisez des APIs en JSON, vous devez souvent convertir vos modèles et vos relations en tableau ou en JSON. Eloquent inclut des méthodes pour le faire. Pour convertir un modèle et ses relations en tableau, vous pouvez utiliser la méthode `toArray` :
 
-**Convertion d'un modèle en tableau**
+#### Convertion d'un modèle en tableau
 
     $user = User::with('roles')->first();
 
@@ -1062,13 +1062,13 @@ Notez que l'intégralité des collections de modèles peuvent être converties e
 
 Pour convertir un modèle en JSON, vous pouvez utiliser la méthode `toJson` :
 
-**Conversion d'un modèle en JSON**
+#### Conversion d'un modèle en JSON
 
     return User::find(1)->toJson();
 
 Notez que quand un modèle ou une collection est casté en string, ils sont convertis en JSON, ce qui signifie que vous pouvez retourner des objets Eloquent directement depuis vos routes/actions !
 
-**Retourne un modèle depuis une route**
+#### Retourne un modèle depuis une route
 
     Route::get('users', function()
     {
@@ -1077,7 +1077,7 @@ Notez que quand un modèle ou une collection est casté en string, ils sont conv
 
 Parfois vous pourriez souhaiter que certains attributs ne soient pas inclus dans la forme tableau ou JSON de vos modèles, tels que les mots de passes. Pour ce faire, ajoutez la propriété `hidden` à la définition de votre modèle :
 
-**Cache un attribut des formats tableaux ou JSON**
+#### Cache un attribut des formats tableaux ou JSON
 
     class User extends Eloquent {
 

@@ -13,7 +13,7 @@
 
 Laravel vous est livré avec un outil simple et pratique pour valider des données et retrouver les messages d'erreur de validation via la classe `Validation`.
 
-**Exemple de validation basique**
+#### Exemple de validation basique
 
     $validator = Validator::make(
         array('name' => 'Dayle'),
@@ -24,14 +24,14 @@ Le premier argument passé à la méthode `make` sont les données à valider. L
 
 De multiples règles peuvent être délimitées en utilisant le caractère "pipe" `|`, ou en tant qu'éléments séparés d'un tableau.
 
-**Utilisation de tableau pour définir différentes règles**
+#### Utilisation de tableau pour définir différentes règles
 
     $validator = Validator::make(
         array('name' => 'Dayle'),
         array('name' => array('required', 'min:5'))
     );
 
-**Validation de multiples champs**
+#### Validation de multiples champs
 
     $validator = Validator::make(
         array(
@@ -61,7 +61,7 @@ Vous pouvez également accéder à un tableau de règles de validation qui ont �
 
     $failed = $validator->failed();
 
-**Validation de fichier**
+#### Validation de fichier
 
 La classe `Validator` fournit plusieurs règles spécifiques pour les fichiers, telles que `size`, `mimes`, et d'autres. Pour valider un fichier, passez le simplement au validateur avec vos autres données.
 
@@ -70,38 +70,38 @@ La classe `Validator` fournit plusieurs règles spécifiques pour les fichiers, 
 
 Après avoir appelé la méthode `messages` de l'instance de la classe `Validator`, vous recevrez une instance de `MessageBag`, qui a quelques outils pour travailler avec les messages d'erreurs.
 
-**Retrouve le premier message d'erreur pour un champ**
+#### Retrouve le premier message d'erreur pour un champ
 
     echo $messages->first('email');
 
-**Retrouve tous les messages d'erreur pour un champ**
+#### Retrouve tous les messages d'erreur pour un champ
 
     foreach ($messages->get('email') as $message)
     {
         //
     }
 
-**Retrouve tous les messages d'erreur de tous les champs**
+#### Retrouve tous les messages d'erreur de tous les champs
 
     foreach ($messages->all() as $message)
     {
         //
     }
 
-**Détermine si un message d'erreur existe pour un champ**
+#### Détermine si un message d'erreur existe pour un champ
 
     if ($messages->has('email'))
     {
         //
     }
 
-**Retrouve un message d'erreur avec un format donné**
+#### Retrouve un message d'erreur avec un format donné
 
     echo $messages->first('email', '<p>:message</p>');
 
 > **Note:** Par défaut, les messages sont formatés pour utiliser une syntaxe compatible avec Bootstrap.
 
-**Retrouve tous les messages d'erreur avec un format donné**
+#### Retrouve tous les messages d'erreur avec un format donné
 
     foreach ($messages->all('<li>:message</li>') as $message)
     {
@@ -259,18 +259,18 @@ Le champ sous validation doit être une adresse mel correcte.
 
 Le champ sous validation doit exister dans la base de données.
 
-**Usage basique de la règle exists**
+#### Usage basique de la règle exists
 
     'state' => 'exists:states'
 
-**Spécification d'une colonne particulière**
+#### Spécification d'une colonne particulière
 
     'state' => 'exists:states,abbreviation'
 
 Vous pouvez également spécifier plus de conditions qui seront ajoutés en tant que clause "WHERE" à la requête :
 
     'email' => 'exists:staff,email,account_id,1'
-    
+
 Passer `NULL` en tant que clause "where" ajoutera un test sur la valeur `NULL` en tant que valeur:
 
     'email' => 'exists:staff,email,deleted_at,NULL'
@@ -305,7 +305,7 @@ Le champ sous validation doit être plus petit que la valeur maximum _value_. Le
 
 Le fichier sous validation doit avoir un type MIME qui correspond à une des extensions données.
 
-**Utilisation basique du filtre mimes**
+#### Utilisation basique du filtre mimes
 
     'photo' => 'mimes:jpeg,bmp,png'
 
@@ -371,19 +371,19 @@ Le champ sous validation doit avoir une taille correpondant à la valeur _value_
 
 Le champ sous validation doit être unique dans la table de la base de donnée. Si l'option `column` n'est pas spécifié, le nom du champ sera utilisé.
 
-**Usage basique de la règle**
+#### Usage basique de la règle
 
     'email' => 'unique:users'
 
-**Spécification de la colonne**
+#### Spécification de la colonne
 
     'email' => 'unique:users,email_address'
 
-**Force la règle à ignorer l'id donné**
+#### Force la règle à ignorer l'id donné
 
     'email' => 'unique:users,email_address,10'
 
-**Ajout additionnel des clauses Where**
+#### Ajout additionnel des clauses Where
 
 Vous pouvez aussi spécifier plusieurs conditions qui seront ajoutées comme clauses "where" à la requête :
 
@@ -427,7 +427,7 @@ Le premier argument passé à la méthode `sometimes` est le nom du champ qui su
 
 Si besoin, vous pouvez utiliser des messages d'erreurs personnalisés pour la validation plutôt que ceux par défaut. Il y a plusieurs manières de définir ces messages.
 
-**Passage des messages à la méthode make**
+#### Passage des messages à la méthode make
 
     $messages = array(
         'required' => 'The :attribute field is required.',
@@ -437,7 +437,7 @@ Si besoin, vous pouvez utiliser des messages d'erreurs personnalisés pour la va
 
 *Note:* Le joker `:attribute` sera remplacé par le nom du champ sous validation. Vous pouvez également utiliser d'autres jokers dans les messages de validation.
 
-**Autres jokers de validation**
+#### Autres jokers de validation
 
     $messages = array(
         'same'    => ':attribute et :other doivent être identiques.',
@@ -448,7 +448,7 @@ Si besoin, vous pouvez utiliser des messages d'erreurs personnalisés pour la va
 
 Parfois vous pourrez vouloir spécifier un message personnalisé uniquement pour un champ spécifique :
 
-**Spécification d'un message d'erreur personnalisé pour un attribut précis**
+#### Spécification d'un message d'erreur personnalisé pour un attribut précis
 
     $messages = array(
         'email.required' => 'Nous avons besoin de connaître votre adresse mel !',
@@ -457,7 +457,7 @@ Parfois vous pourrez vouloir spécifier un message personnalisé uniquement pour
 Dans certains cas, vous pourriez vouloir spécifier vos messages d'erreurs personnalisés dans un fichier de langue plutôt que de les passer directement à `Validator`. Pour ce faire, ajoutez vos messages au tableau `custom` du fichier de langue `app/lang/xx/validation.php`.
 
 <a name="localization"></a>
-**Spécification d'un message d'erreur personnalisé dans un fichier de langue**
+#### Spécification d'un message d'erreur personnalisé dans un fichier de langue
 
     'custom' => array(
         'email' => array(
@@ -470,7 +470,7 @@ Dans certains cas, vous pourriez vouloir spécifier vos messages d'erreurs perso
 
 Laravel fournit une variété de règles de validation utiles, cependant vous pourriez avoir besoin de créer vos propres règles. Une méthode pour enregistrer des règles de validation personnalisées est d'utiliser la méthode `Validator::extend` :
 
-**Enregistrement d'une règle personnalisée**
+#### Enregistrement d'une règle personnalisée
 
     Validator::extend('foo', function($attribute, $value, $parameters)
     {
@@ -487,7 +487,7 @@ Notez que vous devrez également définir un message d'erreur personnalisé. Vou
 
 Plutôt que d'utiliser des fonctions anonymes pour étendre le validateur, vous pouvez étendre la classe Validator elle-même. Pour ce faire, écrivez une classe Validator qui hérite de `Illuminate\Validation\Validator`. Vous pouvez ensuite ajouter vos méthodes de validation en préfixant leur nom par `validate`:
 
-**Extension de la classe Validator**
+#### Extension de la classe Validator
 
     <?php
 
@@ -502,7 +502,7 @@ Plutôt que d'utiliser des fonctions anonymes pour étendre le validateur, vous 
 
 Ensuite, vous devez enregistrer votre classe de validation personnalisée :
 
-**Enregistrement d'une nouvelle classe de validation**
+#### Enregistrement d'une nouvelle classe de validation
 
     Validator::resolver(function($translator, $data, $rules, $messages)
     {

@@ -11,25 +11,25 @@
 
 Les entrées utilisateur sont accessibles facilement à l'aide de quelques méthodes. Ces méthodes sont disponibles et utilisables de la même manière quelque soit la commande HTTP.
 
-**Lit la valeur d'une entrée**
+#### Lit la valeur d'une entrée
 
     $name = Input::get('name');
 
-**Retourne une valeur par défaut si une entrée n'a pas de valeur**
+#### Retourne une valeur par défaut si une entrée n'a pas de valeur
 
     $name = Input::get('name', 'Sally');
 
-**Détermine si une entrée possède une valeur**
+#### Détermine si une entrée possède une valeur
 
     if (Input::has('name')) {
         //
     }
 
-**Retourne toutes les entrées de la requête**
+#### Retourne toutes les entrées de la requête
 
     $input = Input::all();
 
-**Retourne certaines entrées de la requête**
+#### Retourne certaines entrées de la requête
 
     $input = Input::only('username', 'password');
 
@@ -46,23 +46,23 @@ Quand vous travaillez sur les formulaires avec des entrées de type "tableau", v
 
 Les cookies créés par Laravel sont cryptés et signés avec un code d'authentification. Par conséquent, les cookies sont considérés invalides dès lors qu'il sont modifiés par le client.
 
-**Lit le contenu d'un cookie**
+#### Lit le contenu d'un cookie
 
     $value = Cookie::get('name');
 
-**Attache un cookie à une réponse**
+#### Attache un cookie à une réponse
 
     $response = Response::make('Hello World');
 
     $response->withCookie(Cookie::make('name', 'value', $minutes));
 
-**Mise en queue d'un cookie pour la prochaine réponse**
+#### Mise en queue d'un cookie pour la prochaine réponse
 
 Si vous voulez définir un cookie avant qu'une réponse ne soit créée, utilisez la méthode `Cookie::queue()`. Le cookie sera automatiquement attaché à la réponse finale de votre application.
 
     Cookie::queue($name, $value, $minutes);
 
-**Crée un cookie permanent**
+#### Crée un cookie permanent
 
     $cookie = Cookie::forever('name', 'value');
 
@@ -71,11 +71,11 @@ Si vous voulez définir un cookie avant qu'une réponse ne soit créée, utilise
 
 Supposons que vous devez conserver une entrée d'une requête à l'autre. Par exemple, vous devez ré-afficher un formulaire après sa validation.
 
-**Enregistre les entrées dans la session**
+#### Enregistre les entrées dans la session
 
     Input::flash();
 
-**Enregistre certaines entrées dans la session**
+#### Enregistre certaines entrées dans la session
 
     Input::flashOnly('username', 'email');
 
@@ -89,18 +89,18 @@ Puisqu'il est souvent nécessaire de combiner l'enregistrement des entrées avec
 
 > **Remarque:** Vous pouvez transmettre d'autres données à l'aide de la classe [Session](/4.1/session).
 
-**Lit une ancienne donnée**
+#### Lit une ancienne donnée
 
     Input::old('username');
 
 <a name="files"></a>
 ## Utilisation de fichiers
 
-**Lit un fichier téléchargé**
+#### Lit un fichier téléchargé
 
     $file = Input::file('photo');
 
-**Détermine si un fichier est téléchargé**
+#### Détermine si un fichier est téléchargé
 
     if (Input::hasFile('photo')) {
         //
@@ -108,29 +108,29 @@ Puisqu'il est souvent nécessaire de combiner l'enregistrement des entrées avec
 
 L'objet retourné par la méthode `file` est une instance de la classe `Symfony\Component\HttpFoundation\File\UploadedFile`. Cette classe est une extension de la classe PHP `SplFileInfo` fournissant un ensemble de méthodes permettant d'intéragir avec le fichier.
 
-**Déplace un fichier téléchargé**
+#### Déplace un fichier téléchargé
 
     Input::file('photo')->move($destinationPath);
 
     Input::file('photo')->move($destinationPath, $fileName);
 
-**Retourne le chemin d'un fichier téléchargé**
+#### Retourne le chemin d'un fichier téléchargé
 
     $path = Input::file('photo')->getRealPath();
 
-**Retourne le nom original du fichier téléchargé**
+#### Retourne le nom original du fichier téléchargé
 
     $name = Input::file('photo')->getClientOriginalName();
 
-**Retourne l'extension d'un fichier téléchargé**
+#### Retourne l'extension d'un fichier téléchargé
 
     $extension = Input::file('photo')->getClientOriginalExtension();
 
-**Retourne la taille d'un fichier téléchargé**
+#### Retourne la taille d'un fichier téléchargé
 
     $size = Input::file('photo')->getSize();
 
-**Retourne le type MIME d'un fichier téléchargé**
+#### Retourne le type MIME d'un fichier téléchargé
 
     $mime = Input::file('photo')->getMimeType();
 
@@ -139,45 +139,45 @@ L'objet retourné par la méthode `file` est une instance de la classe `Symfony\
 
 La classe `Request` fournit beaucoup de méthodes permettant d'examiner les éléments de la requête HTTP. Cette classe est une extension de la classe `Symfony\Component\HttpFoundation\Request`. Voici quelques méthodes majeures :
 
-**Retourne l'URI d'une requête**
+#### Retourne l'URI d'une requête
 
     $uri = Request::path();
 
-**Détermine si le chemin d'une requête respecte un motif**
+#### Détermine si le chemin d'une requête respecte un motif
 
     if (Request::is('admin/*')) {
         //
     }
 
-**Retourne l'URL d'une requête**
+#### Retourne l'URL d'une requête
 
     $url = Request::url();
 
-**Retourne un des segments d'une URI**
+#### Retourne un des segments d'une URI
 
     $segment = Request::segment(1);
 
-**Retourne l'en-tête d'une requête**
+#### Retourne l'en-tête d'une requête
 
     $value = Request::header('Content-Type');
 
-**Retourne une valeur dans le tableau $_SERVER**
+#### Retourne une valeur dans le tableau $_SERVER
 
     $value = Request::server('PATH_INFO');
 
-**Détermine si une requête est de type AJAX**
+#### Détermine si une requête est de type AJAX
 
     if (Request::ajax()) {
         //
     }
 
-**Détermine si le protocole de la requête est HTTPS**
+#### Détermine si le protocole de la requête est HTTPS
 
     if (Request::secure()) {
         //
     }
 
-**Vérifier la format de réponse attendu**
+#### Vérifier la format de réponse attendu
 
 La méthode `Request::format` retournera la format de réponse attendu en se basant sur l'entête HTTP Accept header:
 

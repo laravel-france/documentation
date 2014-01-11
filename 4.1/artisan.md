@@ -13,24 +13,24 @@ Artisan est le nom de l'interface en ligne de commande présente dans Laravel. E
 
 La commande `list` permet de visualiser la liste exhaustive des commandes disponibles dans Artisan :
 
-**Afficher la liste des commandes disponibles**
+#### Afficher la liste des commandes disponibles
 
 	php artisan list
 
-De plus, chaque commande possède un écran d'aide décrivant les arguments et les options disponibles. Insérer le terme `help` avant le nom d'une commande permet d'afficher cet écran d'aide : 
+De plus, chaque commande possède un écran d'aide décrivant les arguments et les options disponibles. Insérer le terme `help` avant le nom d'une commande permet d'afficher cet écran d'aide :
 
-**Afficher l'écran d'aide d'une commande**
+#### Afficher l'écran d'aide d'une commande
 
 	php artisan help migrate
 
 Vous pouvez indiquer l'environnement devant être utilisé pour l'exécution d'une commande à l'aide de l'option `--env` :
 
-**Indiquer l'environnement d'exécution**
+#### Indiquer l'environnement d'exécution
 
 	php artisan migrate --env=local
 
-Vous pouvez aussi afficher la version de votre installation Laravel à l'aide de l'option `--version` : 
+Vous pouvez aussi afficher la version de votre installation Laravel à l'aide de l'option `--version` :
 
-**Afficher la version de Laravel**
+#### Afficher la version de Laravel
 
 	php artisan --version

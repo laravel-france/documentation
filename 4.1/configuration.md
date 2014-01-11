@@ -11,13 +11,13 @@ Tous les fichiers de configuration du framework Laravel sont situés dans le dos
 
 Parfois vous pourriez avoir besoin d'accéder aux valeurs de configuration durant l'exécution de l'application. Vous pouvez le faire en utilisant la classe `Config` :
 
-**Accède à une valeur de configuration**
+#### Accède à une valeur de configuration
 
 	Config::get('app.timezone');
 
 Remarquez que la syntaxe de style "point" peut être utilisée pour accéder aux valeurs des fichiers de configuration. Si vous souhaitez définir une valeur pendant l'exécution :
 
-**Définit une valeur de configuration**
+#### Définit une valeur de configuration
 
 	Config::set('database.default', 'sqlite');
 
@@ -61,7 +61,7 @@ Si vous avez besoin d'une détection d'environnement plus flexible, vous pouvez 
 
 Vous pouvez accéder à l'environnement courant de l'application par la méthode `environment` :
 
-**Accède à l'environnement courant de l'application**
+#### Accède à l'environnement courant de l'application
 
 	$environment = App::environment();
 

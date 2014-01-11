@@ -16,7 +16,7 @@ Les migrations sont une sorte de contrôle de version pour votre base de donnée
 
 Pour créer une migration, vous pouvez utiliser la commande `migrate:make` d'Artisan en ligne de commande :
 
-**Création d'une migration**
+#### Création d'une migration
 
 	php artisan migrate:make create_users_table
 
@@ -35,15 +35,15 @@ Les options `--table` et `--create` peuvent être également utilisées pour ind
 <a name="running-migrations"></a>
 ## Exécution de migrations
 
-**Exécute toutes les migrations non lancées**
+#### Exécute toutes les migrations non lancées
 
 	php artisan migrate
 
-**Exécute toutes les migrations non lancées d'un chemin**
+#### Exécute toutes les migrations non lancées d'un chemin
 
 	php artisan migrate --path=app/foo/migrations
 
-**Exécute toutes les migrations non lancées d'un package**
+#### Exécute toutes les migrations non lancées d'un package
 
 	php artisan migrate --package=vendor/package
 
@@ -52,15 +52,15 @@ Les options `--table` et `--create` peuvent être également utilisées pour ind
 <a name="rolling-back-migrations"></a>
 ## Annulation de migrations
 
-**Annule la dernière opération de migration**
+#### Annule la dernière opération de migration
 
 	php artisan migrate:rollback
 
-**Annule toutes les migrations**
+#### Annule toutes les migrations
 
 	php artisan migrate:reset
 
-**Annule toutes les migrations et les relance toutes**
+#### Annule toutes les migrations et les relance toutes
 
 	php artisan migrate:refresh
 
@@ -71,7 +71,7 @@ Les options `--table` et `--create` peuvent être également utilisées pour ind
 
 Laravel fournit également une manière simple de peupler votre base de données avec des données de test en utilisant des classes de population. Toutes les classes de population sont stockées dans le dossier `app/database/seeds`. Les classes de population peuvent avoir le nom que vous souhaitez, mais vous devrez probablement suivre une convention, telle que `UserTableSeeder` par exemple. Par défaut, une classe `DatabaseSeeder` est définie pour vous. Depuis cette classe, vous pouvez utiliser la méthode `call` pour exécuter d'autres classes de population, vous permettant de contrôler l'ordre de la population.
 
-**Exemple de classe de population de base de données**
+#### Exemple de classe de population de base de données
 
     class DatabaseSeeder extends Seeder {
 
