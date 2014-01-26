@@ -74,19 +74,19 @@ Parfois, quand vous n'êtes pas sûr qu'une section a été définie, vous pouve
 
 **Affichage de données**
 
-    Hello, {{ $name }}.
+    Hello, {{{ $name }}}.
 
-    The current UNIX timestamp is {{ time() }}.
+    The current UNIX timestamp is {{{ time() }}}.
 
 **Affichage de données si elles existent**
 
 Parfois, vous pourrez vouloir afficher une variable, sans être sûr cependant qu'elle soit définie. Le code équivalent serait :
 
-    {{ isset($name) ? $name : 'Default' }}
+    {{{ isset($name) ? $name : 'Default' }}}
 
 Cependant, plutôt que d'écrire une condition ternaire, Blade permet d'utiliser un raccourci :
 
-    {{ $name or 'Default' }}
+    {{{ $name or 'Default' }}}
 
 **Affichage de textes bruts avec accolades**
 
@@ -97,6 +97,10 @@ Si vous avez besoin d'afficher un texte brut entre accolades et sans traitement 
 Bien sûr, toutes les données utilisateurs doivent être échappées ou purifiées. Pour échapper la sortie, utilisez trois accollades :
 
 	Hello, {{{ $name }}}.
+
+Si vous ne souhaitez pas que vos données soient échappées, il vous faut utiliser les doubles crochets :
+
+        Hello, {{ $name }}.
 
 > **Note:** Soyez vraiment prudent lors de l'affichage de contenu soumit par les utilisateurs de votre application. Utilisez toujours les triples accollades pour échapper toutes les entitées HTML dans le contenu.
 
