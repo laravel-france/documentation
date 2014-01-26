@@ -392,9 +392,11 @@ Vous pouvez aussi spécifier plusieurs conditions qui seront ajoutées comme cla
 Dans la règle ci-dessus, seules les lignes avec un `account_id` à `1` seront incluses dans la vérification du `unique`.
 
 <a name="rule-url"></a>
-#### url
+#### Url
 
 Le champ sous validation doit être formé comme une URL.
+
+**Note:** Cette fonction utilise la méthode PHP `filter_var`.
 
 <a name="conditionally-adding-rules"></a>
 ## Règles d'ajout conditionnelles
