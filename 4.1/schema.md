@@ -78,6 +78,7 @@ Le constructeur de table contient une variété de types de colonne que vous pou
 `$table->time('sunrise');`  |  Equivalent de TIME
 `$table->timestamp('added_on');`  |  Equivalent de TIMESTAMP
 `$table->timestamps();`  |  Ajoute les colonnes **created\_at** et **updated\_at**
+`$table->tinyInteger('numbers');`  |  Equivalent de TINYINT
 `->nullable()`  |  Désigne une colonne qui autorise NULL
 `->default($value)`  |  Déclare une valeur par défaut pour la colonne
 `->unsigned()`  |  Définit un INTEGER comme étant UNSIGNED

@@ -71,6 +71,23 @@ Une valeur par défaut peut être passée en troisième paramètre :
 
     $value = array_first($array, $callback, $default);
 
+### array_last
+	
+La méthode `array_last` retourne le dernier élément d'un tableau  qui passe un test de vérité.
+
+	$array = array(350, 400, 500, 300, 200, 100);
+
+	$value = array_last($array, function($key, $value)
+	{
+		return $value > 350;
+	});
+	
+	// 500
+
+Une valeur par défaut peut être passée en troisième paramètre :
+
+	$value = array_last($array, $callback, $default);
+
 ### array_flatten
 
 La méthode `array_flatten` va aplatir un tableau multi-dimensionnel en un tableau à une seule dimension.
@@ -96,6 +113,8 @@ La méthode `array_get` va récupérer une valeur donnée d'un tableau multidime
     $array = array('names' => array('joe' => array('programmer')));
 
     $value = array_get($array, 'names.joe');
+
+> **Note:** Si vous souhaitez la même chose pour les objets, utilisez `object_get`.
 
 ### array_only
 
@@ -144,6 +163,19 @@ La méthode `array_sort` trie le tableau par le résultat de la fonction anonyme
     {
         return $value['name'];
     }));
+
+### array_where
+
+Filtre un tableau avec la fonction anonyme donnée.
+
+	$array = array(100, '200', 300, '400', 500);
+
+	$array = array_where($array, function($key, $value)
+	{
+		return is_string($value);
+	});
+	
+	// Array ( [1] => 200 [3] => 400 )
 
 ### head
 
@@ -222,6 +254,18 @@ Convertit une chaîne en `snake_case`.
     $snake = snake_case('fooBar');
 
     // foo_bar
+	
+### str_limit
+
+Limite le nombre de caractère d'une chaîne.
+
+	str_limit($value, $limit = 100, $end = '...')
+	
+Exemple:
+
+	$value = str_limit('The PHP framework for web artisans.', 7);
+
+	// The PHP...
 
 ### starts_with
 

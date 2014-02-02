@@ -4,6 +4,7 @@
 - [Création d'un package](#creating-a-package)
 - [Structure d'un package](#package-structure)
 - [Fournisseurs de services](#service-providers)
+- [Fournisseurs différés](#deferred-providers)
 - [Conventions des packages](#package-conventions)
 - [Processus de développement](#development-workflow)
 - [Routage de package](#package-routing)
@@ -83,6 +84,26 @@ Par défaut, après l'enregistrement d'un package, ces resources seront disponib
     $view = View::make('custom-namespace::foo');
 
 Il n'y a pas d'"emplacement par défaut" pour les classes de fournisseurs de services. Vous êtes libre de les mettre où vous voulez, même de les organiser dans un espace de noms `Providers` de votre répertoire `app`. Le fichier peut être placé n'importe où, tant que les [outils d'auto-chargement](http://getcomposer.org/doc/01-basic-usage.md#autoloading) de Composer savent comment charger la classe.
+
+Si vous avez changer l'endroit où se trouvent les ressources de votre package, tel que les fichiers de configurations ou les vues, vous pouvez passer un troisième argument à la méthoded `package` qui précisera l'endroit où sont vos ressources :
+
+	$this->package('vendor/package', null, '/path/to/resources');
+
+<a name="deferred-providers"></a>
+## Fournisseurs différés
+
+Si vous écrivez un service provider qui n'enregistre pas de ressources tels que des fichiers de configurations ou des vues, vous pouvez choisir de faire un service provider "différé". Un fournisseur de service différé est uniquement chargé et enregistré lorsque l'un des services qu'il fourni est nécéssité par le conteneur IoC. Si aucun des services n'est requis durant une requête, alors le provider ne sera jamais chargé
+
+Pour différé l'exécution d'un service provider, définissez la propriété `defer` du provider à `true`:
+
+	protected $defer = true;
+
+Ensuitez, surchargez la méthode `provides` de la classe mère `Illuminate\Support\ServiceProvider` et retournez un tableau de tout ce qui est fourni par votre service provider. Par exemple, si  votre service enregistre `package.service` et `package.another-service` dans l'IoC container, vous méthode `provides` ressemblera à cela :
+
+	public function provides()
+	{
+		return array('package.service', 'package.another-service');
+	}
 
 <a name="package-conventions"></a>
 ## Conventions des packages

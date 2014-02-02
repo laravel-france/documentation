@@ -337,7 +337,7 @@ Le filtre sous validation doit correspondre à l'expression régulière donnée.
 Le champ sous validation doit être présent dans les données.
 
 <a name="rule-required-if"></a>
-#### required_if:_field_,_value_
+#### required\_if:_field_,_value_
 
 Le champ sous validation doit être présent si le champ _field_ est égale à la valeur _value_.
 
@@ -392,12 +392,24 @@ Vous pouvez aussi spécifier plusieurs conditions qui seront ajoutées comme cla
 Dans la règle ci-dessus, seules les lignes avec un `account_id` à `1` seront incluses dans la vérification du `unique`.
 
 <a name="rule-url"></a>
-#### url
+#### Url
 
 Le champ sous validation doit être formé comme une URL.
 
+**Note:** Cette fonction utilise la méthode PHP `filter_var`.
+
 <a name="conditionally-adding-rules"></a>
 ## Règles d'ajout conditionnelles
+
+Dans certaines situations, vous pourriez vouloir valider un champ **uniquement** si un autre champ est présent dans le tableau d'entrée. Pour faire cela rapidement, ajoutez la règle `sometimes` à votre liste de règle :
+
+    $v = Validator::make($data, array(
+        'email' => 'sometimes|required|email',
+    ));
+
+Dans l'exemple ci dessus, le champ `email` sera validé uniquement s'il est présent dans la tableau `$data`.
+
+#### Validation conditionelle complexe
 
 Des fois vous pouvez avoir besoin de requêrir un champ donné seulement si un autre champ a un valeur plus grande que 100. Ou vous pouvez avoir besoin de deux champs qui ont une valeur donnée seulement quand un autre champ est présent. L'ajout de ces règles de validation n'est pas compliqué. Premièrement, créez une instance `Validator` avec vos _règles statiques_ qui ne changent jamais :
 

@@ -147,6 +147,13 @@ Si une réponse est retournée par un filtre, cette réponse sera considérée c
         return 'You are over 200 years old!';
     }));
 
+#### Attachement de plusieurs filtres avec un tableau
+
+    Route::get('user', array('before' => array('auth', 'old'), function()
+    {
+        return 'You are authenticated and over 200 years old!';
+    }));
+
 #### Attachement d'un filtre à une action sur un contrôleur
 
     Route::get('user', array('before' => 'old', 'uses' => 'UserController@showProfile'));
@@ -253,6 +260,13 @@ Parfois, vous pourriez avoir besoin d'appliquer un filtre sur tout un groupe de 
         {
             // Has Auth Filter
         });
+    });
+
+Vous pouvez utiliser le paramètre `namespace` dans votre tableau de `group` Pour préciser que tous les contrôleurs se trouvent dans un namespace :
+
+    Route::group(array('namespace' => 'Admin'), function()
+    {
+        //
     });
 
 <a name="sub-domain-routing"></a>

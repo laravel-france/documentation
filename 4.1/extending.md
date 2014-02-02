@@ -21,7 +21,7 @@ Les composants de Laravel peuvent être généralement étendus de deux manière
 <a name="managers-and-factories"></a>
 ## Managers & Factories
 
-Laravel a plusieurs classes `Manager` qui se chargent de la création de composants contenant des drivers. Cela inclut les composants de cache, session, identification et de queue. La classe `Manager` est responsable de la création d'une implémentation d'un driver basé sur le fichier de configuration de l'application. Par exemple, la classe `CacheManager` peut créer une implémentation de cache avec APC, Memcached, Native, et divers autres drivers de cache.
+Laravel a plusieurs classes `Manager` qui se chargent de la création de composants contenant des drivers. Cela inclut les composants de cache, session, identification et de queue. La classe `Manager` est responsable de la création d'une implémentation d'un driver basé sur le fichier de configuration de l'application. Par exemple, la classe `CacheManager` peut créer une implémentation de cache avec APC, Memcached, File, et divers autres drivers de cache.
 
 Chacun de ses managers implémente une méthode `extend` qui peut être utilisée pour injecter facilement un nouveau driver dans le manager. Nous verrons chacun de ses managers ci-dessous, avec des exemples montrant comment injecter des drivers personnalisés dans chacun d'entre eux.
 
@@ -104,7 +104,7 @@ Notez que notre driver doit implémenter le contrat `SessionHandlerInterface`. C
 
 Regardons rapidement le rôle de chacune de ses méthodes :
 
-- La méthode `open` sera principalement utilisée dans un système de stockage des sessions basé sur des fichiers. Etant donné que Laravel est fourni avec un driver `native` qui utilise le système de stockage des sessions natif de PHP dans des fichiers, vous n'aurez presque jamais rien à mettre dans cette méthode. C'est simplement dû au fait d'un système d'interface pauvre (nous en discuterons plus tard) que PHP nous oblige à implémenter cette méthode.
+- La méthode `open` sera principalement utilisée dans un système de stockage des sessions basé sur des fichiers. Etant donné que Laravel est fourni avec un driver `file`, vous n'aurez presque jamais rien à mettre dans cette méthode. C'est simplement dû au fait d'un système d'interface pauvre (nous en discuterons plus tard) que PHP nous oblige à implémenter cette méthode.
 - La méthode `close`, comme la méthode `open`, peut également rester vide. Pour la plupart des drivers, ce n'est pas requis.
 - La méthode `read` doit retourner une version de la session qui correspond à `$sessionId` sous forme d'une chaine de caractères. Pas besoin de faire de la sérialisation, lorsque vous écrivez vos données, Laravel s'en charge pour vous.
 - La méthode `write` doit écrire les données `$data` associées à la session `$sessionId` dans un système de stockage, tel que MongoDB, etc.
@@ -173,25 +173,16 @@ Une fois que vous avez enregistré le driver avec la méthode `extend`, vous pou
 
 Presque tous les fournisseurs de services inclus dans le framework Laravel lient des objets dans le conteneur IoC. Vous pouvez trouver une liste des services providers dans le fichier `app/config/app.php`. Quand vous aurez le temps, vous devriez jeter un oeil à chacun de ces fichiers. Ainsi, vous comprendrez bien mieux ce que chacun fournit au framework, et également quelles sont les clés utilisées pour les liaisons dans le conteneur IoC.
 
-Par exemple, `PaginationServiceProvider` est enregistré dans le conteneur IoC avec la clé `paginator` qui résout une instance de `Illuminate\Pagination\Environment`. Vous pouvez facilement étendre et surcharger cette classe dans votre application en écrasant cette liaison dans l'IoC. Par exemple, vous pouvez créer une classe qui hérite de la classe de base `Environment`:
+Par exemple, `HashServiceProvider` attache une clé `hash` dans l'IoC container, qui résout une instance de `Illuminate\Hashing\BcryptHasher`. Vous pouvez facilement étendre et surcharger cette classe dans votre application en la surchargeant la liaison IoC. Par exemple :
 
-    namespace Snappy\Extensions\Pagination;
 
-    class Environment extends \Illuminate\Pagination\Environment {
-
-        //
-
-    }
-
-Une fois que vous avez créé votre classe fille, vous pouvez créer un fournisseur de service `SnappyPaginationProvider` qui surcharge le paginator dans sa méthode `boot` :
-
-    class SnappyPaginationProvider extends PaginationServiceProvider {
+    class SnappyPaginationProvider extends Illuminate\Hashing\HashServiceProvider {
 
         public function boot()
         {
-            App::bind('paginator', function()
+            App::bindShared('hash', function()
             {
-                return new Snappy\Extensions\Pagination\Environment;
+                return new Snappy\Hashing\ScryptHasher;
             });
 
             parent::boot();
@@ -199,7 +190,7 @@ Une fois que vous avez créé votre classe fille, vous pouvez créer un fourniss
 
     }
 
-Notez que cette classe hérite de `PaginationServiceProvider`, et non de la classe de base `ServiceProvider`. Une fois que vous avez étendu le fournisseur de service, changez l'entrée `PaginationServiceProvider` dans votre fichier de configuration `app/config/app.php` par le nom de votre propre fournisseur de service.
+Notez que cette classe hérite de `HashServiceProvider`, et non de la classe de base `ServiceProvider`. Une fois que vous avez étendu le fournisseur de service, changez l'entrée `HashServiceProvider` dans votre fichier de configuration `app/config/app.php` par le nom de votre propre fournisseur de service.
 
 C'est la méthode générale pour étendre n'importe quelle classe du coeur de Laravel qui est définie dans l'IoC. La quasi totalité des classes au coeur du framework sont liées au conteneur IoC de la même manière, et peuvent être surchargées. Une fois de plus, lisez le code source des fournisseurs de services inclus dans le framework pour vous familiariser avec les classes qui sont liées dans le conteneur, et à quelles clés elles sont liées. C'est une bonne manière d'apprendre comment Laravel est construit.
 

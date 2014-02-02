@@ -172,6 +172,7 @@ Vous trouverez ci-dessous une liste des règles de validation et leurs fonctions
 - [Required](#rule-required)
 - [Required If](#rule-required-if)
 - [Required With](#rule-required-with)
+- [Required With All](#rule-required-with-all)
 - [Required Without](#rule-required-without)
 - [Required Without All](#rule-required-without-all)
 - [Same](#rule-same)
@@ -337,14 +338,19 @@ Le filtre sous validation doit correspondre à l'expression régulière donnée.
 Le champ sous validation doit être présent dans les données.
 
 <a name="rule-required-if"></a>
-#### required_if:_field_,_value_
+#### required\_if:_field_,_value_
 
 Le champ sous validation doit être présent si le champ _field_ est égale à la valeur _value_.
 
 <a name="rule-required-with"></a>
 #### required_with:_foo_,_bar_,...
 
-Le champ sous validation doit être présent _seulement si_ les autres champs spécifiés sont présents.
+Le champ sous validation doit être présent _seulement si_ l'un des autres champs spécifiés sont présents.
+
+<a name="rule-required-with-all"></a>
+#### required_with_all:_foo_,_bar_,...
+
+Le champ sous validation doit être présent _seulement si_ tous les autres champs spécifiés sont présents.
 
 <a name="rule-required-without"></a>
 #### required_without:_foo_,_bar_,...
@@ -400,6 +406,16 @@ Le champ sous validation doit être formé comme une URL.
 
 <a name="conditionally-adding-rules"></a>
 ## Règles d'ajout conditionnelles
+
+Dans certaines situations, vous pourriez vouloir valider un champ **uniquement** si un autre champ est présent dans le tableau d'entrée. Pour faire cela rapidement, ajoutez la règle `sometimes` à votre liste de règle :
+
+    $v = Validator::make($data, array(
+        'email' => 'sometimes|required|email',
+    ));
+
+Dans l'exemple ci dessus, le champ `email` sera validé uniquement s'il est présent dans la tableau `$data`.
+
+#### Validation conditionelle complexe
 
 Des fois vous pouvez avoir besoin de requêrir un champ donné seulement si un autre champ a un valeur plus grande que 100. Ou vous pouvez avoir besoin de deux champs qui ont une valeur donnée seulement quand un autre champ est présent. L'ajout de ces règles de validation n'est pas compliqué. Premièrement, créez une instance `Validator` avec vos _règles statiques_ qui ne changent jamais :
 
@@ -517,3 +533,11 @@ Lorsque vous créez une règle de validation personnalisée, vous pourriez avoir
     {
         return str_replace(':foo', $parameters[0], $message);
     }
+
+Si vous voulez changer un message personnalisé sans étendre la classe `Validator`, vous pouvez utiliser la méthode `Validator::replacer` :
+
+	Validator::replacer('rule', function($message, $attribute, $rule, $parameters)
+	{
+		//
+	});
+

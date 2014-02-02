@@ -2,6 +2,8 @@
 
 - [Introduction](#introduction)
 - [Configuration des environnements](#environment-configuration)
+- [Configuration des fournisseurs](#provider-configuration)
+- [Protection des infos de configurations sensibles](#protecting-sensitive-configuration)
 - [Mode de maintenance](#maintenance-mode)
 
 <a name="introduction"></a>
@@ -77,7 +79,39 @@ Vous pouvez également passé des arguments à la méthode `environment ` method
     // L'environnement est local ou staging...
   }
 
+<a name="provider-configuration"></a>
+### Configuration des fournisseurs
 
+Lorsque vous utilisez des fichiers de configurations spécifiques à vos environnements, vous pourriez vouloir ajouter des [service providers](/4.1/ioc#service-providers) à votre fichier de configuration `app` principal. Cependant, si vous le faites, vous suchargerez la clé "providers" principale et écraserez tous les services providers enregistrés. Pour forcer l'ajout plutôt que le remplacement, utilisez la fonction `append_config` dans le fichier de configuration de votre environnement :
+
+	'providers' => append_config(array(
+		'LocalOnlyServiceProvider',
+	))
+
+<a name="protecting-sensitive-configuration"></a>
+## Protection des infos de configurations sensibles
+
+Pour de "vrais" applications, il est sage de garder vos infos sensibles en dehors des fichiers de configurations. des choses tels que votre mot de passe de base de données, des clés d'API, et des clés de chiffrages doivent se trouver en dehors des fichiers de configuration quand cela est possible. Mais où les placer ? Heuresement, Laravel fournit une solution simple pour protéger ces informations en utilisant un fichier caché.
+
+Premièrement, [configurez votre applications](/4.1/configuration#environment-configuration) pour reconnaitre votre machine en tant qu'environnement `local`. Ensuitez, créez un fichier `.env.local.php` à la racine de votre projet. la racine est là où votre `composer.json` se trouve. Le fichier `.env.local.php` doit retourner un tableau de type clé/valeur, tout comme un fichier de configuration :
+
+	<?php
+
+	return array(
+
+		'TEST_STRIPE_KEY' => 'super-secret-sauce',
+
+	);
+
+Toutes les données retournées par ce fichier se trouverons dans les superglobales PHP `$_ENV` et `$_SERVER`. Vous pouvez utilisez ces superglobales dans vos fichiers de configuration :
+
+	'key' => $_ENV['TEST_STRIPE_KEY']
+
+N'oubliez pas d'ajouter `.env.local.php` à votre `.gitignore`. Cela permettra aux autres développeurs de créer le leur, et de ne pas partager ces informations dans votre système de contrôle de version.
+
+Sur votre serveur de production, créez un fichier `.env.php` à la racine de votre projet avec vos valeurs de production. Ce fichier ne doit également jamais être se trouver dans votre système de contrôle de version.
+
+> **Note:** Vous pouvez créer un fichier pour chaque environnemnt supporté par votre application. par exemple, un environnnement `recette` chargera le fichier `.env.recette.php` si il existe.
 
 <a name="maintenance-mode"></a>
 ## Mode de maintenance

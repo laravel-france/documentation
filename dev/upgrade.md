@@ -1,6 +1,18 @@
 # Guide de mise à jour
 
+- [Mise à jour de la 4.2 à 4.1](#upgrade-4.2)
 - [Mise à jour de la 4.0 à 4.1](#upgrade-4.1)
+
+<a name="upgrade-4.2"></a>
+## Mise à jour de la 4.0 à 4.1
+
+### PHP 5.4+
+
+Laravel 4.2 requires PHP 5.4.0 or greater.
+
+### View / Pagination Environment renommés
+
+Si vous utilisez directement les classes `Illuminate\View\Environment` ou `Illuminate\Pagination\Environment`, renommez les références en `Illuminate\View\Factory` et `Illuminate\Pagination\Factory`. Ces deux classes ont été renommées pour mieux correspondre à leurs fonctions.
 
 <a name="upgrade-4.1"></a>
 ## Mise à jour de la 4.0 à 4.1

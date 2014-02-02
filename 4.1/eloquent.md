@@ -364,6 +364,7 @@ Bien sûr, vos tables sont probablement liées les unes aux autres. Par exemple,
 - [Plusieurs vers plusieurs (n:n)](#many-to-many)
 - [Plusieurs via](#has-many-through)
 - [Relations polymorphiques](#polymorphic-relations)
+- [Relations polymorphique plusieurs vers plusieurs](#many-to-many-polymorphic-relations)
 
 <a name="one-to-one"></a>
 ### Un vers un (1:1)
@@ -624,6 +625,57 @@ Pour vous aider à comprendre comment cela marche, jetons un oeil à la structur
         imageable_type - string
 
 Les champs clés à remarquer ici sont `imageable_id` et `imageable_type` de la table `photos`. L'ID contiendra la valeur de l'ID d'une ligne de staff ou de commande ici par exemple, tandis que le type contiendra le nom de la classe du modèle propriétaire. C'est ce qui permet à l'ORM de déterminer quel type de propriétaire doit être retourné lors de l'accès à la relation `imageable`.
+
+<a name="many-to-many-polymorphic-relations"></a>
+### Relations polymorphique plusieurs vers plusieurs
+
+En plus des relations polymorphiques traditionelles, vous pouvez créer des relations polymorphiques plusieurs vers plusieurs. Par exemple, un post de blog et une vidéo peuvent partager une relation avec des `Tag`. Premièrement, regardons la structure des tables:
+
+#### Structure de tables d'une relations polymorphic plusieurs vers plusieurs
+
+	posts
+		id - integer
+		name - string
+
+	videos
+		id - integer
+		name - string
+
+	tags
+		id - integer
+		name - string
+
+	taggables
+		tag_id - integer
+		taggable_id - integer
+		taggable_type - string
+
+Ensuite, nous sommes prêt à mettre en place la relations dans le modèle. Les modèles `Post` et `Video` auront tous les deux une relation `morphToMany` via une méthode `tags` :
+
+	class Post extends Eloquent {
+
+		public function tags()
+		{
+			return $this->morphToMany('Tag', 'taggable');
+		}
+
+	}
+
+Le modèle `Tag` doit définir une méthode pour chacune de ses relations :
+
+	class Tag extends Eloquent {
+
+		public function posts()
+		{
+			return $this->morphedByMany('Post', 'taggable');
+		}
+
+		public function videos()
+		{
+			return $this->morphedByMany('Video', 'taggable');
+		}
+
+	}
 
 <a name="querying-relations"></a>
 ## Requêtes sur les relations
@@ -923,6 +975,10 @@ Lors du filtrage de collections, le retour fourni sera utilisé comme retour pou
     {
         return $role->created_at;
     });
+
+#### Tri une collection par une valeur
+
+	$roles = $roles->sortBy('created_at');
 
 Parfois, vous pourriez vouloir retourner une collection personnalisée avec vos propres méthodes ajoutées. Vous devez spécifier cela dans votre modèle Eloquent en surchargeant la méthode `newCollection` :
 

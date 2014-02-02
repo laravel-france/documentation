@@ -3,6 +3,7 @@
 - [Configuration](#configuration)
 - [Basic Usage](#basic-usage)
 - [Tasks](#tasks)
+- [Téléchargement SFTP](#sftp-downloads)
 - [SFTP Uploads](#sftp-uploads)
 - [Tailing Remote Logs](#tailing-remote-logs)
 
@@ -61,6 +62,15 @@ Once the task has been defined, you may use the `task` method to run it:
 		echo $line.PHP_EOL;
 	});
 
+<a name="sftp-downlaods"></a>
++## Téléchargement SFTP
+
+La classe `SSH` inclue un moyen simple de récuperer un fichier ou une chaine :
+
+    SSH::into('staging')->get($remotePath, $localPath);
+
+    $contents = SSH::into('staging')->getString($remotePath);
+
 <a name="sftp-uploads"></a>
 ## SFTP Uploads
 
@@ -68,7 +78,7 @@ The `SSH` class also includes a simple way to upload files, or even strings, to 
 
 	SSH::into('staging')->put($localFile, $remotePath);
 
-	SSH::into('staging')->putString('Foo', $remotePath);
+	SSH::into('staging')->putString($remotePath, 'Foo');
 
 <a name="tailing-remote-logs"></a>
 ## Tailing Remote Logs

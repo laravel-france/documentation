@@ -228,6 +228,13 @@ Le formulaire de la vue `password.remind` peut ressembler à cela :
 
 En plus de `getRemind`, le contrôleur généré a déjà une méthode `postRemind` qui s'occupe d'envoyer l'email de rappel de mot passe à l'utilisateur. Cette méthode attend un champ `email` dans la variable `POST`. Si l'email de rappel est envoyé à l'utilisateur, un message `status` sera flash en session. S'il échoue, un message `error` sera flashé à la place.
 
+Dans la méthode `postRemind` du contrôleur, vous pouvez modifier le message avant de de l'envoyer à l'utilisateur :
+
+	Password::remind(Input::only('email'), function($message)
+	{
+		$message->subject('Password Reminder');
+	});
+
 Votre utilisateur recevra un email avec un lien qui pointe vers la méthode `getReset` du contrôleur. Le jeton du rappel de mot de passe, qui est utilisé pour identifier une tentative de rappel de mot de passe, sera aussi passé à la méthode de contrôleur. L'action est déjà configuré pour retourner une vue `password.reset` que vous devez construire. Le `jeton` (token) sera passé à la vue, et vous devez placé ce jeton dans un champ caché nommé `token`. En plus de ce `token`, votre formulaire doit contenir les champs : `email`, `password`, et `password_confirmation`. Le formulaire doit faire une requête POST sur `RemindersController@postReset`
 
 Le formulaire de la vue `password.reset` peut ressembler à ça :

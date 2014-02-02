@@ -143,6 +143,15 @@ La classe `Request` fournit beaucoup de méthodes permettant d'examiner les él�
 
     $uri = Request::path();
 
+#### Test la méthode de requête
+
+    $method = Request::method();
+
+    if (Request::isMethod('post'))
+    {
+        //
+    }
+
 #### Détermine si le chemin d'une requête respecte un motif
 
     if (Request::is('admin/*')) {

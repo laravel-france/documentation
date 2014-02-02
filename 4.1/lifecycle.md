@@ -69,4 +69,12 @@ Vous pouvez ajouter des opérations précédant et suivant l'exécution de la re
 
 Les listeners de ces événements seront exécutées `avant` (before) et `après` (after) chaque requête de votre application. Ces événements peuvent être utile pour du filtrage global ou de la modification globale de réponse pour votre application. Vous pouvez les enregistrer dans vos fichiers `start` ou dans un [service provider](/4.1/ioc#service-providers).
 
+Vous pouvez également enregistrer un événement `matched`, qui est lancé lorsqu'une requête est liée à une route, mais que la route n'a pas été exécutée :
+
+	Route::matched(function($route, $request)
+	{
+		//
+	});
+
+
 L'événement `finish` est appelé une fois que la réponse est envoyée vers le client. C'est l'endroit idéal pour placer des opérations de dernière minute dont votre application aurait besoin. L'événement `shutdown` est appelé tout de suite après que tous les événements `finish` sont traités, et est la dernière opportunité de faire des choses avant que votre script ne soit terminé. La plupart du temps, vous n'aurez pas besoin d'utiliser ces événements.
