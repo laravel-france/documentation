@@ -8,6 +8,7 @@
 - [Processus de développement](#development-workflow)
 - [Routage de package](#package-routing)
 - [Configuration de package](#package-configuration)
+- [Vues d'un package](#package-views)
 - [Migration dans un package](#package-migrations)
 - [Ressources d'un package](#package-assets)
 - [Publication d'un package](#publishing-packages)
@@ -165,6 +166,15 @@ Quand d'autres développeurs installent votre package, ils peuvent vouloir surch
 Quand cette commande est exécutée, les fichiers de configuration de votre package sont copiés dans le dossier `app/config/packages/vendor/package` où ils peuvent être modifiés en toute sécurité par le développeur !
 
 > **Note:** Le développeur peut également créer des fichiers de configuration spécifiques aux environnements pour votre package en les plaçant dans `app/config/packages/vendor/package/environment`.
+
+<a name="package-views"></a>
+## Vues d'un package
+
+Si vous utilisez un package dans votre application, vous pouvez être ammené à vouloir customiser les vues du package. Pous pouvez facilement exporter les vues du package dans votre propre dossier `app/views` en utilisant la commande Artisan `view:publish` :
+
+    php artisan view:publish vendor/package
+
+Cette commande déplacera les vues du package dans le dossier `app/views/packages`. Si le dossier n'existe pas il sera créé au moment de l'exécution de la commande. Une fois que les vues ont été déplacées, vous pouvez les modifier autant que vous le souhaitez ! Ces vues que vous venez d'exporter seront automatiquement utilisée en priorité par rapport aux vues présentes dans le package d'origine.
 
 <a name="package-migrations"></a>
 ## Migration dans un package

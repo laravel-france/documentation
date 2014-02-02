@@ -32,6 +32,13 @@ La plupart des routes de votre application seront définies dans le fichier `app
 
 #### Enregistrement d'une route répondant à tous les verbes HTTP
 
+    Route::match(array('GET', 'POST'), '/', function()
+    {
+        return 'Hello World';
+    });
+
+#### Enregistrement d'une route répondant à tous les verbes HTTP**
+
     Route::any('foo', function()
     {
         return 'Hello World';
