@@ -6,6 +6,7 @@
 - [Téléchargement SFTP](#sftp-downloads)
 - [SFTP Uploads](#sftp-uploads)
 - [Tailing Remote Logs](#tailing-remote-logs)
+- [Envoy Task Runner](#envoy-task-runner)
 
 <a name="configuration"></a>
 ## Configuration
@@ -13,6 +14,8 @@
 Laravel includes a simple way to SSH into remote servers and run commands, allowing you to easily build Artisan tasks that work on remote servers. The `SSH` facade provides the access point to connecting to your remote servers and running commands.
 
 The configuration file is located at `app/config/remote.php`, and contains all of the options you need to configure your remote connections. The `connections` array contains a list of your servers keyed by name. Simple populate the credentials in the `connections` array and you will be ready to start running remote tasks. Note that the `SSH` can authenticate using either a password or an SSH key.
+
+> **Note:** Besoin d'exécuter plusieurs tâches sur un serveur distant ? Jetez un oeil à [Envoy task runner](#envoy-task-runner)!
 
 <a name="basic-usage"></a>
 ## Basic Usage
@@ -88,3 +91,115 @@ Laravel includes a helpful command for tailing the `laravel.log` files on any of
 	php artisan tail staging
 
 	php artisan tail staging --path=/path/to/log.file
+
+<a name="envoy-task-runner"></a>
+## Envoy Task Runner
+
+- [Installation](#envoy-installation)
+- [Exécution de tâches](#envoy-running-tasks)
+- [Serveurs multiples](#envoy-multiple-servers)
+- [Exécutions parallèles](#envoy-parallel-execution)
+- [Macro](#envoy-task-macros)
+- [Notifications HipChat ](#envoy-hipchat-notifications)
+
+
+Laravel Envoy fournit une syntaxe propre et minimale pour définir les tâches que vous exécutez sur vos serveurs distants. Utilisant une syntaxe comme celle de [Blade](/4.1/templates#blade-templating), vous pouvez facilement mettre en place vos tâches de déploiements, commandes artisan et autre.
+
+> **Note:** Envoy nécessite PHP >= 5.4, et fonctione uniquement sur Mac/Linux.
+
+<a name="envoy-installation"></a>
+### Installation
+
+Premièrement, téléchargez [l'archive Phar](http://laravel.com/envoy.phar) d'Envoy et placez la dans `/usr/local/bin` en tant que `envoy` pour un accès facile. Avant de lancer vos tâches, vous devez donner les droits d'exécution au fichier `envoy`.
+
+Ensuitez, créez un fichier `Envoy.blade.php` à la racine de votre projet. Voici un exemple pour commencer :
+
+	@servers(['web' => '192.168.1.1'])
+
+	@task('foo', ['on' => 'web'])
+		ls -la
+	@endtask
+
+Comem vous pouvez le constater, un tableau de `@servers` est défini en haut du fichier. Vous pouvez utiliser ces serveurs dans l'option `on` de vos déclarations de tâche. Dans vos déclarations de tâches (`@task`) vous devez placer votre code bash qui sera exécuter sur le serveur.
+
+<a name="envoy-running-tasks"></a>
+### Exécution de tâches
+
+Pour lancer une tâche, utilisez la commande `run` d'Envoy:
+
+	envoy run foo
+
+Si besoin, vous pouvez passez des variables au fichier Envoy en utilisant des switchs :
+
+	envoy run deploy --branch=master
+
+Vous pouvez utiliser les options avec la syntaxe de Blade :
+
+	@task('deploy', ['on' => 'web'])
+		cd site
+		git pull origin {{ $branch }}
+		php artisan migrate
+	@endtask
+
+<a name="envoy-multiple-servers"></a>
+### Serveurs multiples
+
+Vous pouvez facilement lancer une taches sur de multiples serveurs. Listez simplement les serveurs dans votre déclaration de tâche :
+
+	@task('deploy', ['on' => ['web-1', 'web-2']])
+		cd site
+		git pull origin {{ $branch }}
+		php artisan migrate
+	@endtask
+
+Par défaut, la tâche sera exécutée sur chaque serveur un par un. Cela signifie que quand elle aura fini sur un serveur, elle passera au suivant.
+
+<a name="envoy-parallel-execution"></a>
+### Exécutions parallèles
+
+Si vous souhaitez lancer des tâches sur plusieurs serveurs en parallèle, ajoutez l'option `parallel` à la déclaration de votre tâche :
+
+	@task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
+		cd site
+		git pull origin {{ $branch }}
+		php artisan migrate
+	@endtask
+
+<a name="envoy-task-macros"></a>
+### Macros
+
+Les macros vous permettent de définir une liste de tâches qui seront exécutés en une seule commande. Par exemple :
+
+	@macro('deploy')
+		foo
+		bar
+	@endmacro
+
+	@task('foo')
+		echo "HELLO"
+	@endtask
+
+	@task('bar')
+		echo "WORLD"
+	@endtask
+
+La macro `deploy` peut maintenant être utilisé via une simple commande :
+
+	envoy run deploy
+
+<a name="envoy-hipchat-notifications"></a>
+### Notifications HipChat
+
+Après l'exécution d'une tâche, vous pouvez envoyer une notification à la salle HipChat de votre équipe avec la directive `@hipchat` :
+
+	@servers(['web' => '192.168.1.1'])
+
+	@task('foo', ['on' => 'web'])
+		ls -la
+	@endtask
+
+	@after
+		@hipchat('token', 'room', 'Envoy')
+	@endafter
+
+C'est une manière vraiment simple de notifier à l'équipe qu'une tâche a été exécutée sur un serveur
