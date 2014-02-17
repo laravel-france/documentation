@@ -100,8 +100,8 @@ Laravel includes a helpful command for tailing the `laravel.log` files on any of
 - [Serveurs multiples](#envoy-multiple-servers)
 - [Exécutions parallèles](#envoy-parallel-execution)
 - [Macro](#envoy-task-macros)
-- [Notifications HipChat ](#envoy-hipchat-notifications)
-
+- [Notifications HipChat](#envoy-hipchat-notifications)
+- [Mise à jour](#envoy-updating-envoy)
 
 Laravel Envoy fournit une syntaxe propre et minimale pour définir les tâches que vous exécutez sur vos serveurs distants. Utilisant une syntaxe comme celle de [Blade](/4.1/templates#blade-templating), vous pouvez facilement mettre en place vos tâches de déploiements, commandes artisan et autre.
 
@@ -211,3 +211,14 @@ Après l'exécution d'une tâche, vous pouvez envoyer une notification à la sal
 	@endafter
 
 C'est une manière vraiment simple de notifier à l'équipe qu'une tâche a été exécutée sur un serveur
+
+<a name="envoy-updating-envoy"></a>
+### Mise à jour
+
+Pour mettre à jour Envoy, lancez le avec la commande `self-update`:
+
+	envoy self-update
+
+Si votre installation se trouve dans `/usr/local/bin`, vous devez utiliser `sudo`:
+
+	sudo envoy self-update
