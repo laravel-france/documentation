@@ -135,6 +135,8 @@ Si besoin, vous pouvez passez des variables au fichier Envoy en utilisant des sw
 
 Vous pouvez utiliser les options avec la syntaxe de Blade :
 
+	@servers(['web' => '192.168.1.1'])
+
 	@task('deploy', ['on' => 'web'])
 		cd site
 		git pull origin {{ $branch }}
@@ -145,6 +147,8 @@ Vous pouvez utiliser les options avec la syntaxe de Blade :
 ### Serveurs multiples
 
 Vous pouvez facilement lancer une taches sur de multiples serveurs. Listez simplement les serveurs dans votre déclaration de tâche :
+
+	@servers(['web-1' => '192.168.1.1', 'web-2' => '192.168.1.2'])
 
 	@task('deploy', ['on' => ['web-1', 'web-2']])
 		cd site
@@ -159,6 +163,8 @@ Par défaut, la tâche sera exécutée sur chaque serveur un par un. Cela signif
 
 Si vous souhaitez lancer des tâches sur plusieurs serveurs en parallèle, ajoutez l'option `parallel` à la déclaration de votre tâche :
 
+	@servers(['web-1' => '192.168.1.1', 'web-2' => '192.168.1.2'])
+
 	@task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
 		cd site
 		git pull origin {{ $branch }}
@@ -169,6 +175,8 @@ Si vous souhaitez lancer des tâches sur plusieurs serveurs en parallèle, ajout
 ### Macros
 
 Les macros vous permettent de définir une liste de tâches qui seront exécutés en une seule commande. Par exemple :
+
+	@servers(['web' => '192.168.1.1'])
 
 	@macro('deploy')
 		foo
