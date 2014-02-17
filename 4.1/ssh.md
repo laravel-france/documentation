@@ -100,7 +100,7 @@ Laravel includes a helpful command for tailing the `laravel.log` files on any of
 - [Serveurs multiples](#envoy-multiple-servers)
 - [Exécutions parallèles](#envoy-parallel-execution)
 - [Macro](#envoy-task-macros)
-- [Notifications HipChat](#envoy-hipchat-notifications)
+- [Notifications](#envoy-notifications)
 - [Mise à jour](#envoy-updating-envoy)
 
 Laravel Envoy fournit une syntaxe propre et minimale pour définir les tâches que vous exécutez sur vos serveurs distants. Utilisant une syntaxe comme celle de [Blade](/4.1/templates#blade-templating), vous pouvez facilement mettre en place vos tâches de déploiements, commandes artisan et autre.
@@ -110,7 +110,7 @@ Laravel Envoy fournit une syntaxe propre et minimale pour définir les tâches q
 <a name="envoy-installation"></a>
 ### Installation
 
-Premièrement, téléchargez [l'archive Phar](http://laravel.com/envoy.phar) d'Envoy et placez la dans `/usr/local/bin` en tant que `envoy` pour un accès facile. Avant de lancer vos tâches, vous devez donner les droits d'exécution au fichier `envoy`.
+Premièrement, téléchargez [l'archive Phar](https://github.com/laravel/envoy/raw/master/envoy.phar) d'Envoy et placez la dans `/usr/local/bin` en tant que `envoy` pour un accès facile. Avant de lancer vos tâches, vous devez donner les droits d'exécution au fichier `envoy`.
 
 Ensuitez, créez un fichier `Envoy.blade.php` à la racine de votre projet. Voici un exemple pour commencer :
 
@@ -196,7 +196,9 @@ La macro `deploy` peut maintenant être utilisé via une simple commande :
 	envoy run deploy
 
 <a name="envoy-hipchat-notifications"></a>
-### Notifications HipChat
+### Notifications
+
+#### HipChat
 
 Après l'exécution d'une tâche, vous pouvez envoyer une notification à la salle HipChat de votre équipe avec la directive `@hipchat` :
 
@@ -211,6 +213,15 @@ Après l'exécution d'une tâche, vous pouvez envoyer une notification à la sal
 	@endafter
 
 C'est une manière vraiment simple de notifier à l'équipe qu'une tâche a été exécutée sur un serveur
+
+#### Slack
+
+La syntaxe suivante peut être utilisé pour envoyer une notification vers [Slack](https://slack.com):
+
+	@after
+		@slack('team', 'token', 'channel')
+	@endafter
+
 
 <a name="envoy-updating-envoy"></a>
 ### Mise à jour
