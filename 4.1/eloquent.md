@@ -369,7 +369,7 @@ Bien sûr, vos tables sont probablement liées les unes aux autres. Par exemple,
 <a name="one-to-one"></a>
 ### Un vers un (1:1)
 
-Une relation un-vers-un est une relation très basique. Par exemple, un modèle `User` peut avoir un téléphone modèle `Phone`. Nous définissons la relation de la manière suivante avec Eloquent :
+Une relation un-vers-un est une relation très basique. Par exemple, un modèle `User` peut avoir un modèle `Phone`. Nous définissons la relation de la manière suivante avec Eloquent :
 
 #### Définition d'une relation un vers un
 
@@ -392,7 +392,7 @@ La requête SQL exécutée pour cette requête sera la suivante :
 
     select * from phones where user_id = 1
 
-Notez qu'Eloquent devine la clé étrangère en se basant sur le nom du modèle. Dans ce cas, le modèle `Phone` doit avoir une colonne `user_id` en tant que clé étrangère. Vous pouvez surcharger cette convention en passant un second argument à la méthode `hasOne`. De plus, vous pouvez un troisième argument à la méthode pour spécifier quelle colonne locale doit être utilisée pour l'association :
+Notez qu'Eloquent devine la clé étrangère en se basant sur le nom du modèle. Dans ce cas, le modèle `Phone` doit avoir une colonne `user_id` en tant que clé étrangère. Vous pouvez surcharger cette convention en passant un second argument à la méthode `hasOne`. De plus, vous pouvez ajouter un troisième argument à la méthode pour spécifier quelle colonne locale doit être utilisée pour l'association :
 
     return $this->hasOne('Phone', 'foreign_key');
 
