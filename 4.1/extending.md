@@ -28,7 +28,7 @@ Chacun de ses managers implémente une méthode `extend` qui peut être utilisé
 > **Note:** Prenez un moment pour regarder les différentes classes `Manager` que Laravel contient, telles que `CacheManager` et `SessionManager`, cela vous aidera à comprendre ce qui se passe sous le capot. Toutes les classes `Manager` héritent de `Illuminate\Support\Manager`, qui fournit des fonctionnalités utiles et communes pour chaque manager.
 
 <a name="where-to-extend"></a>
- ## Où enregistrer ses extensions
+## Où enregistrer ses extensions
  
 Cette documentation couvre comment étendre une variété de composants de Laravel, mais vous pourriez vous demander où placer ses extensions. Comme beaucoup de code d'amorçage, vous êtes libre de placer certaines extensions dans vos fichiers `start`. Les extensions de Cache ou d'Auth sont de bonnes candidates pour cette approche. D'autres extensions, comme les `Session`, doivent être placées dans le méthode `register` d'un service provider car elles sont necessaires assez tôt dans le cycle de vie d'une requête.
  
