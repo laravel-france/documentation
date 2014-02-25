@@ -74,9 +74,35 @@ Si le fichier `.htaccess` fourni avec Laravel ne fonctionne pas, essayez celui c
 
 ### Nginx
 
-Avec Nginx, inserez la directive suivante dans le fichier de configuration de votre site :
+Avec Nginx, utiliser le fichier de configuration suivant (à adapter selon les cas) :
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        server {
+        listen 80;
+     
+        server_name domaine.com;
+        root /chemin/vers/laravel/public;
+     
+        error_log /var/log/nginx/laravel.error.log;
+        access_log /var/log/nginx/laravel.access.log;
+     
+        # strip index.php/ prefix if it is present
+        rewrite ^/index\.php/?(.*)$ /$1 permanent;
+     
+        location / {
+            index index.php;
+            try_files $uri @rewriteapp;
+        }
+     
+        location @rewriteapp {
+            rewrite ^(.*)$ /index.php/$1 last;
+        }
+     
+        # pass the PHP scripts to FastCGI server
+        location ~ ^/(index)\.php(/|$) {
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            include fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param  HTTPS off;
+        }
     }
-
