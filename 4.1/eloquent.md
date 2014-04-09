@@ -91,13 +91,13 @@ Bien sûr, vous pouvez également utiliser les fonctions d'agrégat du Query Bui
 
     $count = User::where('votes', '>', 100)->count();
 
-Si vous êtes dans l'impossibilité de générer la requête que vous souhaitez via l'interface Fluent, alors n'hésitez pas à utiliser la méthode `whereRaw`:
+Si vous êtes dans l'impossibilité de générer la requête que vous souhaitez via l'interface Fluent, alors n'hésitez pas à utiliser la méthode `whereRaw` :
 
-  $users = User::whereRaw('age > ? and votes = 100', array(25))->get();
+    $users = User::whereRaw('age > ? and votes = 100', array(25))->get();
 
 #### Ségmentation des résultats
 
-Si vous avez besoin de traiter beaucoup (des milliesr) d'enregistrements Eloquent, utiliser la méthode `chunk` vous permettra d'économiser beaucoup de RAM :
+Si vous avez besoin de traiter beaucoup (des milliers) d'enregistrements Eloquent, utiliser la méthode `chunk` vous permettra d'économiser beaucoup de RAM :
 
     User::chunk(200, function($users)
     {
@@ -107,7 +107,7 @@ Si vous avez besoin de traiter beaucoup (des milliesr) d'enregistrements Eloquen
         }
     });
 
-Le premier argument est le nom de lignes que vous souhaitez recevoir par ségment, La fonction anonyme passée en second argument sera appelée pour chaque ségment provenant de la base de données.
+Le premier argument est le nombre de lignes que vous souhaitez recevoir par ségment, La fonction anonyme passée en second argument sera appelée pour chaque ségment provenant de la base de données.
 
 #### Spécification de la connexion
 
