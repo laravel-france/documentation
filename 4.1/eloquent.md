@@ -23,7 +23,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-L'ORM Eloquent inclus avec Laravel fournit une implémentation magnifique et simple d'ActiveRecord pour travailler avec votre base de données. Chaque table de votre base de données a un Modèle associé pour intéragir avec cette table.
+L'ORM Eloquent inclus avec Laravel fournit une implémentation magnifique et simple d'ActiveRecord pour travailler avec votre base de données. Chaque table de votre base de données a un Modèle associé pour interagir avec cette table.
 
 Avant de commencer, n'oubliez pas de configurer votre connexion à la base de données dans le fichier `app/config/database.php`.
 
@@ -188,7 +188,7 @@ Après avoir sauvé ou créé un nouveau modèle qui utilise un ID auto-incréme
     // Retrieve the user by the attributes, or instantiate a new instance...
     $user = User::firstOrNew(array('name' => 'John'));
 
-Pour mettre à jour un modèle, récupérez le, changez un attribut, et utilisez la méthode `save` :
+Pour mettre à jour un modèle, récupérez-le, changez un attribut, et utilisez la méthode `save` :
 
 #### Mise à jour d'un Modèle
 
@@ -249,7 +249,7 @@ Pour ajouter une colonne `deleted_at` à votre table, vous pouvez utiliser la m�
 
     $table->softDeletes();
 
-Maintenant, lorsque vous appellez la méthode `delete` sur le modèle, la colonne `deleted_at` sera remplie avec la date et l'heure de suppression. Lorsque vous requêtez un modèle avec de la suppression douce, les modèles "supprimés" ne seront pas inclus dans le résultat. Pour forcer l'apparition des modèles réputés supprimés, utilisez la méthode `withTrashed` sur la requête :
+Maintenant, lorsque vous appelez la méthode `delete` sur le modèle, la colonne `deleted_at` sera remplie avec la date et l'heure de suppression. Lorsque vous requêtez un modèle avec de la suppression douce, les modèles "supprimés" ne seront pas inclus dans le résultat. Pour forcer l'apparition des modèles réputés supprimés, utilisez la méthode `withTrashed` sur la requête :
 
 #### Force l'affichage des lignes réputées supprimées
 
@@ -598,7 +598,7 @@ Maintenant, nous pouvons récupérer les photos soit de notre staff, soit d'une 
 
 #### Récupération du propriétaire de la Photo
 
-Cependant, la vraie magie de la polymorphie apparait lorsque vous accédez au staff ou à la commande depuis le modèle `Photo` :
+Cependant, la vraie magie de la polymorphie apparaît lorsque vous accédez au staff ou à la commande depuis le modèle `Photo` :
 
     $photo = Photo::find(1);
 
@@ -629,7 +629,7 @@ Les champs clés à remarquer ici sont `imageable_id` et `imageable_type` de la 
 <a name="many-to-many-polymorphic-relations"></a>
 ### Relations polymorphique plusieurs vers plusieurs
 
-En plus des relations polymorphiques traditionelles, vous pouvez créer des relations polymorphiques plusieurs vers plusieurs. Par exemple, un post de blog et une vidéo peuvent partager une relation avec des `Tag`. Premièrement, regardons la structure des tables:
+En plus des relations polymorphiques traditionnelles, vous pouvez créer des relations polymorphiques plusieurs vers plusieurs. Par exemple, un post de blog et une vidéo peuvent partager une relation avec des `Tag`. Premièrement, regardons la structure des tables:
 
 #### Structure de tables d'une relations polymorphic plusieurs vers plusieurs
 
@@ -1097,7 +1097,7 @@ Donc, par exemple, un observateur de modèle peut ressembler à cela :
 
     }
 
-Vous pouvez enregistrer une instancve d'un observateur en utlisant la méthode `observe` :
+Vous pouvez enregistrer une instance d'un observateur en utilisant la méthode `observe` :
 
     User::observe(new UserObserver);
 
@@ -1148,7 +1148,7 @@ Alternativement, vous pouvez utiliser la propriété `visible` pour définir une
     protected $visible = array('first_name', 'last_name');
 
 <a name="array-appends"></a>
-Occassionnellement, vous pouvez avoir besoin d'ajouter un tableau d'attributs qui ne correspondent pas à un colonne dans votre base de données. Pour ce faire, vous devez simplement définir un accesseur pour la valeur :
+Occasionnellement, vous pouvez avoir besoin d'ajouter un tableau d'attributs qui ne correspondent pas à un colonne dans votre base de données. Pour ce faire, vous devez simplement définir un accesseur pour la valeur :
 
     public function getIsAdminAttribute()
     {
@@ -1159,4 +1159,4 @@ Une fois que vous avez créé l'accesseur, ajoutez la valeur de la propriété `
 
     protected $appends = array('is_admin');
 
-Une fois que l'attribut a été ajouté à la list `appends`, il peut être inclus à la fois sous la modèle tableau ou JSON du modèle.
+Une fois que l'attribut a été ajouté à la liste `appends`, il peut être inclus à la fois sous la modèle tableau ou JSON du modèle.
