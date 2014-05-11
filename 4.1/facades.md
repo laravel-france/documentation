@@ -23,7 +23,7 @@ Dans le contexte d'une application Laravel, une façade est une classe qui fourn
 
 Vos classes Facade doivent uniquement contenir une méthode, `getFacadeAccessor`. C'est la mission de la méthode `getFacadeAccessor` de définir ce qui doit être résolu depuis le conteneur. La classe de base `Facade` fait appel à la méthode magique `__callStatic` pour transmettre les appels de votre façade vers l'objet résolu.
 
-Donc, quand vous faites un appel à une façace comme `Cache::get`, Laravel résout la classe de management de Cache depuis l'IoC container et appelle la méthode `get` de la classe. En terme technique, Les façades Laravel apportent une syntaxe agréable pour utiliser l'IoC container de Laravel en tant que service locator.
+Donc, quand vous faites un appel à une façade comme `Cache::get`, Laravel résout la classe de management de Cache depuis l'IoC container et appelle la méthode `get` de la classe. En terme technique, Les façades Laravel apportent une syntaxe agréable pour utiliser l'IoC container de Laravel en tant que service locator.
 
 <a name="practical-usage"></a>
 ## Cas pratique
