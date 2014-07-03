@@ -15,7 +15,7 @@ Si vous ne comprenez pas tous les termes, n'abandonnez pas. Tentez à minima d'a
 <a name="request-lifecycle"></a>
 ## Request Lifecycle
 
-Toutes les requêtes vers votre application sont dirigées vers le script `public/index.php`. Lorsque vous utilisez Apache, le fichier `.htaccess` fourni avec Laravel se charge de tout rediriger vers `index.php`. C'est là que Laravel commence le processus de gestion de gestion des requêtes et de retour de réponse au client. Avoir une idée globale du processus de démarrage de Laravel sera utile, alors nous allons regarder cela maintenant !
+Toutes les requêtes vers votre application sont dirigées vers le script `public/index.php`. Lorsque vous utilisez Apache, le fichier `.htaccess` fourni avec Laravel se charge de tout rediriger vers `index.php`. C'est là que Laravel commence le processus de gestion des requêtes et de retour de réponse au client. Avoir une idée globale du processus de démarrage de Laravel sera utile, alors nous allons regarder cela maintenant !
 
 De loin, le concept le plus important à comprendre lorsque vous souhaitez apprendre le mécanisme de démarrage de Laravel est le concept des **Service Providers**. Vous pouvez trouver une liste de services providers dans le fichier de configuration `app/config/app.php`, au niveau du tableau `providers`. Ces providers servent de mécanisme de démarrage primaire pour Laravel. Mais avant de creuser ce sujet, retournons au fichier `index.php`. Une fois que la requête entre dans votre fichier `index.php`, le fichier `bootstrap/start.php` sera chargé. Ce fichier crée l'objet `Application`, qui sert d'[IoC container](/4.1/ioc).
 
