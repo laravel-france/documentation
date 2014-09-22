@@ -1,4 +1,3 @@
-@@ -0,0 +1,251 @@
 # Laravel Cashier
 
 - [Introduction](#introduction)
