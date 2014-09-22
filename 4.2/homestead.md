@@ -102,7 +102,7 @@ Pour savoir comment vous connecter à vos bases de données, lisez la suite!
 <a name="daily-usage"></a>
 ## Utilisation Quotidienne
 
-### Connection Via SSH
+### Connexion Via SSH
 
 Pour vous connecter à votre environement Homestead via SSH, vous devez vous connecter à `127.0.0.1` sur le port 2222 en utilisant la clé SSH que vous avez spécifiée dans votre fichier `Homestead.yaml`. Vous pouvez utiliser simplement la commande `vagrant ssh` depuis votre dossier Homestead.
 
