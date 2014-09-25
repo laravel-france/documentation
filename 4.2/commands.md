@@ -8,7 +8,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-En plus des commandes fournies par Laravel, vous pouvez aussi créer vos propres commandes pour votre application. Vous pouvez les stocker dans le dossier `app/commands`. Cependant, vous êtes libre de choisir votre propre lieu de stockage tant qu'il peut être chargé automatiquement selon la configuration de votre fichier `composer.json`.
+En plus des commandes fournies par Artisan, vous pouvez aussi créer vos propres commandes pour votre application. Vous pouvez les stocker dans le dossier `app/commands`. Cependant, vous êtes libre de choisir votre propre lieu de stockage tant qu'il peut être chargé automatiquement selon la configuration de votre fichier `composer.json`.
 
 <a name="building-a-command"></a>
 ## Construction d'une commande
@@ -21,7 +21,7 @@ Pour créer une nouvelle commande, vous pouvez utiliser la commande Artisan `com
 
 	php artisan command:make FooCommand
 
-Par défaut, la commande générée sera placée dans le dossier `app/commands`. Vous pouvez cependant préciser un chemin personnalisé et un namespace :
+Par défaut, la commande générée sera placée dans le dossier `app/commands`. Vous pouvez cependant préciser un chemin personnalisé ou un namespace :
 
 	php artisan command:make FooCommand --path=app/classes --namespace=Classes
 
@@ -120,15 +120,22 @@ Vous pouvez également spécifier une valeur par défaut à la méthode `confirm
 
 Une fois que le développement de votre commande est terminé, vous devez l'enregistrer auprès d'Artisan pour être capable de l'utiliser. Cette opération est généralement réalisée dans le fichier `app/start/artisan.php`. Dans ce fichier, vous devez utiliser la méthode `Artisan::add` pour enregistrer votre commande :
 
-#### Enregistre une commande Artisan
-
 	Artisan::add(new CustomCommand);
 
-Si votre commande est enregistrée dans le [conteneur IoC](/4.1/ioc) de votre application, vous pouvez utiliser la méthode `Artisan::resolve` pour la rendre disponible à Artisan :
+#### Enregistre une commande Artisan
+
+Si votre commande est enregistrée dans le [conteneur IoC](/4.2/ioc) de votre application, vous pouvez utiliser la méthode `Artisan::resolve` pour la rendre disponible à Artisan :
+
+	Artisan::resolve('binding.name');
 
 #### Enregistre une commande qui se trouve dans le conteneur IoC
 
-	Artisan::resolve('binding.name');
+Si vous avez besoin d'enregistrer des commandes à partir d'un service provider, vous devriez appelez la méthode `commands` depuis la méthode `boot` du fournisseur, en passant la liaison du [conteneur IOC](/4.2/ioc) pour la command :
+
+	public function boot()
+	{
+		$this->commands('command.binding');
+	}
 
 <a name="calling-other-commands"></a>
 ## Appel d'autres commandes
