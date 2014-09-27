@@ -32,6 +32,13 @@ De plus, le fichier de configuration du cache fournit diverses options. Consulte
 
 La méthode `add` retourne `true` si l'élément est **ajouté** au cache. Sinon, elle retournera `false`.
 
+#### Vérifier l'existance d'un élément dans le cache
+
+    if (Cache::has('key'))
+    {
+        //
+    }
+
 #### Lire une variable dans le cache
 
     $value = Cache::get('key');
@@ -62,6 +69,12 @@ Vous pouvez aussi combiner les méthodes `remember` et `forever` :
 
 Notez que les variables mises en cache étant sérialisées, n'importe quel type de variable peut être mis en cache.
 
+#### Reprendre un élément du cache
+
+Si vous avez besoin de récupérer un élément à partir du cache et de le supprimer ensuite, vous pouvez utilisez la méthodes `pull` :
+
+    $value = Cache::pull('key');
+
 #### Supprimer une variable du cache
 
     Cache::forget('key');
@@ -84,16 +97,15 @@ Tous les drivers sauf `file` et `database` supportent les opérations `increment
     Cache::decrement('key', $amount);
 
 <a name="cache-tags"></a>
- ## Tags de Cache
+## Tags de Cache
 
 > **Note:** Les tags de cache ne sont pas supportés par les drivers `file` et `database`. De plus, si vous utilisez plusieurs tags avec des caches stockés indéfiniement, les performances seront meilleures avec un driver tel que `memcached`, qui purge automatiquement les données racis.
 
+#### Accès à un tag de cache
 
 Les sections de cache vous permettent de grouper des éléments de même nature dans le cache, et également de vider la section d'un coup. Pour accéder à un tag, utilisez la méthode `tags` :
 
-#### Accès à un tag de cache
-
-Vous pouvez stocker un caché taggué en passant une liste triée de tag en argument, ou en tant que tableau avec une liste triée de nom de tag :
+Vous pouvez stocker un tag de cache en passant une liste triée de tag en argument, ou en tant que tableau avec une liste triée de nom de tag :
 
     Cache::tags('people', 'authors')->put('John', $john, $minutes);
 
@@ -103,7 +115,7 @@ Vous pouvez utiliser n'importe quelle méthode de cache en combinaison avec tags
 
 #### Accès à un élément d'un tag
 
-Pour accéder à un élément taggué, passez la même liste ordonnée de tags utilisée pour la sauvegarde.
+Pour accéder à un élément d'un tag, passez la même liste ordonnée de tags utilisée pour la sauvegarde.
 
     $anne = Cache::tags('people', 'artists')->get('Anne');
 
@@ -111,7 +123,7 @@ Pour accéder à un élément taggué, passez la même liste ordonnée de tags u
 
 Vous pouvez vider tous les items d'un tag avec un nom, ou une liste de nom. Par exemple, la ligne ci dessous supprimera tous les éléments avec 'people', 'authors', ou les deux. Donc Anne et John seront supprimés.
 
-  Cache::tags('people', 'authors')->flush();
+    Cache::tags('people', 'authors')->flush();
 
 Et la ligne ci dessous supprimera uniquement les éléments taggués avec 'authors', donc uniquement John.
 
