@@ -67,7 +67,7 @@ Vous pouvez accéder à l'environnement courant de l'application par la méthode
 
 	$environment = App::environment();
 
-Vous pouvez également passé des arguments à la méthode `environment ` pour vérifier que l'environnement conrespant à votre paramètre :
+Vous pouvez également passé des arguments à la méthode `environment ` pour vérifier que l'environnement correspond à votre paramètre :
 
   if (App::environment('local'))
   {
