@@ -44,7 +44,7 @@ Quand vous travaillez sur les formulaires avec des entrées de type "tableau", v
 <a name="cookies"></a>
 ## Utilisation de cookies
 
-Les cookies créés par Laravel sont cryptés et signés avec un code d'authentification. Par conséquent, les cookies sont considérés invalides dès lors qu'il sont modifiés par le client.
+Les cookies créés par Laravel sont chiffrés et signés avec un code d'authentification. Par conséquent, les cookies sont considérés invalides dès lors qu'il sont modifiés par le client.
 
 #### Lit le contenu d'un cookie
 
