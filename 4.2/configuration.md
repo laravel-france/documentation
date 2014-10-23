@@ -91,7 +91,7 @@ Lorsque vous utilisez des fichiers de configurations spécifiques à vos environ
 <a name="protecting-sensitive-configuration"></a>
 ## Protection des infos de configurations sensibles
 
-Pour de "vrais" applications, il est sage de garder vos infos sensibles en dehors des fichiers de configurations. des choses tels que votre mot de passe de base de données, des clés d'API, et des clés de chiffrages doivent se trouver en dehors des fichiers de configuration quand cela est possible. Mais où les placer ? Heuresement, Laravel fournit une solution simple pour protéger ces informations en utilisant un fichier caché.
+Pour de "vrais" applications, il est sage de garder vos infos sensibles en dehors des fichiers de configurations. des choses tels que votre mot de passe de base de données, des clés d'API, et des clés de chiffrement doivent se trouver en dehors des fichiers de configuration quand cela est possible. Mais où les placer ? Heuresement, Laravel fournit une solution simple pour protéger ces informations en utilisant un fichier caché.
 
 Premièrement, [configurez votre applications](/4.1/configuration#environment-configuration) pour reconnaitre votre machine en tant qu'environnement `local`. Ensuitez, créez un fichier `.env.local.php` à la racine de votre projet. la racine est là où votre `composer.json` se trouve. Le fichier `.env.local.php` doit retourner un tableau de type clé/valeur, tout comme un fichier de configuration :
 
