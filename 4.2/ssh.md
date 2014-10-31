@@ -120,7 +120,7 @@ Ensuitez, créez un fichier `Envoy.blade.php` à la racine de votre projet. Voic
 		ls -la
 	@endtask
 
-Comem vous pouvez le constater, un tableau de `@servers` est défini en haut du fichier. Vous pouvez utiliser ces serveurs dans l'option `on` de vos déclarations de tâche. Dans vos déclarations de tâches (`@task`) vous devez placer votre code bash qui sera exécuter sur le serveur.
+Comme vous pouvez le constater, un tableau de `@servers` est défini en haut du fichier. Vous pouvez utiliser ces serveurs dans l'option `on` de vos déclarations de tâche. Dans vos déclarations de tâches (`@task`) vous devez placer votre code bash qui sera exécuter sur le serveur.
 
 <a name="envoy-running-tasks"></a>
 ### Exécution de tâches
